@@ -1,11 +1,11 @@
-create database MyODB
+create database MyODB1
 create table Account (
 	accountID int identity primary key ,
 	accountName varchar(50) NOT NULL,
 	[password] varchar(100) NOT NULL,
 	accountEmail varchar(100) NOT NULL unique,
-	accountAddress nvarchar(100),
-	accountPhone nchar(10) unique,
+	accountAddress nvarchar(100) NOT NULL,
+	accountPhone nchar(10) NOT NULL unique,
 	isActive bit default 0,
 	isAdmin bit default 0,
 )
