@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import model.User;
 import dal.DBContext;
+import java.util.List;
 
 
 /**
@@ -53,19 +54,49 @@ public class UserDAO extends DBContext{
          return null;
     }
 
-    public int UpdatePassword(String pass, String email){
-        int row = 0;
+    public String UpdatePassword(String pass, String email){
         try{
             MD5 md5 = new MD5();
-            String sql = "update User set pass = ? where email = ? ";
+            String sql = "UPDATE Account SET password = ? WHERE accountEmail = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, md5.getMd5(pass));
             stm.setString(2, email);
-            row = stm.executeUpdate();
+            stm.executeUpdate();
         } catch (Exception e) {
                  System.out.println("Get all error "+ e.getMessage());
         }
-        return row;
+        return null;
     }
+    
+    public boolean chekcAccount(String email) {
+        try {
+            String sql = "  select * from Account where accountEmail =?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, email);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Register error : " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean checkAccount(String phone) {
+        try {
+            String sql = "  select * from Account where accountPhone =?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, phone);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Register error : " + e.getMessage());
+        }
+        return false;
+    }
+    
 }
 

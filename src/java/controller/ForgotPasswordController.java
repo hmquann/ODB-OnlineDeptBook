@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dal.UserDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -25,7 +26,7 @@ import model.User;
  *
  * @author ADMIN
  */
-public class ForgotPasswordController extends HttpServlet{
+public class ForgotPasswordController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,36 +36,40 @@ public class ForgotPasswordController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
+        UserDAO dao = new UserDAO();
         HttpSession mySession = req.getSession();
-
-        if (email != null || !email.equals("")){
-            String to = email;
-            Properties props = new Properties();
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.port", "587");
-            Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("ekkophantoms123@gmail.com", "wjornzyksrjqkcdp");
+        if (email != null && dao.chekcAccount(email)) {
+            if (dao.chekcAccount(email)) {
+                String to = email;
+                Properties props = new Properties();
+                props.put("mail.smtp.auth", "true");
+                props.put("mail.smtp.host", "smtp.gmail.com");
+                props.put("mail.smtp.starttls.enable", "true");
+                props.put("mail.smtp.port", "587");
+                Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("ekkophantoms123@gmail.com", "wjornzyksrjqkcdp");
+                    }
+                });
+                try {
+                    MimeMessage message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(email));
+                    message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+                    message.setSubject("Dear MyFriend, ");
+                    String htmlContent = "<h1>Change your password in <a href=\"http://localhost:9999/OnlineDebtBook_Project/ChangePassword?email=" + to + "\">Online Debt Reset Password</a></h1>";
+                    message.setContent(htmlContent, "text/html");
+                    System.out.println("message sent successfully");
+                    Transport.send(message);
+                    User u = new User();
+                    u.setIsActive(true);
+                } catch (MessagingException e) {
+                    throw new RuntimeException(e);
                 }
-            });
-            try {
-                MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(email));
-                message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setSubject("Dear MyFriend, ");
-                String htmlContent = "<h1>Change your password in <a href=\"http://localhost:9999/OnlineDebtBook_Project/ChangePassword?email="+ to+"\">GP Coder</a></h1>" +
-                    "<img src=\"https://gpcoder.com/wp-content/uploads/2017/10/Facebook_Icon_GP_2-300x180.png\" " + " width=\"300\" " + " height=\"180\" " + " border=\"0\" " + " alt=\"gpcoder.com\" />";
-                message.setContent(htmlContent, "text/html");
-                System.out.println("message sent successfully");
-                Transport.send(message);
-                User u = new User();
-                u.setIsActive(true);
-            } catch (MessagingException e) {
-                throw new RuntimeException(e);
             }
             mySession.setAttribute("email", email);
+            req.getRequestDispatcher("forgotpass.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("mess", "mess k ton tai");
             req.getRequestDispatcher("forgotpass.jsp").forward(req, resp);
         }
     }

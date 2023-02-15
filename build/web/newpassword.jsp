@@ -11,7 +11,7 @@
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>Snippet - BBBootstrap</title>
+        <title>Reset Password</title>
         <link
             href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
             rel='stylesheet'>
@@ -46,7 +46,7 @@
                             </h1>
                         </div>
                         <div class="pt-3 pb-3">
-                            <form class="form-horizontal" action="newPassword" method="POST">
+                            <form class="form-horizontal" action="ChangePassword" method="POST">
                                 <!-- User Name Input -->
                                 <div class="form-group row justify-content-center px-3">
                                     <div class="col-9 px-0">
@@ -64,17 +64,16 @@
                                 </div>
                                 <div>
                                     <div style="display: none" class="col-9 px-0">
-                                        <input style="display: none" name="email">${email}           
+                                        <input style="display: none" name="email" value="${email} ">${email}           
                                     </div>
                                 </div>
-
-                                <!-- Log in Button -->
                                 <div class="form-group row justify-content-center">
                                     <div class="col-3 px-3 mt-3">
                                         <input type="submit" value="Reset"
                                                class="btn btn-block btn-info">
                                     </div>
                                 </div>
+                                    <p style="color: red">${mess}</p>
                             </form>
                         </div>
                         <div >
