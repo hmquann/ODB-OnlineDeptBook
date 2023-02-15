@@ -103,13 +103,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <div class="padding">
                 <form action="ForgotPassword" method="post">                 
                     <div class="edit"><input type="text" placeholder="Email(*)" name="email"></div>
-                    <div class="edit">
-                        <label>
-                            <input type="text1" placeholder="Captcha">
-                            <input type="button" value="Swap">
-                            <input type="text2" placeholder="Input">
-                        </label>
-                    </div>
+                    <p style="color: red">${mess}</p>
                     <div class="edit">
                         <input type="submit" value=" + Yêu cầu cấp lại mật khẩu">
                     </div>

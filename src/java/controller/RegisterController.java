@@ -39,45 +39,43 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String pass = req.getParameter("pass");
-        String phone = req.getParameter("phone");
-        String address = req.getParameter(phone);
         String email = req.getParameter("email");
-        RequestDispatcher dispatcher = null;
-        HttpSession mySession = req.getSession();
-
-        if (email != null || !email.equals("")) {
-            String to = email;
-            Properties props = new Properties();
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.port", "587");
-            Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("ekkophantoms123@gmail.com", "wjornzyksrjqkcdp");
-                }
-            });
-            try {
-                MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(email));// change accordingly
-                message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setSubject("Hello");
-//                message.setText("your OTP is: " + otpvalue);
-                String htmlContent = "<h1>Activate your account in <a href=\"http://localhost:9999/OnlineDebtBook_Project/ChangePassword\">GP Coder</a></h1>" +
-                    "<img src=\"https://gpcoder.com/wp-content/uploads/2017/10/Facebook_Icon_GP_2-300x180.png\" " + " width=\"300\" " + " height=\"180\" " + " border=\"0\" " + " alt=\"gpcoder.com\" />";
-                message.setContent(htmlContent, "text/html");
-                Transport.send(message);
-                User user = new User();
-                user.setIsActive(true);
-                System.out.println("message sent successfully");
-            } catch (MessagingException e) {
-                throw new RuntimeException(e);
+        String address = req.getParameter("address");
+        String phone = req.getParameter("phone");
+        UserDAO dao = new UserDAO();
+        if (dao.chekcAccount(email) || dao.checkAccount(phone)
+                || !pass.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})") || !phone.matches("(([0-9]){10})")) {
+            String mess = "";
+            String mess1 = "";
+            if (dao.chekcAccount(email)) {
+                mess += "Email da ton tai";
+                req.setAttribute("mess", mess);
             }
-            dispatcher = req.getRequestDispatcher("login.jsp");
-      
-            mySession.setAttribute("email", email);
-            dispatcher.forward(req, resp);
+            if (dao.checkAccount(phone)) {
+                if (mess.equals("")) {
+                    mess += " va ";
+                }
+                mess += "Phone da ton tai";
+                req.setAttribute("mess", mess);
+            }
+            if (!pass.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})")) {
+                mess1 += "mk bao gom chu so va 8 chu cai tro len";
+                req.setAttribute("mess1", mess1);
+            }
+            if (!phone.matches("(([0-9]){10})")) {
+                mess += "Phone phai la  so co 10 chu so";
+                req.setAttribute("mess", mess);
+            }
+            req.getRequestDispatcher("register.jsp").forward(req, resp);
+
+        } else {
+            dao.insertNewUser(name, pass, email, address, phone);
+            req.setAttribute("name", name);
+            req.setAttribute("pass", pass);
+            req.setAttribute("email", email);
+            req.setAttribute("address", address);
+            req.setAttribute("phone", phone);
+            resp.sendRedirect("./Login");
         }
     }
-    
 }
