@@ -45,15 +45,9 @@ public class LoginController extends HttpServlet {
         if (mess.equals("thanh cong")) {
             resp.sendRedirect("./Home");
         } else {
-            req.setAttribute("mess1", mess);
+            req.setAttribute("mess", mess);
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
-        
-        
-        
-        //sdfs
-        //sdfsd
-        ///sdfsdf
     }
 
 }
