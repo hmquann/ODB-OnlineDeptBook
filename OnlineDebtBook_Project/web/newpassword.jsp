@@ -29,9 +29,6 @@
                         </div>
                     </div>
                     <div class="edit">
-                        <button id="login-btn" class="sb1">
-                            <a href="./Login" class="text-danger">Login</a>
-                        </button>
                         <button type="submit" id="login-btn" class="sb2" value="Reset"> Reset</button>
                     </div>
                     <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
