@@ -28,6 +28,10 @@
         <servlet-name>pro5</servlet-name>
         <servlet-class>controller.</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DebtorController</servlet-name>
+        <servlet-class>controller.DebtorController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DebtorController</servlet-name>
+        <url-pattern>/debtor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
