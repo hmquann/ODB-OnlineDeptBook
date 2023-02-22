@@ -111,10 +111,13 @@
                     <form class="col-lg-auto mb-3 mb-lg-0 me-lg-3" >
                         <input type="search" class="form-control form-control-dark" placeholder="Search Debt" aria-label="Search" style="border-radius: 15px;">
                     </form>
-
+                    
                     <div class="text-end" style="padding-left: 65%;">
-                        <button type="button" class="btn btn-warning" style="border-radius: 15px;">Sign-out</button>
+                        <form action="Logout" method="get">
+                        <button type="submit" class="btn btn-warning" style="border-radius: 15px;">Sign-out</button>
+                         </form>
                     </div>
+                       
                 </div>
             </div>
         </header>
