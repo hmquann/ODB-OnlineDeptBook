@@ -18,9 +18,9 @@
                 <div class="texthead">Your Account For Everything Online Debt Book System</div>
             </div>
             <div class="right">
-                <c:if test="${acc != null}">
-                    ${acc}
-                </c:if>
+        <!--                <c:if test="${acc != null}">
+                ${acc}
+            </c:if>-->
                 <form method="post" action="Login">
                     <div>
                         <input type="email" placeholder="Enter email address(*)" name="email"/>
@@ -34,17 +34,17 @@
                     <br>
                     <!--<form name="form22" action="Captcha" method="get">-->   
                     <div>
-                        <label>
+<!--                        <label>
                             <input type="text" class="text1" placeholder="Input Captcha" name="captcha">
 
 
-                            <!--                                <button type="submit" name="btn22">
+                                                            <button type="submit" name="btn22">
                                                                 <i class='fas fa-undo'></i>
-                                                            </button>-->
-                        </label>
-                        <img src="Captcha" class="szcapt" alt="alt"/>
+                                                            </button>
+                        </label>-->
+                        <!--<img src="Captcha" class="szcapt" alt="alt"/>-->
                         <!--<button type="submit"></button>>-->
-                        <br>
+                        <!--<br>-->
                         <div class="codealt">
                             <c:if test="${code != null}">
                                 ${code}
