@@ -250,7 +250,7 @@
                                                 <div class="form-label-horizontal col-md-3"><label class=""><b>Name (*)</b></label></div>
                                                 <div class="col-md-9">
                                                     <input placeholder="" type="text" class="form-control" value="" name="debtorName">
-                                                    <div>${mess}</div>
+                                                    <div></div>
                                                 </div>
                                             </div>
                                             <div class="position-relative row form-group">

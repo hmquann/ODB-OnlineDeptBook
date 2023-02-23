@@ -13,24 +13,22 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <link href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css" rel="stylesheet">
+
 
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
         <!-- Moment.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
+        <script src="js/resizableColumns.min.js"></script>
         <!-- Bootstrap DateTimePicker -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css"/>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="js/resizableColumns.min.js"></script>
 
         <style>
             .select,
@@ -98,6 +96,19 @@
             .form-label-horizontal {
                 text-align: right;
             }
+            table {
+                table-layout: fixed;
+            }
+
+            table td,
+            table th {
+                overflow: hidden;
+                white-space: nowrap;
+                -moz-text-overflow: ellipsis;
+                -ms-text-overflow: ellipsis;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+            }
         </style>
 
         <title>Debtors List</title>
@@ -138,21 +149,21 @@
                             </div>
                             <div class="card-body">
                                 <div class="table" style="text-align: center;">
-                                    <table class="table mb-0">
+                                    <table class="table table-bordered" data-resizable-columns-id="demo-table-v2">
                                         <thead>
                                             <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Address</th>
-                                                <th scope="col">Phone</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Total</th>
-                                                <th scope="col">Start Date</th>
-                                                <th scope="col">Update</th>
-                                                <th scope="col">Action</th>
+                                                <th data-resizable-column-id="id" style="position: relative; width: 64.4375px;" >ID</th>
+                                                <th data-resizable-column-id="name">Name</th>
+                                                <th data-resizable-column-id="address">Address</th>
+                                                <th data-resizable-column-id="phone">Phone</th>
+                                                <th data-resizable-column-id="email">Email</th>
+                                                <th data-resizable-column-id="total">Total</th>
+                                                <th data-resizable-column-id="startDate">Start Date</th>
+                                                <th data-resizable-column-id="update">Update</th>
+                                                <th data-resizable-column-id="action" style="position: relative; width: 303.65px;">Action</th>
                                             </tr>
                                             <tr>
-                                                <th scope="col" style="width: 200px;height: 20px;
+                                                <td style="width: 200px;height: 20px;
                                                     padding: 0;
                                                     padding-bottom: 15px;">
                                                     <div class="row">
@@ -171,14 +182,69 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </th>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
+                                                </td>
+                                                <td style="width: 200px;height: 20px;
+                                                    padding: 0;
+                                                    padding-bottom: 15px;">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <input type="text" placeholder="" class="form-control"
+                                                                       value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width: 200px;height: 20px;
+                                                    padding: 0;
+                                                    padding-bottom: 15px;">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <input type="text" placeholder="" class="form-control"
+                                                                       value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width: 200px;height: 20px;
+                                                    padding: 0;
+                                                    padding-bottom: 15px;">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <input type="text" placeholder="" class="form-control"
+                                                                       value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width: 200px;height: 20px;
+                                                    padding: 0;
+                                                    padding-bottom: 15px;">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <input type="text" placeholder="" class="form-control"
+                                                                       value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width: 200px;height: 20px;
+                                                    padding: 0;
+                                                    padding-bottom: 15px;">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <input type="text" placeholder="" class="form-control"
+                                                                       value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
 
-                                                <th scope="col" style="width: 200px;height: 20px;
+                                                <td style="width: 200px;height: 20px;
                                                     padding: 0;
                                                     padding-bottom: 15px;">
                                                     <div class="row">
@@ -197,11 +263,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </th>
+                                                </td>
 
-                                                <th scope="col" style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
+                                                <td  style="width: 200px;height: 20px;
+                                                     padding: 0;
+                                                     padding-bottom: 15px;">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
@@ -217,13 +283,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </th>
-                                                <th scope="col"><button type="button"
-                                                                        class="btn btn-outline-danger btn-block">Clear
+                                                </td>
+                                                <td style="border:0;padding: 0 0 0 0;"><button type="button"
+                                                                                               class="btn btn-outline-danger btn-block">Clear
                                                         filter</button>
                                                     <button type="button" class="btn btn-outline-primary btn-block">Hide
                                                         &gt;&gt;</button>
-                                                </th>
+                                                </td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -244,7 +310,7 @@
                                                             </button>
                                                             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new_debt"
                                                                     <i class="fa fa-plus"></i> Add Debit Note</button>
-                                                            <button type="button" data-toggle="modal" data-target="#add_debtor" title="Edit"
+                                                            <button type="" data-toggle="modal" data-target="#add_debtor" title="Edit"
                                                                     class="btn btn-warning"><i class="fa fa-pencil"></i>
                                                                 Edit
                                                             </button>
@@ -284,23 +350,8 @@
                     </div>
                 </div>
             </div>
-            <div class='input-group date' id='datetimepicker1'>
-                <input type='text' class="form-control" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
             <jsp:include page="helper.jsp"></jsp:include>
     </body>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
     <script>
         var c = document.getElementById('pageNum');
         var d = document.getElementById('totalPages');
@@ -318,6 +369,12 @@
 
         $(function () {
             $('#datetimepicker1').datetimepicker();
+        });
+
+        $(function () {
+            $("table").resizableColumns({
+                store: window.store
+            });
         });
     </script>
 
