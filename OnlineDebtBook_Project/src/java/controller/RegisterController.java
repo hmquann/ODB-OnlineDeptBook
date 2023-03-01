@@ -33,29 +33,44 @@ public class RegisterController extends HttpServlet {
         String email = req.getParameter("email");
         String address = req.getParameter("address");
         String phone = req.getParameter("phone");
+        String repass = req.getParameter("repeatpass");
         UserDAO dao = new UserDAO();
-        if (dao.chekcAccount(email) || dao.checkAccount(phone)
+        if (dao.chekcAccount(email) || dao.checkAccount(phone) || !repass.equals(pass)
                 || !pass.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})") || !phone.matches("(([0-9]){10})")) {
             String mess = "";
-            String mess1 = "";
+//            String mess1 = "";
             if (dao.chekcAccount(email)) {
-                mess += "Email da ton tai";
+                mess += "Email exist";
                 req.setAttribute("mess", mess);
             }
             if (dao.checkAccount(phone)) {
-                if (mess.equals("")) {
-                    mess += " va ";
+                if (!mess.equals("")) {
+                    mess += "<br>";
                 }
-                mess += "Phone da ton tai";
+                mess += "Phone exist";
                 req.setAttribute("mess", mess);
             }
             if (!pass.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})")) {
-                mess1 += "mk bao gom chu so va 8 chu cai tro len";
-                req.setAttribute("mess1", mess1);
+                if(!mess.equals("")){
+                    mess+= "<br>";
+                }
+                mess += "Password contains 8 characters ";
+                req.setAttribute("mess", mess);
             }
             if (!phone.matches("(([0-9]){10})")) {
-                mess += "Phone phai la  so co 10 chu so";
+                if(!mess.equals("")){
+                    mess+= "<br>";
+                }
+                mess += "Phone must be a 10 digit number";
                 req.setAttribute("mess", mess);
+            }
+            if (!repass.equals(pass)) {
+                if(!mess.equals("")){
+                    mess+= "<br>";
+                }
+                mess+= "Repeat password not match";
+                req.setAttribute("mess", mess);
+
             }
             req.getRequestDispatcher("register.jsp").forward(req, resp);
 
