@@ -26,10 +26,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <div class="note"> It's quick and easy</div><br>
                 <form action="Register" method="post">
                     <div class="edit"><input type="text" placeholder="Username(*)" name="name" required value="${param.name}"></div>
-                    <div class="edit"><input type="password" placeholder="Password(*)" name="pass" required value="${param.pass}"></div> 
                     <div class="edit"><input type="email" placeholder="Email(*)" name="email" required value="${param.email}"></div>
                     <div class="edit"><input type="text" placeholder="Address(*)" name="address" required value="${param.address}"></div>
-                    <div class="edit"><input type="text" placeholder="Phone(*)" name="phone" required value="${param.phone}"></div>
+                    <div class="edit"><input type="text" placeholder="Phone(*)" name="phone" required value="${param.phone}"></div>     
+                    <div class="edit"><input type="password" placeholder="Password(*)" onkeyup="myFunction()" id="password"  name="pass" required value="${param.pass}"></div>
+                    <div class="edit"><input type="password" id="confirm_password" placeholder="Repeat Password(*)" name="repeatpass" required " onkeyup="myFunction()">
+                        <p style="margin-left: 10px" id='message'></p></div>
                     <p style="color: red; padding-left: 90px">${mess}</p>
                     <p style="color: red;padding-left: 90px">${mess1}</p>
 
@@ -40,4 +42,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             </div>
         </div>
     </body>
+     <script>
+        function myFunction() {
+            if (document.getElementById('password').value ===
+                    document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'yellow';
+                document.getElementById('message').innerHTML = 'Matching';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Not matching';
+            }
+
+        }
+
+
+    </script>
 </html>
