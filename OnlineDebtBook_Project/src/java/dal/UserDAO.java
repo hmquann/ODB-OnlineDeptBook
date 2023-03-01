@@ -18,6 +18,7 @@ import java.util.List;
  * @author pc
  */
 public class UserDAO extends DBContext{
+    
     public ArrayList<User> getAllUser() {
     ArrayList<User> list = new ArrayList<>();
           try {

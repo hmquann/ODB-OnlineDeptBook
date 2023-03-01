@@ -88,10 +88,10 @@ public class DebtorController extends HttpServlet {
 
         if (name.equals("")) {
             req.setAttribute("mess", mess);
-            req.getRequestDispatcher("home.jsp").forward(req, resp);
+            req.getRequestDispatcher("./Dashboard").forward(req, resp);
         } else {
             cusDAO.insertNewDebtor(name, address, phone, email, accountID);
-            resp.sendRedirect("./Home");
+            resp.sendRedirect("./Dashboard");
         }
 
     }
