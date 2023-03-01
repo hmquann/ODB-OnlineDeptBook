@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet {
             }
         }
         if (mess.equals("Success")) {
-            resp.sendRedirect("dashboard.jsp");
+            resp.sendRedirect("./Dashboard");
         } else {
             req.setAttribute("mess", mess);
             req.getRequestDispatcher("login.jsp").forward(req, resp);
