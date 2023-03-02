@@ -36,11 +36,12 @@
                     <h5>${u.accountName}</h5>
                     <p>Web Designer</p>
                     <i class="far fa-edit mb-5"></i>
-                    <a href="EditProfile">Edit</a>
+                    <a href="EditProfile?accountId=${u.accountID}">Edit</a>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body p-4">
                       <h6>Information</h6>
+                      <h5 style="color: red">${u.isAdmin==true?'Admin':'User'}</h5>
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
                         <div class="col-6 mb-3">

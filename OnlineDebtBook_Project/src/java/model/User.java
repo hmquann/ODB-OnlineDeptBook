@@ -95,5 +95,10 @@ public class User {
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "accountID=" + accountID + ", accountName=" + accountName + ", password=" + password + ", email=" + email + ", address=" + address + ", phone=" + phone + ", isActive=" + isActive + ", isAdmin=" + isAdmin + '}';
+    }
     
 }
