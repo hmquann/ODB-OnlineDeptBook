@@ -24,7 +24,6 @@ public class ViewProfileController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        CustomerDAO dao = new CustomerDAO();
         if (session.getAttribute("user") == null) {
             resp.sendRedirect("Login");
         } else {
@@ -32,7 +31,6 @@ public class ViewProfileController extends HttpServlet {
             req.setAttribute("u", u);
             req.getRequestDispatcher("viewprofile.jsp").forward(req, resp);
         }
-
     }
 
     @Override

@@ -45,7 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             var mess = document.getElementById('messforgotpassword');
             console.log(mess.innerText === '');
             if (mess.innerText !== '') {
-                alert('Nhập email tạo tài khoản và email phải đúng cú pháp');
+                alert('Email have sent');
             }
         </script>     
     </body>

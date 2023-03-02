@@ -26,13 +26,12 @@ public class EditProfileController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String accountid = req.getParameter("accountid");
         String accountname = req.getParameter("accountname");
         String accountemail = req.getParameter("accountemail");
         String accountaddress = req.getParameter("accountaddress");
         String accountphone = req.getParameter("accountphone");
-         UserDAO dal = new UserDAO();
-       HttpSession session = req.getSession();
+        UserDAO dal = new UserDAO();
+        HttpSession session = req.getSession();
         if (session.getAttribute("user") == null) {
             resp.sendRedirect("Login");
         } else {
