@@ -18,10 +18,11 @@ import model.User;
  *
  * @author Admin
  */
-public class EditProfileController extends HttpServlet{
+public class EditProfileController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
     }
 
     @Override
@@ -32,18 +33,18 @@ public class EditProfileController extends HttpServlet{
         String accountphone = req.getParameter("accountphone");
         UserDAO dal = new UserDAO();
         HttpSession session = req.getSession();
-        if (session.getAttribute("user") == null) {
+        if (session.getAttribute("user2") == null) {
             resp.sendRedirect("Login");
         } else {
-            User u = (User) session.getAttribute("user");
-            req.setAttribute("u", u);
             dal.UpdateProfile(accountemail, accountname, accountaddress, accountphone);
-//            req.setAttribute("accountname", accountname);
-//            req.setAttribute("accountemail", accountemail);
-//            req.setAttribute("accountaddress", accountaddress);
-//            req.setAttribute("accountphone", accountphone);
+            User u = (User) session.getAttribute("user2");
+            String id = String.valueOf(u.getAccountID());
+            User user = dal.getUserById(id);
+            session.setAttribute("user2", user);
+            req.setAttribute("u", user);
             req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
         }
+
     }
-    
+
 }
