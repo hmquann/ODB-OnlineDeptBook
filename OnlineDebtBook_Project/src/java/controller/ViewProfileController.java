@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import dal.UserDAO;
+import java.util.List;
 import model.User;
 
 /**
@@ -27,10 +28,11 @@ public class ViewProfileController extends HttpServlet {
         if (session.getAttribute("user") == null) {
             resp.sendRedirect("Login");
         } else {
-            User u = (User) session.getAttribute("user");
+            User u = (User) session.getAttribute("user2");
             req.setAttribute("u", u);
             req.getRequestDispatcher("viewprofile.jsp").forward(req, resp);
         }
+
     }
 
     @Override

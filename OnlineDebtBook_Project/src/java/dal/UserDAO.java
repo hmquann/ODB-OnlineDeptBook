@@ -144,4 +144,37 @@ public class UserDAO extends DBContext {
         return null;
     }
 
+    public User getInfo(String email) {
+        try {
+            String sql = "SELECT * FROM Account WHERE  accountEmail = ? ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, email);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getBoolean(7), rs.getBoolean(8));
+                return u;
+            }
+        } catch (Exception e) {
+            System.out.println("Get all error " + e.getMessage());
+        }
+        return null;
+    }
+    
+    public User getUserById(String id) {
+        try {
+            String sql = "select * from Account where accountId = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, id);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                User u = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getBoolean(7), rs.getBoolean(8));
+                return u;
+            }
+        } catch (Exception e) {
+            System.out.println("Get all error " + e.getMessage());
+        }
+        return null;
+    }
 }
