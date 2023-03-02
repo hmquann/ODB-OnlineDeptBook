@@ -1,16 +1,13 @@
-
 package dal;
-
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
-
 public class MD5 {
 
-    public  String getMd5(String input) {
+    public String getMd5(String input) {
         try {
 
             // Static getInstance method is called with hashing MD5

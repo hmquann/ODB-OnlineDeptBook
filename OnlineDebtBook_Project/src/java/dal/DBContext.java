@@ -16,8 +16,8 @@ public class DBContext {
     public DBContext()
     {
         try{
-            String user="sa";
-            String pass="123";
+            String user="dung";
+            String pass="12345";
             String url="jdbc:sqlserver://localhost:1433;databaseName=MyODB";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
