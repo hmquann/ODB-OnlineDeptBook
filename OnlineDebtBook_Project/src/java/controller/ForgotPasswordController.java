@@ -1,3 +1,5 @@
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -34,6 +36,7 @@ public class ForgotPasswordController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int timeout = 60000;
         String email = req.getParameter("email");
         UserDAO dao = new UserDAO();
         HttpSession mySession = req.getSession();
@@ -45,6 +48,7 @@ public class ForgotPasswordController extends HttpServlet {
                 props.put("mail.smtp.host", "smtp.gmail.com");
                 props.put("mail.smtp.starttls.enable", "true");
                 props.put("mail.smtp.port", "587");
+                props.put("mail.smtp.timeout", timeout);
                 Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication("ekkophantoms123@gmail.com", "wjornzyksrjqkcdp");
@@ -55,12 +59,10 @@ public class ForgotPasswordController extends HttpServlet {
                     message.setFrom(new InternetAddress(email));
                     message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
                     message.setSubject("Dear MyFriend, ");
-                    String htmlContent = "<h1>Change your password in <a href=\"http://localhost:9999/OnlineDebtBook_Project/ChangePassword?email=" + to + "\">Online Debt Reset Password</a></h1>";
+                    String htmlContent = "<h1>Change your password in <a href=\"http://localhost:9999/OnlineDebtBook_Project/ChangePassword?email=" + to + "\">Online Debt Reset Password</a></h1> <h2>Note: The email can only exist in 1 minute from the time it started sending!!!!!</h2>";
                     message.setContent(htmlContent, "text/html");
                     System.out.println("message sent successfully");
                     Transport.send(message);
-                    User u = new User();
-                    u.setIsActive(true);
                 } catch (MessagingException e) {
                     throw new RuntimeException(e);
                 }

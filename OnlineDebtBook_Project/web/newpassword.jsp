@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="./css/newpassword.css"/>
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
+
         <title>New Password</title>
     </head>
     <body>
@@ -29,9 +31,6 @@
                         </div>
                     </div>
                     <div class="edit">
-                        <button id="login-btn" class="sb1">
-                            <a href="./Login" class="text-danger">Login</a>
-                        </button>
                         <button type="submit" id="login-btn" class="sb2" value="Reset"> Reset</button>
                     </div>
                     <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>

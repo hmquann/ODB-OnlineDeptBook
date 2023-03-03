@@ -13,8 +13,19 @@
         <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
     </head>
     <body>
-        <div class="box">
-            <div class="container">
+      <div class="full-box">
+            <div>
+                <div class="textheader">Online Debt Book</div>
+                <div class="texthead">Your Account For Everything Online Debt Book System</div>
+            </div>
+            <div class="right">
+                <form method="post" action="Login">
+                    <div>
+                        <input type="email" placeholder="Enter email address(*)" name="email"/>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="password" placeholder="Enter password(*)" name="password">
 
                 <div class="top">
                     <span>Have an account?</span>
@@ -35,11 +46,18 @@
 
                     <p class="mess">${mess}</p>
                     <br>
-
-                    <div class="input-field">
-                        <input type="submit" class="submit" value="Login" id="">
+                    <div>
+                        <div class="codealt">
+                            <c:if test="${code != null}">
+                                ${code}
+                            </c:if>
+                        </div>
                     </div>
-
+                    <br>
+                    <div>
+                        <button type="submit" id="login-btn" class="sb" value="Login">Login</button>
+                    </div>
+                    <br>
                 </form>
 
                 <div class="two-col">
@@ -49,8 +67,17 @@
                     <div class="two">
                         <label><a href="http://localhost:9999/OnlineDebtBook_Project/ForgotPassword">Forgot password?</a></label>
                     </div>
-                </div>
             </div>
             <script src="main.js"></script>
     </body>
 </html>
+                    <br>
+                </label>
+                <p style="color: red; display: none;" >${to}</p>
+                <label class="class1">
+                    <p>By logging in, you agree to ODB's
+                        <a href="">Privacy Policy </a>
+                        "and"
+                        <a href="">Terms of Use</a>
+                    </p>
+                </label>

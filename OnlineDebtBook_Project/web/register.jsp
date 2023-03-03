@@ -15,9 +15,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <%@page contentType="text/html" pageEncoding="UTF-8"%>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/register.css"/>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
+
     </head>
     <body>
+        <div class="class2">
+            <div class="class1">
+                <div class="signup"> Sign up</div>
+                <div class="note"> It's quick and easy</div><br>
+                <form action="Register" method="post">
+                    <div class="edit"><input type="text" placeholder="Username(*)" name="name" required value="${param.name}"></div>
+                    <div class="edit"><input type="email" placeholder="Email(*)" name="email" required value="${param.email}"></div>
+                    <div class="edit"><input type="text" placeholder="Address(*)" name="address" required value="${param.address}"></div>
+                    <div class="edit"><input type="text" placeholder="Phone(*)" name="phone" required value="${param.phone}"></div>     
+                    <div class="edit"><input type="password" placeholder="Password(*)" onkeyup="myFunction()" id="password"  name="pass" required value="${param.pass}"></div>
+                    <div class="edit"><input type="password" id="confirm_password" placeholder="Repeat Password(*)" name="repeatpass" required " onkeyup="myFunction()">
+                        <p style="margin-left: 10px" id='message'></p></div>
+                    <p style="color: red; padding-left: 90px">${mess}</p>
+                    <p style="color: red;padding-left: 90px">${mess1}</p>
 
         <div class="box2">
         <div class="container2">
@@ -64,4 +79,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </div>
     </div>
     </body>
+     <script>
+        function myFunction() {
+            if (document.getElementById('password').value ===
+                    document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'yellow';
+                document.getElementById('message').innerHTML = 'Matching';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Not matching';
+            }
+
+        }
+
+
+    </script>
 </html>

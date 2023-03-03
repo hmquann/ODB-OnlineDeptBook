@@ -17,6 +17,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="./css/forgotpass.css">
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
+
     </head>
     <body>
         <div class="box1">
@@ -54,7 +56,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             var mess = document.getElementById('messforgotpassword');
             console.log(mess.innerText === '');
             if (mess.innerText !== '') {
-                alert('Nhập email tạo tài khoản và email phải đúng cú pháp');
+                alert('Email have sent');
             }
         </script>     
     </body>
