@@ -15,29 +15,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <%@page contentType="text/html" pageEncoding="UTF-8"%>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="./css/forgotpass.css">
         <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
 
     </head>
     <body>
-        <div class="full-box">
-            <div>
-                <div class="class1">
-                    <p>Find Your Account</p>
+        <div class="box1">
+            <div class="container1">
+
+                <div class="top1">
+                    <span>Have an account?</span>
+                    <header>Forgotten Password</header>
                 </div>
-                <div class="class2">
-                    <p>Please enter your email address or mobile number to search for your account.</p>
-                </div>
-                <div>
-                    <form action="ForgotPassword" method="post">
-                        <div>
-                            <div>
-                                <input type="email" placeholder="Enter email address(*)" name="email">
-                                <button type="submit" id="login-btn" class="sb" value=""> Send </button>
-                            </div>
-                            <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
+
+                <form action="ForgotPassword" method="post">
+                    <div>
+                        <div class="input-field1">
+                            <input type="email" class="input1" placeholder="Email" id="" name="email">
+                            <i class='bx bx-user'></i>
                         </div>
-                    </form>
+                        <div class="input-field1">
+                            <input type="submit" class="submit1" value="Find" id="">
+                        </div>
+                        <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
+                    </div>
+                </form>
+
+                <div class="two-col1">
+                    <div class="two1">
+                        <label><a href="http://localhost:9999/OnlineDebtBook_Project/Login">Login</a></label>
+                    </div>
+                    <div class="two2">
+                        <label><a href="http://localhost:9999/OnlineDebtBook_Project/Register">Register</a></label>
+                    </div>
                 </div>
             </div>
         </div>
