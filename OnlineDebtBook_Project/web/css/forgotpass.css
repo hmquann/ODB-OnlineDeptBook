@@ -1,103 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
-*{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 body{
-    background-image: url("../img/planet-space-abstract-background-digital-art-4k-wallpaper-uhdpaper.com-234@0@g.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-
+    overflow: hidden;
+    background: #E9EBEE;
 }
-.box1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 90vh;
-}
-.container1{
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    padding: 0 15px 0 15px;
-
-}
-span{
-    color: #fff;
-    font-size: small;
-    display: flex;
-    justify-content: center;
-    padding: 10px 0 10px 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-header{
-    color: #fff;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    padding: 10px 0 20px 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.class1{
+    color: #FFFFFF;
+    font-size: 50px;
     font-weight: bolder;
+    font-family: verdana, Helvetica, sans-serif;
+    text-align: center;
 }
-
-.input-field1 .input1{
+.class1 p{
+    padding-bottom: 5px;
+}
+.class2{
+    color:#FFFFFF;
+    font-size: 100%;
+    font-weight: bolder;
+    font-family: verdana, Helvetica, sans-serif;
+}
+.class2 p{
+    padding-bottom: 35px;
+}
+.full-box {
+    gap: 10%;
+    width: 60%;
+    margin: auto;
+    padding: 70px;
+    display: flex;
+    margin-top: 25vh;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #365899;
+    border-radius: 150px;
+    background: #365899;
+}
+input[type = email] {
+    width: 80%;
     height: 45px;
-    width: 87%;
-    border: none;
-    border-radius: 30px;
-    color: #fff;
     font-size: 15px;
-    padding: 0 0 0 45px;
-    background: rgba(255, 255, 255, 0.168);
-    outline: none;
+    border-radius: 20px;
+    border-color: #FFFFFF;
+    padding: 5px 20px 5px 20px;
+    font-family: verdana, Helvetica, sans-serif;
 }
-i{
-    position: relative;
-    top: -33px;
-    left: 17px;
-    color: #fff;
-}
-::-webkit-input-placeholder{
-    color: #fff;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.submit1{
-    border: none;
-    border-radius: 30px;
-    font-size: 20px;
+input.text1 {
+    width: 50%;
     height: 45px;
-    outline: none;
-    width: 100%;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.415);
-    cursor: pointer;
-    transition: .3s ;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    border-radius: 20px;
+    border-color: #FFFFFF;
+    padding: 5px 20px 5px 20px;
+    font-family: verdana, Helvetica, sans-serif;
 }
-.submit1:hover{
-    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+input.text2 {
+    height: 45px;
+    width: 42.1%;
+    font-size: 15px;
+    border-radius: 20px;
+    border-color: #FFFFFF;
+    padding: 5px 20px 5px 20px;
+    font-family: verdana, Helvetica, sans-serif;
 }
-.two-col1{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    display: flex;
-    color: #fff;
-    justify-content: space-between;
-    font-size: small;
-    margin-top: 10px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+label button {
+    width: 43px;
+    height: 43px;
+    border-radius: 50px;
+    background: #FFFFFF;
+    border-color: #FFFFFF;
 }
-.two1{
-    padding-left: 15px;
-    display: flex;
-
+label button i {
+    color: #365899;
+    font-size: 22px;
 }
-.two2{
-    padding-right: 15px;
-    display: flex;
+.sb {
+    width: 19%;
+    height: 45px;
+    color: white;
+    font-size: 15px;
+    border-radius: 20px;
+    align-items: center;
+    font-weight: bolder;
+    background: #02B875;
+    font-weight: bolder;
+    border-color: #02B875;
+    padding: 5px 20px 5px 20px;
+    font-family: verdana, Helvetica, sans-serif;
 }
-
-label a{
-    text-decoration: none;
-    color: #fff;
+@media (max-width: 768px) {
+    .full-box {
+        flex-direction: column;
+    }
+    .sb{
+        width: 100%;
+    }
+    input[type="email"] {
+        width: 100%;
+    }
+    .full-box {
+        width: 100%;
+    }
 }
