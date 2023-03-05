@@ -27,21 +27,20 @@ public class EditProfileController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String accountid = req.getParameter("accountid");
         String accountname = req.getParameter("accountname");
         String accountemail = req.getParameter("accountemail");
         String accountaddress = req.getParameter("accountaddress");
         String accountphone = req.getParameter("accountphone");
         UserDAO dal = new UserDAO();
         HttpSession session = req.getSession();
-        if (session.getAttribute("user") == null) {
+        if (session.getAttribute("user2") == null) {
             resp.sendRedirect("Login");
         } else {
             dal.UpdateProfile(accountemail, accountname, accountaddress, accountphone);
-            User u = (User) session.getAttribute("user");
+            User u = (User) session.getAttribute("user2");
             String id = String.valueOf(u.getAccountID());
             User user = dal.getUserById(id);
-            session.setAttribute("user", user);
+            session.setAttribute("user2", user);
             req.setAttribute("u", user);
             req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
         }

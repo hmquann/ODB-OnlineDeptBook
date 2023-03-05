@@ -33,16 +33,13 @@ public class LoginController extends HttpServlet {
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
         UserDAO dao = new UserDAO();
-        String mess = "Wrong password or email ";
-        ArrayList<User> list = dao.getAllUser();
         MD5 md5 = new MD5();
-        for (User user : list) {
-            if (email.equals(user.getEmail()) && md5.getMd5(pass).equals(user.getPassword())) {
-                session.setAttribute("user", user);
-                mess = "Success";
-            }
-        }
-        if (mess.equals("Success")) {
+        String mess = "Wrong password or email ";
+        User user = dao.getUser(email, pass);
+        User user2 = dao.getInfo(email);   
+        if (user != null && user2 != null) {
+            session.setAttribute("user", user);
+            session.setAttribute("user2", user2);
             resp.sendRedirect("./Dashboard");
         } else {
             req.setAttribute("mess", mess);
