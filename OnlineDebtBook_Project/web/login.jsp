@@ -18,9 +18,6 @@
                 <div class="texthead">Your Account For Everything Online Debt Book System</div>
             </div>
             <div class="right">
-        <!--                <c:if test="${acc != null}">
-                ${acc}
-            </c:if>-->
                 <form method="post" action="Login">
                     <div>
                         <input type="email" placeholder="Enter email address(*)" name="email"/>
@@ -32,26 +29,13 @@
                     </div>
                     <p class="mess">${mess}</p>
                     <br>
-                    <!--<form name="form22" action="Captcha" method="get">-->   
                     <div>
-<!--                        <label>
-                            <input type="text" class="text1" placeholder="Input Captcha" name="captcha">
-
-
-                                                            <button type="submit" name="btn22">
-                                                                <i class='fas fa-undo'></i>
-                                                            </button>
-                        </label>-->
-                        <!--<img src="Captcha" class="szcapt" alt="alt"/>-->
-                        <!--<button type="submit"></button>>-->
-                        <!--<br>-->
                         <div class="codealt">
                             <c:if test="${code != null}">
                                 ${code}
                             </c:if>
                         </div>
                     </div>
-                    <!--</form>-->
                     <br>
                     <div>
                         <button type="submit" id="login-btn" class="sb" value="Login">Login</button>
@@ -68,6 +52,7 @@
                     </div>
                     <br>
                 </label>
+                <p style="color: red; display: none;" >${to}</p>
                 <label class="class1">
                     <p>By logging in, you agree to ODB's
                         <a href="">Privacy Policy </a>
