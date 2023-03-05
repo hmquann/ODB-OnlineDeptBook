@@ -8,7 +8,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="./css/login.css">
         <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
     </head>
@@ -27,23 +26,7 @@
                     <div>
                         <input type="password" placeholder="Enter password(*)" name="password">
 
-                <div class="top">
-                    <span>Have an account?</span>
-                    <header>ODB Login</header>
-                </div>
-
-                <form method="post" action="Login">
-
-                    <div class="input-field">
-                        <input type="email" class="input" placeholder="Email" id="" name="email">
-                        <i class='bx bx-user'></i>
                     </div>
-
-                    <div class="input-field">
-                        <input type="Password" class="input" placeholder="Password" id="" name="password">
-                        <i class='bx bx-lock-alt'></i>
-                    </div>
-
                     <p class="mess">${mess}</p>
                     <br>
                     <div>
@@ -59,18 +42,14 @@
                     </div>
                     <br>
                 </form>
-
-                <div class="two-col">
-                    <div class="one">
-                        <label><a href="http://localhost:9999/OnlineDebtBook_Project/Register">Register</a></label>
+                <label class="class1">
+                    <div>
+                        <a href="forgotpass.jsp">Forgotten your password ?</a>
                     </div>
-                    <div class="two">
-                        <label><a href="http://localhost:9999/OnlineDebtBook_Project/ForgotPassword">Forgot password?</a></label>
+                    <br>
+                    <div>
+                        <a href="register.jsp">Created New Account</a>
                     </div>
-            </div>
-            <script src="main.js"></script>
-    </body>
-</html>
                     <br>
                 </label>
                 <p style="color: red; display: none;" >${to}</p>
@@ -81,3 +60,8 @@
                         <a href="">Terms of Use</a>
                     </p>
                 </label>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
