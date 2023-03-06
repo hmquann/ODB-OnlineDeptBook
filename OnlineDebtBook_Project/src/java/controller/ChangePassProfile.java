@@ -22,7 +22,6 @@ public class ChangePassProfile extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
         String password = req.getParameter("password");
         String newpass = req.getParameter("newpass");
         String newpass2 = req.getParameter("newpass2");
@@ -35,13 +34,16 @@ public class ChangePassProfile extends HttpServlet {
             resp.sendRedirect("Login");
         } else {
             User u = (User) session.getAttribute("user2");
-            req.setAttribute("u", u);
+            String id = String.valueOf(u.getAccountID());
+            User user = dal.getUserById(id);
+            session.setAttribute("user2", user);
+            req.setAttribute("u", user);
             if (md5.getMd5(password).equals(u.getPassword())) {
                 if (newpass.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})")
                         && newpass2.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})")
                         && (newpass.equals(newpass2))) {
-                    dal.UpdatePassword(newpass, email);
-                    req.getRequestDispatcher("changepassword.jsp").forward(req, resp);
+                    dal.UpdatePassword(newpass, u.getEmail());
+                    req.getRequestDispatcher("viewprofile.jsp").forward(req, resp);
                 } else {
                     req.setAttribute("mess", mess2);
                     req.getRequestDispatcher("changepassword.jsp").forward(req, resp);

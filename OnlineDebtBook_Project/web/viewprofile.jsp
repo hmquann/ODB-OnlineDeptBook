@@ -37,7 +37,7 @@
                                     <p>Web Designer</p>
                                     <i class="far fa-edit mb-5"></i>
                                     <a href="EditProfile?accountId=${u.accountID}">Edit</a><br>
-                                    <a href="ChangePassProfile?accountId=${u.accountID}">Change Password</a>
+                                    <a href="ChangePassProfile?email=${u.email}">Change Password</a>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body p-4">
@@ -55,7 +55,6 @@
                                             </div>
                                         </div>
                                         <h6>Email</h6>
-
                                         <div class="row pt-1">
                                             <div class="col-12 mb-3">
                                                 <p class="text-muted">${u.email}</p>
