@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dal.MD5;
 import dal.UserDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -27,6 +28,7 @@ public class ChangePassProfile extends HttpServlet {
         String newpass2 = req.getParameter("newpass2");
         String mess = "Wrong Password";
         String mess2 = "Update error";
+        MD5 md5 = new MD5();
         UserDAO dal = new UserDAO();
         HttpSession session = req.getSession();
         if (session.getAttribute("user2") == null) {
@@ -34,7 +36,7 @@ public class ChangePassProfile extends HttpServlet {
         } else {
             User u = (User) session.getAttribute("user2");
             req.setAttribute("u", u);
-            if (password.equals(u.getPassword())) {
+            if (md5.getMd5(password).equals(u.getPassword())) {
                 if (newpass.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})")
                         && newpass2.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})")
                         && (newpass.equals(newpass2))) {
