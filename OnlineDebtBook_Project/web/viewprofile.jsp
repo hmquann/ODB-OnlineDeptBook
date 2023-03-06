@@ -36,7 +36,7 @@
                                     <h5>${u.accountName}</h5>
                                     <p>Web Designer</p>
                                     <i class="far fa-edit mb-5"></i>
-                                    <a href="EditProfile?accountId=${u.accountID}">Edit</a>
+                                    <a href="EditProfile?accountId=${u.accountID}">Edit</a><br>
                                     <a href="ChangePassProfile?accountId=${u.accountID}">Change Password</a>
                                 </div>
                                 <div class="col-md-8">

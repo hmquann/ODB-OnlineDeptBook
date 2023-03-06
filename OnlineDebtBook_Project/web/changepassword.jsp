@@ -11,12 +11,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        
+    <body>      
          <form action="ChangePassProfile" method="post">
             <div class="main1">   
                 Email
-                <input class="accountpassword" placeholder="Password(*)"  type="text" value="" name="email" >
+                <input class="accountpassword"  type="text" value="" name="email" >
+                <br>
                 <input class="accountpassword" placeholder="Password(*)"  type="text" name="password" >
                 <br>
                 <input class="" placeholder=" Enter New Password(*)" type="text" name="newpass" >
