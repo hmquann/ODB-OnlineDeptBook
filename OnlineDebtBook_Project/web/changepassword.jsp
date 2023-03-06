@@ -14,8 +14,6 @@
     <body>      
          <form action="ChangePassProfile" method="post">
             <div class="main1">   
-                Email
-                <input class="accountpassword"  type="text" value="" name="email" >
                 <br>
                 <input class="accountpassword" placeholder="Password(*)"  type="text" name="password" >
                 <br>
@@ -28,7 +26,7 @@
                 <h1>${mess}</h1>
             </div>
         </form>
-         <script>
+          <script>
             function showmess() {
                 var option = confirm("Are you sure to Update your profile?");
                 if (option === true) {
