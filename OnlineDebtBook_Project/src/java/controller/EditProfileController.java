@@ -36,7 +36,7 @@ public class EditProfileController extends HttpServlet {
         if (session.getAttribute("user2") == null) {
             resp.sendRedirect("Login");
         } else {
-            dal.UpdateProfile(accountemail, accountname, accountaddress, accountphone);
+            dal.updateProfile(accountemail, accountname, accountaddress, accountphone);
             User u = (User) session.getAttribute("user2");
             String id = String.valueOf(u.getAccountID());
             User user = dal.getUserById(id);

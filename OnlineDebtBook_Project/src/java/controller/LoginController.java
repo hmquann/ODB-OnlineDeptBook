@@ -33,7 +33,6 @@ public class LoginController extends HttpServlet {
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
         UserDAO dao = new UserDAO();
-        MD5 md5 = new MD5();
         String mess = "Wrong password or email ";
         User user = dao.getUser(email, pass);
         User user2 = dao.getInfo(email);   

@@ -13,20 +13,21 @@
     </head>
     <body>
         
-         <!--<form action="ChangePassProfile" method="get">-->
-            <div class="main1">                
-                <br>AccountEmail: <input  type="text" value="${u.email}" name="accountemail" readonly>
-                <br>
-                <input class="accountpassword" placeholder="Password(*)"  type="text" name="accountpassword" >
+         <form action="ChangePassProfile" method="post">
+            <div class="main1">   
+                Email
+                <input class="accountpassword" placeholder="Password(*)"  type="text" value="" name="email" >
+                <input class="accountpassword" placeholder="Password(*)"  type="text" name="password" >
                 <br>
                 <input class="" placeholder=" Enter New Password(*)" type="text" name="newpass" >
                 <br>
-                <input class="" placeholder=" Confirm New Password(*)" type="text" name="newpass" >
+                <input class="" placeholder=" Confirm New Password(*)" type="text" name="newpass2" >
                 <br>            
                 <br> <input onclick="return showmess()" type="submit" value="Save">
                 <br> <a href="ViewProfile">View</a>
+                <h1>${mess}</h1>
             </div>
-        <!--</form>-->
+        </form>
          <script>
             function showmess() {
                 var option = confirm("Are you sure to Update your profile?");
