@@ -21,11 +21,10 @@ public class DashboardController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         CustomerDAO dao = new CustomerDAO();
-
         if (session.getAttribute("user") == null) {
             resp.sendRedirect("Login");
         } else {
-            User u = (User) session.getAttribute("user");
+            User u = (User) session.getAttribute("user2");
             List<Customer> listCustomer = dao.getListDebtor(u.getAccountID());
             List<HistoryTransaction> listDetail = dao.getListDebtDetail(u.getAccountID());
             req.setAttribute("u", u);

@@ -36,7 +36,7 @@ public class UserDAO extends DBContext {
                 return user;
             }
         } catch (Exception e) {
-            System.out.println("Get all error " + e.getMessage());
+            System.out.println("getUser error " + e.getMessage());
         }
         return null;
     }
@@ -55,7 +55,7 @@ public class UserDAO extends DBContext {
             stm.setString(5, phone);
             stm.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Get all error " + e.getMessage());
+            System.out.println("insertNewUser error " + e.getMessage());
         }
     }
 
@@ -70,7 +70,7 @@ public class UserDAO extends DBContext {
             stm.setString(2, email);
             stm.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Get all error " + e.getMessage());
+            System.out.println("UpdatePassword error " + e.getMessage());
         }
         return null;
     }
@@ -86,7 +86,7 @@ public class UserDAO extends DBContext {
             stm.setString(2, email);
             stm.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Get all error " + e.getMessage());
+            System.out.println("isActive error " + e.getMessage());
         }
         return null;
     }
@@ -103,7 +103,7 @@ public class UserDAO extends DBContext {
                 return true;
             }
         } catch (Exception e) {
-            System.out.println("Register error : " + e.getMessage());
+            System.out.println("chekcAccount error : " + e.getMessage());
         }
         return false;
     }
@@ -120,12 +120,12 @@ public class UserDAO extends DBContext {
                 return true;
             }
         } catch (Exception e) {
-            System.out.println("Register error : " + e.getMessage());
+            System.out.println("checkAccount error : " + e.getMessage());
         }
         return false;
     }
 
-    public String UpdateProfile(String email, String name, String address, String phone) {
+    public String updateProfile(String email, String name, String address, String phone) {
         try {
             String sql = "UPDATE Account\n"
                     + "SET accountName = ?,\n"
@@ -139,7 +139,7 @@ public class UserDAO extends DBContext {
             stm.setString(4, email);
             stm.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Get all error " + e.getMessage());
+            System.out.println("updateProfile error " + e.getMessage());
         }
         return null;
     }
@@ -156,7 +156,7 @@ public class UserDAO extends DBContext {
                 return u;
             }
         } catch (Exception e) {
-            System.out.println("Get all error " + e.getMessage());
+            System.out.println("getInfo error " + e.getMessage());
         }
         return null;
     }
@@ -173,7 +173,7 @@ public class UserDAO extends DBContext {
                 return u;
             }
         } catch (Exception e) {
-            System.out.println("Get all error " + e.getMessage());
+            System.out.println("getUserById error " + e.getMessage());
         }
         return null;
     }
