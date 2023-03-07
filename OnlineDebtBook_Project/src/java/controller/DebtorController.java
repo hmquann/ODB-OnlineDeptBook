@@ -82,7 +82,7 @@ public class DebtorController extends HttpServlet {
         String address = req.getParameter("debtorAddress");
         String phone = req.getParameter("debtorPhone");
         String email = req.getParameter("debtorEmail");
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("user2");
         String accountID = Integer.toString(user.getAccountID());
         String mess = "Name is required";
         CustomerDAO cusDAO = new CustomerDAO();
