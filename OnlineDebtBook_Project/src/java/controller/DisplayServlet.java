@@ -24,7 +24,7 @@ public class DisplayServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
 
-            response.sendRedirect("homepage.jsp");
+            response.sendRedirect("./homepage.jsp");
         }
     }
 

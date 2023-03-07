@@ -14,8 +14,8 @@
             <div class="nav" id="nav">              
                 <div class="other">
                     <ul class="otheroption">
-                        <li><a href="login.jsp">Login</a></li>
-                        <li><a href="register.jsp">Register</a></li>
+                        <li><a href="Login">Login</a></li>
+                        <li><a href="Register">Register</a></li>
                     </ul>
                 </div>
             </div>
