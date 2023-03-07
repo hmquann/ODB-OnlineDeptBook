@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
+        <title>Edit Profile</title>
     </head>
     <body>
         <jsp:include page="./header.jsp" />
@@ -37,7 +37,6 @@
                             This is an <strong>.alert</strong>. Use this to show important messages to the user.
                         </div>
                         <h3>Personal info</h3>
-
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Name:</label>
@@ -62,18 +61,14 @@
                                 <div class="col-lg-8">
                                     <input class="form-control" type="text" value="${u.address}" name="accountaddress">
                                 </div>
-                            </div>
-                        </form>
+                            </div>                       
                     </div>
-                </div>
-         
+                </div>        
                 <div class="form-group" style="text-align: center">
                     <input onclick="return showmess()" type="submit" value="Update" class="btn btn-success">
                 </div>
             </div>
         </form>
-
-
         <script>
             function showmess() {
                 var option = confirm("Are you sure to Update your profile?");
