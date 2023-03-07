@@ -42,13 +42,14 @@
 
                 <div class="two-col">
                     <div class="one">
-                        <label><a href="register.jsp">Register</a></label>
+                        <label><a href="Register">Register</a></label>
                     </div>
                     <div class="two">
                         <label><a href="forgotpass.jsp">Forgot password?</a></label>
                     </div>
                 </div>
             </div>
+        </div>
             <script src="main.js"></script>
     </body>
 </html>
