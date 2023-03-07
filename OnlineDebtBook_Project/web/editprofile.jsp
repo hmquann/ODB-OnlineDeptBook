@@ -31,11 +31,6 @@
                         </div>
                     </div>
                     <div class="col-md-9 personal-info">
-                        <div class="alert alert-info alert-dismissable">
-                            <a class="panel-close close" data-dismiss="alert">×</a> 
-                            <i class="fa fa-coffee"></i>
-                            This is an <strong>.alert</strong>. Use this to show important messages to the user.
-                        </div>
                         <h3>Personal info</h3>
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
@@ -47,7 +42,7 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Email:</label>
                                 <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="${u.email}" name="accountemail">
+                                    <input class="form-control" readonly type="text" value="${u.email}" name="accountemail">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -64,6 +59,7 @@
                             </div>                       
                     </div>
                 </div>        
+                                    <div style="color: red; margin-left: 300px">${mess}</div>
                 <div class="form-group" style="text-align: center">
                     <input onclick="return showmess()" type="submit" value="Update" class="btn btn-success">
                 </div>

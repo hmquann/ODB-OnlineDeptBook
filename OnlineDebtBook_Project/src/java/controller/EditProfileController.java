@@ -27,15 +27,21 @@ public class EditProfileController extends HttpServlet {
         String accountaddress = req.getParameter("accountaddress");
         String accountphone = req.getParameter("accountphone");
         UserDAO dal = new UserDAO();
-        HttpSession session = req.getSession();     
+        String mess = "Phone must me 10 ditgits!";
+        HttpSession session = req.getSession();
+        User u = (User) session.getAttribute("user2");
         try {
-            dal.updateProfile(accountemail, accountname, accountaddress, accountphone);
-             User u = (User) session.getAttribute("user2");
-            String id = String.valueOf(u.getAccountID());
-            User user = dal.getUserById(id);
-            session.setAttribute("user2", user);
-            resp.sendRedirect("./ViewProfile");
-
+            if (!accountphone.matches("(([0-9]){10})")) {
+                session.setAttribute("mess", mess);
+                req.setAttribute("u", u);
+                req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
+            } else {
+                dal.updateProfile(accountemail, accountname, accountaddress, accountphone);
+                String id = String.valueOf(u.getAccountID());
+                User user = dal.getUserById(id);
+                session.setAttribute("user2", user);
+                resp.sendRedirect("./ViewProfile");
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
