@@ -22,26 +22,33 @@ public class EditProfileController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String accountname = req.getParameter("accountname");
         String accountemail = req.getParameter("accountemail");
         String accountaddress = req.getParameter("accountaddress");
         String accountphone = req.getParameter("accountphone");
         UserDAO dal = new UserDAO();
-        HttpSession session = req.getSession();
-        if (session.getAttribute("user2") == null) {
-            resp.sendRedirect("Login");
-        } else {
+        HttpSession session = req.getSession();     
+        try {
             dal.updateProfile(accountemail, accountname, accountaddress, accountphone);
-            User u = (User) session.getAttribute("user2");
+             User u = (User) session.getAttribute("user2");
             String id = String.valueOf(u.getAccountID());
             User user = dal.getUserById(id);
             session.setAttribute("user2", user);
-            req.setAttribute("u", user);
+            resp.sendRedirect("./ViewProfile");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        if (session.getAttribute("user") == null) {
+            resp.sendRedirect("Login");
+        } else {
+            User u = (User) session.getAttribute("user2");
+            req.setAttribute("u", u);
             req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
         }
 
