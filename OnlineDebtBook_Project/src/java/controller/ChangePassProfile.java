@@ -42,7 +42,7 @@ public class ChangePassProfile extends HttpServlet {
                 if (newpass.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})")
                         && newpass2.matches("((?=.*\\d)(?=.*[a-zA-Z])[a-zA-Z\\d!@#$%^&*]{8,31})")
                         && (newpass.equals(newpass2))) {
-                    dal.UpdatePassword(newpass, u.getEmail());
+                    dal.updatePassword(newpass, u.getEmail());
                     req.getRequestDispatcher("viewprofile.jsp").forward(req, resp);
                 } else {
                     req.setAttribute("mess", mess2);
