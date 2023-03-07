@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
-        <title>Thi thu </title>
+        <title>HomePage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
         <link rel="stylesheet" href="css/homepage.css">
@@ -100,7 +100,7 @@
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>Hoàng Minh Quân</td>
+                                    <td>Ho?ng Minh Qu?n</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -144,7 +144,7 @@
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>Lê Trung Dung</td>
+                                    <td>L? Trung Dung</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -193,7 +193,7 @@
 
         <div class="footer">
             <p>Email : swpgroup3@fpt.edu.vn</p>
-            <p>Address: FPT University, Hòa L?c, Hà N?i</p>
+            <p>Address: FPT University, H?a L?c, H? N?i</p>
             <h5>&copy; Copyright 2023. SWP GROUP 3</h5>
         </div>
         <script src='js/homepage.js'></script>
