@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">New Password:</label>
                                 <div class="col-lg-8">
-                                    <input id="newpass" onkeyup="myFunction()" required class="form-control" placeholder=" Enter New Password(*)" type="password" name="newpass" >
+                                    <input id="newpass" required class="form-control" placeholder=" Enter New Password(*)" type="password" name="newpass" >
                                 </div>
                             </div>
                             <div class="form-group">

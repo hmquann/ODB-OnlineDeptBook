@@ -32,13 +32,13 @@ public class EditProfileController extends HttpServlet {
         User u = (User) session.getAttribute("user2");
         try {
             if (!accountphone.matches("(([0-9]){10})")) {
-                session.setAttribute("mess", mess);
+                req.setAttribute("mess", mess);
                 req.setAttribute("u", u);
                 req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
             } else {
                 if (dal.checkAccount(accountphone)) {
-                    mess = "Phone exist";
-                    session.setAttribute("mess", mess);
+                    mess="Phone exist";
+                    req.setAttribute("mess", mess);
                     req.setAttribute("u", u);
                     req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
                 } else {
