@@ -35,11 +35,11 @@ public class LoginController extends HttpServlet {
         UserDAO dao = new UserDAO();
         String mess = "Wrong password or email ";
         User user = dao.getUser(email, pass);
-        User user2 = dao.getInfo(email);   
+        User user2 = dao.getInfo(email);
         if (user != null && user2 != null) {
             session.setAttribute("user", user);
             session.setAttribute("user2", user2);
-            resp.sendRedirect("./Dashboard");
+            resp.sendRedirect("Dashboard?accountID=" + user2.getAccountID() );
         } else {
             req.setAttribute("mess", mess);
             req.getRequestDispatcher("login.jsp").forward(req, resp);

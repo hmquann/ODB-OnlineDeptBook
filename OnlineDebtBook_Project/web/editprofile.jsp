@@ -32,7 +32,6 @@
                     </div>
                     <div class="col-md-9 personal-info">
                         <h3>Personal info</h3>
-                        <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Name:</label>
                                 <div class="col-lg-8">

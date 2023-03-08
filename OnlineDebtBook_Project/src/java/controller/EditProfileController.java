@@ -52,6 +52,7 @@ public class EditProfileController extends HttpServlet {
         } catch (Exception e) {
             System.out.println("Edit Profile error!");
         }
+        
     }
 
     @Override
