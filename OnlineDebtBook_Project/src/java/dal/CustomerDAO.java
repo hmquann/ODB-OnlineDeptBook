@@ -65,7 +65,7 @@ public class CustomerDAO extends DBContext {
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, accountID);
-            stm.setInt(2, accountID);
+            stm.setInt(2, customerID);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 t.add(new HistoryTransaction(rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getBoolean(4),
@@ -103,10 +103,10 @@ public class CustomerDAO extends DBContext {
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO();
 
-        List<Customer> list = dao.searchCustomer("h", 4);
-        for (Customer customer : list) {
-            System.out.println(customer);
-        }
+//        List<Customer> list = dao.searchCustomer("h", 4);
+//        for (Customer customer : list) {
+//            System.out.println(customer);
+//        }
 
     }
 
@@ -143,13 +143,31 @@ public class CustomerDAO extends DBContext {
         }
         return t;
     }
-    public List<Customer> searchCustomer(String search, int accountID) {
+    public List<Customer> searchCustomerByName(String name, int accountID) {
         List<Customer> t = new ArrayList<>();
         String sql = "  select * from Customer\n"
                 + "  where customerName like ? AND accountID=?";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1,"%" + search + "%");
+            stm.setString(1,"%" + name + "%");
+            stm.setInt(2, accountID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return t;
+    }
+    public List<Customer> searchCustomerByAddress(String address, int accountID) {
+        List<Customer> t = new ArrayList<>();
+        String sql = "  select * from Customer\n"
+                + "  where customerAddress like ? AND accountID=?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1,"%" + address + "%");
             stm.setInt(2, accountID);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {

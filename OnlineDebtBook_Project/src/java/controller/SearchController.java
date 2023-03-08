@@ -33,7 +33,7 @@ public class SearchController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,12 +64,17 @@ public class SearchController extends HttpServlet {
             throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
-        String search = req.getParameter("a");
-        int accID = Integer.parseInt(req.getParameter("accountID"));
+        String name = req.getParameter("customerName");
+//        String address = req.getParameter("address");
         CustomerDAO dao = new CustomerDAO();
-        List<Customer> list = dao.searchCustomer(search, accID);
+        HttpSession session = req.getSession();
+        User u = (User) session.getAttribute("user2");
+        List<Customer> list = dao.searchCustomerByName(name, u.getAccountID());
+//        List<Customer> list1 = dao.searchCustomerByAddress(address, u.getAccountID());
         req.setAttribute("list1", list);
-        req.setAttribute("name", search);
+//        req.setAttribute("list1", list1);
+        req.setAttribute("customerName", name);
+//        req.setAttribute("address", address);
         req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
     }
 

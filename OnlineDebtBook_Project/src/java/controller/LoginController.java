@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet {
         if (user != null && user2 != null) {
             session.setAttribute("user", user);
             session.setAttribute("user2", user2);
-            resp.sendRedirect("Dashboard?accountID=" + user2.getAccountID() );
+            resp.sendRedirect("./Dashboard" );
         } else {
             req.setAttribute("mess", mess);
             req.getRequestDispatcher("login.jsp").forward(req, resp);
