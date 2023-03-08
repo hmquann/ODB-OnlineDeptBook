@@ -36,14 +36,21 @@ public class EditProfileController extends HttpServlet {
                 req.setAttribute("u", u);
                 req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
             } else {
-                dal.updateProfile(accountemail, accountname, accountaddress, accountphone);
-                String id = String.valueOf(u.getAccountID());
-                User user = dal.getUserById(id);
-                session.setAttribute("user2", user);
-                resp.sendRedirect("./ViewProfile");
+                if (dal.checkAccount(accountphone)) {
+                    mess = "Phone exist";
+                    session.setAttribute("mess", mess);
+                    req.setAttribute("u", u);
+                    req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
+                } else {
+                    dal.updateProfile(accountemail, accountname, accountaddress, accountphone);
+                    String id = String.valueOf(u.getAccountID());
+                    User user = dal.getUserById(id);
+                    session.setAttribute("user2", user);
+                    resp.sendRedirect("./ViewProfile");
+                }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Edit Profile error!");
         }
     }
 
