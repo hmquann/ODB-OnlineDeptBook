@@ -59,7 +59,7 @@ public class UserDAO extends DBContext {
         }
     }
 
-    public String UpdatePassword(String pass, String email) {
+    public String updatePassword(String pass, String email) {
         try {
             MD5 md5 = new MD5();
             String sql = "UPDATE Account "
@@ -146,7 +146,9 @@ public class UserDAO extends DBContext {
 
     public User getInfo(String email) {
         try {
-            String sql = "SELECT * FROM Account WHERE  accountEmail = ? ";
+            String sql = "SELECT * "
+                    + "FROM Account "
+                    + "WHERE  accountEmail = ? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, email);
             ResultSet rs = stm.executeQuery();
@@ -163,7 +165,9 @@ public class UserDAO extends DBContext {
     
     public User getUserById(String id) {
         try {
-            String sql = "select * from Account where accountId = ?";
+            String sql = "SELECT * "
+                    + "FROM Account "
+                    + "WHERE accountId = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, id);
             ResultSet rs = stm.executeQuery();

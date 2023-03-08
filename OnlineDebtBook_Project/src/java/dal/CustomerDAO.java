@@ -18,11 +18,11 @@ import model.*;
  * @author trinh
  */
 public class CustomerDAO extends DBContext {
-
     public List<Customer> getListDebtor(int accountID) {
         List<Customer> t = new ArrayList<>();
-
-        String sql = "SELECT * FROM Customer WHERE accountID = ?";
+        String sql = "SELECT * "
+                + "FROM Customer "
+                + "WHERE accountID = ?";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, accountID);
@@ -59,7 +59,6 @@ public class CustomerDAO extends DBContext {
 
     public List<HistoryTransaction> getListDebtCustomerID(int accountID, int customerID) {
         List<HistoryTransaction> t = new ArrayList<>();
-
         String sql = "SELECT ht.transactionID,ht.note,ht.moneyDebt,ht.classify,ht.dateCreate,ht.dateCreate,ht.customerID FROM historyTransaction ht\n"
                 + "LEFT JOIN Customer cus ON ht.customerID = cus.customerID \n"
                 + "WHERE cus.accountID = ? AND ht.customerID = ?";
