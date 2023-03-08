@@ -83,7 +83,7 @@ public class CustomerDAO extends DBContext {
             LocalDateTime currentTime = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
             Timestamp sqlDateTime = Timestamp.valueOf(currentTime.format(formatter));
-            
+
             String sql = "insert into [Customer] "
                     + "  values (?,?,?,?,?,?,?,0)";
             PreparedStatement stm = connection.prepareStatement(sql);
@@ -100,9 +100,67 @@ public class CustomerDAO extends DBContext {
         }
         return null;
     }
-    
+
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO();
-        dao.insertNewDebtor("lmeo", "", "", "", "2");
+
+        List<Customer> list = dao.searchCustomer("h", 4);
+        for (Customer customer : list) {
+            System.out.println(customer);
+        }
+
     }
+
+    public int getTotalCustomer(int accountID) {
+        String sql = "select count(*) from Customer where accountID=? ";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, accountID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public List<Customer> pagingCustomer(int index, int accountID) {
+        List<Customer> t = new ArrayList<>();
+        String sql = "  select * from Customer where accountID=? order by customerID \n"
+                + "  offset ? rows fetch next 3 rows only";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, accountID);
+            stm.setInt(2, (index - 1) * 3);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return t;
+    }
+    public List<Customer> searchCustomer(String search, int accountID) {
+        List<Customer> t = new ArrayList<>();
+        String sql = "  select * from Customer\n"
+                + "  where customerName like ? AND accountID=?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1,"%" + search + "%");
+            stm.setInt(2, accountID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return t;
+    }
+
 }

@@ -16,7 +16,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+        <script src="https://kit.fontawesome.com/3098a9fa7b.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
         <!-- Moment.js -->
@@ -116,15 +116,20 @@
 
     <body>
         <header class="p-3 bg-dark text-white">
+            <a href="Dashboard" class="btn btn-warning" style="border-radius: 15px;">Home</a>
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
 
-
-
+                    <form class="col-lg-auto mb-3 mb-lg-0 me-lg-3" action="Search" method="post" >
+                        <input name="a" value="${name}" class="form-control form-control-dark" placeholder="Search Debt" aria-label="Search" style="border-radius: 15px;">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>                        
                     <div class="text-end" style="padding-left: 65%;">
                         <form action="Logout" method="get">
-<a href="ViewProfile" class="btn btn-warning" style="border-radius: 15px;">View Profile</a>
-                        <button type="submit" class="btn btn-warning" style="border-radius: 15px;">Sign-out</button>
+                            <a href="ViewProfile" class="btn btn-warning" style="border-radius: 15px;">View Profile</a>
+                            <button type="submit" class="btn btn-warning" style="border-radius: 15px;">Sign-out</button>
                         </form>
                     </div>
 
@@ -343,13 +348,27 @@
                                         </div>
                                         <button type="button" class="float-right btn-pgn-bottom">Next</button>
                                     </div>
+
+                                    <c:forEach begin="1" end="${endP}" var="i">
+                                        <a href="Dashboard?index=${i}">${i}</a>
+                                    </c:forEach>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <jsp:include page="helper.jsp"></jsp:include>
+        </div>
+
+        <jsp:include page="helper.jsp"></jsp:include>
+<!--        <nav aria-label="Page navigation example">
+            <ul class="pagination" >
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+            </ul>
+        </nav>-->
     </body>
     <script>
         var c = document.getElementById('pageNum');

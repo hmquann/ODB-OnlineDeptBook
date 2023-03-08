@@ -37,8 +37,6 @@
                             This is an <strong>.alert</strong>. Use this to show important messages to the user.
                         </div>
                         <h3>Personal info</h3>
-
-                        <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Name:</label>
                                 <div class="col-lg-8">
@@ -63,10 +61,9 @@
                                     <input class="form-control" type="text" value="${u.address}" name="accountaddress">
                                 </div>
                             </div>
-                        </form>
+                                ${mess}
                     </div>
                 </div>
-         
                 <div class="form-group" style="text-align: center">
                     <input onclick="return showmess()" type="submit" value="Update" class="btn btn-success">
                 </div>
