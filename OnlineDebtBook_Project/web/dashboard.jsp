@@ -120,12 +120,7 @@
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
 
-                    <form class="col-lg-auto mb-3 mb-lg-0 me-lg-3" action="Search" method="post" >
-                        <input name="a" value="${name}" class="form-control form-control-dark" placeholder="Search Debt" aria-label="Search" style="border-radius: 15px;">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>                        
+                                     
                     <div class="text-end" style="padding-left: 65%;">
                         <form action="Logout" method="get">
                             <a href="ViewProfile" class="btn btn-warning" style="border-radius: 15px;">View Profile</a>
@@ -193,8 +188,10 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
-                                                                <input type="text" placeholder="" class="form-control"
+                                                                <form action="Search" method="post">
+                                                                <input type="text" name="customerName" value="${customerName}" placeholder="" class="form-control"
                                                                        value="">
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -205,8 +202,10 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
-                                                                <input type="text" placeholder="" class="form-control"
+                                                                 <form action="Search" method="post">
+                                                                <input type="text" name="address" value="${address}" placeholder="" class="form-control"
                                                                        value="">
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -22,7 +22,6 @@ public class DashboardController extends HttpServlet {
         HttpSession session = req.getSession();
         CustomerDAO dao = new CustomerDAO();
         String indexPage = req.getParameter("index");
-        int accID = Integer.parseInt(req.getParameter("accountID")); 
         if(indexPage == null){
             indexPage = "1";
         }
@@ -31,12 +30,12 @@ public class DashboardController extends HttpServlet {
             resp.sendRedirect("Login");
         } else {
             User u = (User) session.getAttribute("user2");
-            List<Customer> listCustomer = dao.pagingCustomer(index, accID);
+            List<Customer> listCustomer = dao.pagingCustomer(index, u.getAccountID());
             List<HistoryTransaction> listDetail = dao.getListDebtDetail(u.getAccountID());
             req.setAttribute("u", u);
             req.setAttribute("list1", listCustomer);
             req.setAttribute("list2", listDetail);          
-            int count = dao.getTotalCustomer(accID);
+            int count = dao.getTotalCustomer(u.getAccountID());
             int endPage = count/3;
             if(count % 3 !=0){
                 endPage++;
