@@ -8,32 +8,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="./css/newpassword.css"/>
-        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
-
         <title>New Password</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="./css/newpassword.css">
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
     </head>
     <body>
-        <div class="class2">
-            <div class="class1">
-                <div class="rsp">Reset Password</div>
+        <div class="box1">
+            <div class="container1">
                 <form action="ChangePassword" method="post">
-                    <div class="edit">
-                        <input type="text" placeholder=" Enter New Password(*)" name="pass">
-                    </div> 
-                    <div class="edit">
-                        <input type="password"  placeholder=" Confirm New Password(*)" name="pass2">
-                    </div> 
                     <div>
+                        <div class="input-field1">
+                            <input type="text" class="input1" placeholder="Enter New Password(*)" id="" name="pass">
+                            <i class='bx bx-envelope'></i>
+                        </div>
+                        <div class="input-field1">
+                            <input type="password" class="input1" placeholder="Confirm New Password(*)" id="" name="pass2">
+                            <i class='bx bx-envelope'></i>
+                        </div>
+                        <div>
                         <div style="display: none">
                             <input style="display: none" name="email" value="${email} ">${email}           
                         </div>
+                        </div>
+                        <div class="input-field1">
+                            <button type="submit" class="submit1" value="Reset" id="">Reset</button>
+                        </div>
+                        <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
                     </div>
-                    <div class="edit">
-                        <button type="submit" id="login-btn" class="sb2" value="Reset"> Reset</button>
-                    </div>
-                    <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
                 </form>
             </div>
         </div>
