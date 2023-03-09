@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,21 +15,32 @@
             <div class="container">
 
                 <div class="top">
-                    <span>Have an account?</span>
                     <header>ODB Login</header>
                 </div>
 
                 <form method="post" action="Login">
 
                     <div class="input-field">
-                        <input type="email" class="input" placeholder="Email" id="" name="email">
+                        <input type="email" class="input" placeholder="Email" id="" name="email" value="${email}">
                         <i class='bx bx-envelope'></i>
                     </div>
 
                     <div class="input-field">
-                        <input type="Password" class="input" placeholder="Password" id="" name="password">
+                        <input type="Password" class="input" placeholder="Password" id="" name="password" value="${pass}">
                         <i class='bx bx-lock-alt'></i>
                     </div>
+
+                    <div class="input-field">
+                        <input type="text" class="inputt" placeholder="Enter Captcha" name="captcha">
+                        <img src="Captcha" class="szcapt" alt="alt"/>
+                        <i class='bx bx-user-check'></i>
+                    </div>
+
+                    <p class="mess" style="color: white">${mess}</p>
+
+                    <c:if test="${msgCaptcha != null}">
+                        <p class="mess" style="color: white">${msgCaptcha}</p>
+                    </c:if>
 
                     <p class="mess">${mess}</p>
 
@@ -42,14 +52,13 @@
 
                 <div class="two-col">
                     <div class="one">
-                        <label><a href="Register">Register</a></label>
+                        <label><a href="register.jsp">Register</a></label>
                     </div>
                     <div class="two">
                         <label><a href="forgotpass.jsp">Forgot password?</a></label>
                     </div>
                 </div>
             </div>
-        </div>
             <script src="main.js"></script>
     </body>
 </html>

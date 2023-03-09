@@ -16,7 +16,6 @@ body{
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-
 }
 .box{
     display: flex;
@@ -31,7 +30,7 @@ body{
     padding: 0 15px 0 15px;
 
 }
-span{
+label{
     color: #fff;
     font-size: small;
     display: flex;
@@ -53,11 +52,22 @@ header{
     height: 45px;
     width: 87%;
     border: none;
-    border-radius: 30px;
+    border-radius: 10px;
     color: #fff;
     font-size: 15px;
     padding: 0 0 0 45px;
-    background: rgba(255, 255, 255, 0.168);
+    background: rgba(255, 255, 255, 0.415);
+    outline: none;
+}
+.input-field .inputt{
+    height: 45px;
+    width: 45%;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 15px;
+    padding: 0 0 0 45px;
+    background: rgba(255, 255, 255, 0.415);
     outline: none;
 }
 i{
@@ -78,7 +88,7 @@ i{
     outline: none;
     width: 100%;
     color: #fff;
-    background: rgba(255, 255, 255, 0.415);
+    background: #02B875;
     cursor: pointer;
     transition: .3s ;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -102,4 +112,11 @@ i{
 label a{
     text-decoration: none;
     color: #fff;
+}
+.szcapt{
+    border: 1px solid #FFFAF0;
+    border-color: #FFFAF0;
+    background: #FFFAF0;
+    margin-bottom: -15px;
+    border-radius: 10px;
 }
