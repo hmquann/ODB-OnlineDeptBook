@@ -29,87 +29,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="js/resizableColumns.min.js"></script>
-
-        <style>
-            .select,
-            #locale {
-                width: 100%;
-            }
-
-            .like {
-                margin-right: 10px;
-            }
-            body {
-                background-color: rgba(218, 211, 224, 0.673);
-            }
-
-            .container-fluid {
-                margin-top: 2%;
-
-            }
-
-            .card {
-
-                border: 2px solid rgba(115, 110, 110, 0.508);
-                border-radius: 25px !important;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            }
-
-            .card-header {
-                border-top-right-radius: 25px !important;
-                border-top-left-radius: 25px !important;
-                background-color: rgba(210, 210, 210, 0.567)
-            }
-
-            .modal-lg {
-                max-width: 80%;
-            }
-
-            .pagination{
-                z-index: 1;
-                display: flex;
-                justify-content: space-between;
-                align-items: stretch;
-                flex-wrap: wrap;
-                padding: 3px;
-                border-top: 2px solid rgba(0, 0, 0, 0.1);
-            }
-
-            .btn-pgn-bottom{
-                margin: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 115.2px;
-                height: 45.2px;
-                background-color: #2374e1;
-                color: white;
-                border: 2px solid rgba(115, 110, 110, 0.508);
-                border-radius: 25px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            }
-            .modal-content{
-                border: 2px solid rgba(115, 110, 110, 0.508);
-                border-radius: 25px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            }
-            .form-label-horizontal {
-                text-align: right;
-            }
-            table {
-                table-layout: fixed;
-            }
-
-            table td,
-            table th {
-                overflow: hidden;
-                white-space: nowrap;
-                -moz-text-overflow: ellipsis;
-                -ms-text-overflow: ellipsis;
-                -o-text-overflow: ellipsis;
-                text-overflow: ellipsis;
-            }
-        </style>
+        <link rel="stylesheet" href="css/dashboard.css">
 
         <title>Debtors List</title>
     </head>
@@ -162,29 +82,10 @@
                                                 <th data-resizable-column-id="action" style="position: relative; width: 303.65px;">Action</th>
                                             </tr>
                                             <tr>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <input type="text" placeholder="From" class="form-control"
-                                                                       value="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <div>
-                                                                    <input type="text" placeholder="To" class="form-control"
-                                                                           value="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <td class="thHead">
+                                             
                                                 </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
+                                                <td class="thHead">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
@@ -196,9 +97,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
+                                                <td class="thHead">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
@@ -210,9 +109,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
+                                                <td class="thHead">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
@@ -222,9 +119,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
+                                                <td class="thHead">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
@@ -234,9 +129,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
+                                                <td class="thHead">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
@@ -247,9 +140,7 @@
                                                     </div>
                                                 </td>
 
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
+                                                <td class="thHead">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
@@ -268,9 +159,7 @@
                                                     </div>
                                                 </td>
 
-                                                <td  style="width: 200px;height: 20px;
-                                                     padding: 0;
-                                                     padding-bottom: 15px;">
+                                                <td class="thHead">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
@@ -326,19 +215,7 @@
                                     <hr style="width:max-content">
                                     <div class="pagination" style="display:flex;justify-content: space-between;align-items: stretch;" >
                                         <button type="button" class="float-left btn-pgn-bottom">Previous</button>
-                                        <div class="center" style="flex: 0.5 0;
-                                             text-align: center;
-                                             margin-bottom: 0;
-                                             display: -ms-flexbox;
-                                             display: flex;
-                                             -ms-flex-direction: row;
-                                             flex-direction: row;
-                                             -ms-flex-wrap: wrap;
-                                             flex-wrap: wrap;
-                                             -ms-flex-align: center;
-                                             align-items: center;
-                                             -ms-flex-pack: distribute;
-                                             justify-content: space-around;">
+                                        <div class="center" id="center">
                                             <span class="pageInfo" style="display: flex;align-items: center">Page
                                                 <div class="pageJump"><input type="number" value="1" id="pageNum" style="width: 57.2px;">
                                                 </div> /

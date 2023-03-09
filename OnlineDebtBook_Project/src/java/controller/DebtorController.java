@@ -92,7 +92,8 @@ public class DebtorController extends HttpServlet {
             req.getRequestDispatcher("./Dashboard").forward(req, resp);
         } else {
             cusDAO.insertNewDebtor(name, address, phone, email, accountID);
-            resp.sendRedirect("./Dashboard");
+            String referrer = req.getHeader("referer");
+            resp.sendRedirect(referrer);
         }
 
     }

@@ -157,66 +157,68 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card-group">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="pull-left">
-                                        <h3 class="mb-0">Detail Own</h3>
+                        <form role="form" action="adddebt" method="post">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="pull-left">
+                                            <h3 class="mb-0">Detail Own</h3>
+                                        </div>
+                                        <div class="pull-right"></div>
                                     </div>
-                                    <div class="pull-right"></div>
-                                </div>
-                                <div class="card-body">
-                                    <div autocomplete="off">
-                                        <div class="position-relative row form-group">
-                                            <div class="form-label-horizontal col-md-3"><label class=""><b>Note
-                                                    </b></label></div>
-                                            <div class="col-md-9"><textarea rows="8" placeholder=""
-                                                                            class="form-control">Payment for debit note number 1</textarea>
+                                    <div class="card-body">
+                                        <div autocomplete="off">
+                                            <div class="position-relative row form-group">
+                                                <div class="form-label-horizontal col-md-3"><label class=""><b>Note
+                                                        </b></label></div>
+                                                <div class="col-md-9"><textarea rows="8" placeholder=""
+                                                                                class="form-control">Payment for debit note number 1</textarea>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="position-relative row form-group">
-                                            <div class="form-label-horizontal col-md-3"><label class=""><b>Classify
-                                                        (*)</b></label></div>
-                                            <div class="col-md-9"><button type="button" class="btn btn-secondary"
-                                                                          style="width: 49%; margin-right: 5px; margin-bottom: 5px;">-</button><button
-                                                                          type="button" class="btn btn-primary"
-                                                                          style="width: 49%; margin-right: 5px; margin-bottom: 5px;">+</button>
+                                            <div class="position-relative row form-group">
+                                                <div class="form-label-horizontal col-md-3"><label class=""><b>Classify
+                                                            (*)</b></label>
+                                                </div>
+                                                <div class="form-check form-switch col-md-9" style="display:flex;justify-content: center">
+                                                    <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" style="display: inline-block;width: 90%;box-sizing: border-box" checked>
+                                                    <label class="form-check-label" for="mySwitch" style="display:inline-block;">Dark Mode</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="position-relative row form-group">
-                                            <div class="form-label-horizontal col-md-3"><label class=""><b>Amount
-                                                        (*)</b></label></div>
-                                            <div class="col-md-9"><input placeholder="Input number" type="text"
-                                                                         class="form-control" value="0">
-                                                <div class="">Nah</div>
+                                            <div class="position-relative row form-group">
+                                                <div class="form-label-horizontal col-md-3"><label class=""><b>Amount
+                                                            (*)</b></label></div>
+                                                <div class="col-md-9"><input placeholder="Input number" type="text"
+                                                                             class="form-control" value="0">
+                                                    <div class="">Nah</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="position-relative row form-group">
-                                            <div class="form-label-horizontal col-md-3"><label class=""><b>Start Date </b></label></div>
-                                            <div class="col-md-9">
-                                                <div>
-                                                    <div class="react-datepicker-wrapper">
-                                                        <div class="react-datepicker__input-container"><input
-                                                                type="text" placeholder="DD/MM/YYYY HH:mm"
-                                                                class="form-control full-width" value=""></div>
+                                            <div class="position-relative row form-group">
+                                                <div class="form-label-horizontal col-md-3"><label class=""><b>Start Date </b></label></div>
+                                                <div class="col-md-9">
+                                                    <div>
+                                                        <div class="react-datepicker-wrapper">
+                                                            <div class="react-datepicker__input-container"><input
+                                                                    type="text" placeholder="DD/MM/YYYY HH:mm"
+                                                                    class="form-control full-width" value=""></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="position-relative row form-group">
-                                            <div class="form-label-horizontal col-md-3"><label class=""><b>ID photo</b></label></div>
-                                            <div class="col-md-9">
-                                                <div><button type="button" class="btn btn-primary"><i
-                                                            class="fa fa-plus"></i> Add a photo</button></div>
+                                            <div class="position-relative row form-group">
+                                                <div class="form-label-horizontal col-md-3"><label class=""><b>ID photo</b></label></div>
+                                                <div class="col-md-9">
+                                                    <div><button type="button" class="btn btn-primary"><i
+                                                                class="fa fa-plus"></i> Add a photo</button></div>
+                                                </div>
                                             </div>
+                                            <div style="display: flex; justify-content: center; align-items: center;">
+                                                <button type="button" class="mr-1 btn btn-success"><i
+                                                        class="fa fa-plus"></i> Add</button></div>
                                         </div>
-                                        <div style="display: flex; justify-content: center; align-items: center;">
-                                            <button type="button" class="mr-1 btn btn-success"><i
-                                                    class="fa fa-plus"></i> Add</button></div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
