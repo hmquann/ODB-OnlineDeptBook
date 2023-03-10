@@ -23,16 +23,11 @@ public class ActiveAccountController extends HttpServlet {
         int value = Integer.parseInt(req.getParameter("otp"));
         HttpSession session = req.getSession();
         int otp = (int) session.getAttribute("otp1");
-        String name = req.getParameter("name");
-        String pass = req.getParameter("pass");
         String email = req.getParameter("email");
-        String address = req.getParameter("address");
-        String phone = req.getParameter("phone");
         UserDAO dao = new UserDAO();
         User u = new User();
         if (value == otp) {
-            u.setIsActive(true);
-            dao.insertNewUser(name, pass, email, address, phone);      
+            u.setIsActive(true); 
             dao.activeAccount(email);
             resp.sendRedirect("./Login");
         } else {

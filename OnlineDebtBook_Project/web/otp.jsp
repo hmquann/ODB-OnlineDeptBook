@@ -23,27 +23,7 @@
                     </div> 
                     <div>
                         <div style="display: none">
-                            <input style="display: none" name="name" value="${name} ">${name}           
-                        </div>
-                    </div>
-                    <div>
-                        <div style="display: none">
-                            <input style="display: none" name="pass" value="${pass} ">${pass}           
-                        </div>
-                    </div>
-                    <div>
-                        <div style="display: none">
                             <input style="display: none" name="email" value="${email} ">${email}           
-                        </div>
-                    </div>
-                    <div>
-                        <div style="display: none">
-                            <input style="display: none" name="phone" value="${phone} ">${phone}           
-                        </div>
-                    </div>
-                    <div>
-                        <div style="display: none">
-                            <input style="display: none" name="address" value="${address} ">${address}           
                         </div>
                     </div>
                     <div class="edit">

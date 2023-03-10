@@ -40,6 +40,7 @@ public class ForgotPasswordController extends HttpServlet {
         String email = req.getParameter("email");
         UserDAO dao = new UserDAO();
         HttpSession mySession = req.getSession();
+        String mess2 = "";
         if (email != null && dao.chekcAccount(email)) {
             if (dao.chekcAccount(email)) {
                 String to = email;
@@ -63,6 +64,8 @@ public class ForgotPasswordController extends HttpServlet {
                     message.setContent(htmlContent, "text/html");
                     System.out.println("message sent successfully");
                     Transport.send(message);
+                    mess2 += "Check your email!";
+                    req.setAttribute("mess2", mess2);
                 } catch (MessagingException e) {
                     throw new RuntimeException(e);
                 }

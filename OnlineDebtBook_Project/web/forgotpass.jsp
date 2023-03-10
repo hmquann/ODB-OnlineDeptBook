@@ -37,6 +37,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <button type="submit" class="submit1" value="Find" id="">Find</button>
                         </div>
                         <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
+                        <p style="color: red;">${mess2}</p>
                     </div>
                 </form>
 
