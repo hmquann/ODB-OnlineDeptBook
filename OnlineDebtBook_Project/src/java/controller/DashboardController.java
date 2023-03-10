@@ -41,6 +41,8 @@ public class DashboardController extends HttpServlet {
                 endPage++;
             }
             req.setAttribute("endP", endPage);
+            req.setAttribute("indexPage", index);
+            req.setAttribute("record", count);
             req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
         }
     }

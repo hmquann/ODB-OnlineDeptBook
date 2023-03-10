@@ -32,7 +32,8 @@ public class ActiveAccountController extends HttpServlet {
         User u = new User();
         if (value == otp) {
             u.setIsActive(true);
-            dao.insertNewUser(name, pass, email, address, phone);        
+            dao.insertNewUser(name, pass, email, address, phone);      
+            dao.activeAccount(email);
             resp.sendRedirect("./Login");
         } else {
             req.getRequestDispatcher("otp.jsp").forward(req, resp);

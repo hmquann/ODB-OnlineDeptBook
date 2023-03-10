@@ -36,13 +36,11 @@
                         <i class='bx bx-user-check'></i>
                     </div>
 
-                    <p class="mess" style="color: white">${mess}</p>
+                    <p class="mess" style="color: red">${mess}</p>
 
-                    <c:if test="${msgCaptcha != null}">
-                        <p class="mess" style="color: white">${msgCaptcha}</p>
-                    </c:if>
+               
 
-                    <p class="mess">${mess}</p>
+                 
 
                     <div class="input-field">
                         <button type="submit" class="submit" value="Login" id="">Login</button>
