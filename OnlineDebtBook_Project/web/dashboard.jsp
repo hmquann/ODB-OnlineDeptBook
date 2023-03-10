@@ -65,15 +65,15 @@
                 max-width: 80%;
             }
 
-            .pagination{
-                z-index: 1;
-                display: flex;
-                justify-content: space-between;
-                align-items: stretch;
-                flex-wrap: wrap;
-                padding: 3px;
-                border-top: 2px solid rgba(0, 0, 0, 0.1);
-            }
+            /*            .pagination{
+                            z-index: 1;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: stretch;
+                            flex-wrap: wrap;
+                            padding: 3px;
+                            border-top: 2px solid rgba(0, 0, 0, 0.1);
+                        }*/
 
             .btn-pgn-bottom{
                 margin: 0;
@@ -109,28 +109,79 @@
                 -o-text-overflow: ellipsis;
                 text-overflow: ellipsis;
             }
+            .searchbar{
+                margin-bottom: auto;
+                margin-top: auto;
+                height: 60px;
+                background-color: #353b48;
+                border-radius: 30px;
+                padding: 10px;
+            }
+
+            .search_input{
+                color: white;
+                border: 0;
+                outline: 0;
+                background: none;
+                width: 0;
+                caret-color:transparent;
+                line-height: 40px;
+                transition: width 0.4s linear;
+            }
+
+            .searchbar:hover > .search_input{
+                padding: 0 10px;
+                width: 300px;
+                caret-color:red;
+                transition: width 0.5s linear;
+            }
+
+            .searchbar:hover > .search_icon{
+                background: white;
+                color: #e74c3c;
+                text-decoration: none;
+            }
+
+            .search_icon{
+                height: 40px;
+                width: 40px;
+                float: right;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                color:white;
+                text-decoration: none;
+            }
+
         </style>
 
         <title>Debtors List</title>
     </head>
 
     <body>
-        <header class="p-3 bg-dark text-white">
-            <a href="Dashboard" class="btn btn-warning" style="border-radius: 15px;">Home</a>
-            <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
-
-                                     
-                    <div class="text-end" style="padding-left: 65%;">
-                        <form action="Logout" method="get">
-                            <a href="ViewProfile" class="btn btn-warning" style="border-radius: 15px;">View Profile</a>
-                            <button type="submit" class="btn btn-warning" style="border-radius: 15px;">Sign-out</button>
-                        </form>
+        <!--        <header class="p-3 bg-dark text-white">
+                    <a href="Dashboard" class="btn btn-warning" style="border-radius: 15px;">Home</a>
+                    <div class="container">
+                        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
+                            <nav class="navbar ">
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </nav>
+        
+                            <div class="text-end" style="padding-left: 65%;">
+                                <form action="Logout" method="get">
+                                    <a href="ViewProfile" class="btn btn-warning" style="border-radius: 15px;">View Profile</a>
+                                    <button type="submit" class="btn btn-warning" style="border-radius: 15px;">Sign-out</button>
+                                </form>
+                            </div>
+        
+                        </div>
                     </div>
-
-                </div>
-            </div>
-        </header>
+                </header>-->
+        <jsp:include page="./header.jsp" />
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -139,13 +190,24 @@
                             <div class="card-header">
                                 <div class="float-left">
                                     <h3 class="mb-0">Debtors list ${mess}</h3>
-                                    <p class="small text-muted m-0">Total: 0 Record(s)</p>
+                                    <p class="small text-muted m-0">Total: ${record} Record(s)</p>
                                 </div>
                                 <div class="float-right"><button type="button" data-toggle="modal" data-target="#add_debtor" title="Add new Debtor"
                                                                  class="mr-1 btn btn-primary" style="border-radius: 20px;"><i class="fa fa-plus"></i>
                                         Add new Debtors</button>
                                 </div>
                             </div>
+                            <form action="Search" method="post">
+                                <div class="input-group">
+                                    <div class="form-outline">
+                                        <input type="search" name="customerName" value="${customerName}"  placeholder="Search" class="form-control" style="border-radius: 15px;margin-top: 10px;margin-left: 20px">
+
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary" style="border-radius: 15px;margin-top: 10px;margin-left:30px">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div> 
+                            </form>
                             <div class="card-body">
                                 <div class="table" style="text-align: center;">
                                     <table class="table table-bordered" data-resizable-columns-id="demo-table-v2">
@@ -189,8 +251,8 @@
                                                         <div class="col-md-12">
                                                             <div>
                                                                 <form action="Search" method="post">
-                                                                <input type="text" name="customerName" value="${customerName}" placeholder="" class="form-control"
-                                                                       value="">
+                                                                    <input type="text" name="customerName" value="${customerName}" placeholder="" class="form-control"
+                                                                           value="">
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -202,9 +264,9 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div>
-                                                                 <form action="Search" method="post">
-                                                                <input type="text" name="address" value="${address}" placeholder="" class="form-control"
-                                                                       value="">
+                                                                <form action="Search" method="post">
+                                                                    <input type="text" name="address" value="${address}" placeholder="" class="form-control"
+                                                                           value="">
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -324,34 +386,42 @@
                                         </tbody>
                                     </table>
                                     <hr style="width:max-content">
-                                    <div class="pagination" style="display:flex;justify-content: space-between;align-items: stretch;" >
-                                        <button type="button" class="float-left btn-pgn-bottom">Previous</button>
-                                        <div class="center" style="flex: 0.5 0;
-                                             text-align: center;
-                                             margin-bottom: 0;
-                                             display: -ms-flexbox;
-                                             display: flex;
-                                             -ms-flex-direction: row;
-                                             flex-direction: row;
-                                             -ms-flex-wrap: wrap;
-                                             flex-wrap: wrap;
-                                             -ms-flex-align: center;
-                                             align-items: center;
-                                             -ms-flex-pack: distribute;
-                                             justify-content: space-around;">
-                                            <span class="pageInfo" style="display: flex;align-items: center">Page
-                                                <div class="pageJump"><input type="number" value="1" id="pageNum" style="width: 57.2px;">
-                                                </div> /
-                                                <span class="totalPages" id="totalPages" style="padding-left:5%">3</span>
-                                            </span>
-                                        </div>
-                                        <button type="button" class="float-right btn-pgn-bottom">Next</button>
+<!--                                                                        <div class="pagination" style="display:flex;justify-content: space-between;align-items: stretch;" >
+                                                                            <button type="button" class="float-left btn-pgn-bottom">Previous</button>
+                                                                            <div class="center" style="flex: 0.5 0;
+                                                                                 text-align: center;
+                                                                                 margin-bottom: 0;
+                                                                                 display: -ms-flexbox;
+                                                                                 display: flex;
+                                                                                 -ms-flex-direction: row;
+                                                                                 flex-direction: row;
+                                                                                 -ms-flex-wrap: wrap;
+                                                                                 flex-wrap: wrap;
+                                                                                 -ms-flex-align: center;
+                                                                                 align-items: center;
+                                                                                 -ms-flex-pack: distribute;
+                                                                                 justify-content: space-around;">
+                                                                                <span class="pageInfo" style="display: flex;align-items: center">Page
+                                                                                    <div class="pageJump"><input type="number" value="1" id="pageNum" style="width: 57.2px;">
+                                                                                    </div> /
+                                                                                    <span class="totalPages" id="totalPages" style="padding-left:5%">3</span>
+                                                                                </span>
+                                                                            </div>
+                                                                            <button type="button" class="float-right btn-pgn-bottom">Next</button>
+                                                                        </div>-->
+                                    <div id="pagination">
+                                        <ul class="pagination justify-content-end" style="margin-left: 600px" >
+                                            <c:if test="${indexPage > 1 }">
+                                                <li class="page-item "><a class="page-link" href="Dashboard?index=${indexPage-1}">Previous</a></li>
+                                                </c:if>                                      
+                                                <c:forEach begin="1" end="${endP}" var="i">   
+                                                <li class="page-item ${indexPage == i?"active":"" }"><a class="page-link" href="Dashboard?index=${i}"">${i}</a></li>                                   
+                                                </c:forEach>
+                                                <c:if test="${indexPage < endP}">
+                                                <li class="page-item"><a class="page-link" href="Dashboard?index=${indexPage+1}">Next</a></li>
+                                                </c:if>
+                                        </ul>
                                     </div>
-
-                                    <c:forEach begin="1" end="${endP}" var="i">
-                                        <a href="Dashboard?index=${i}">${i}</a>
-                                    </c:forEach>
-
                                 </div>
                             </div>
                         </div>
@@ -360,14 +430,8 @@
             </div>
         </div>
 
+
         <jsp:include page="helper.jsp"></jsp:include>
-<!--        <nav aria-label="Page navigation example">
-            <ul class="pagination" >
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-            </ul>
-        </nav>-->
     </body>
     <script>
         var c = document.getElementById('pageNum');
