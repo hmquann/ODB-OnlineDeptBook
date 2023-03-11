@@ -112,7 +112,7 @@ public class RegisterController extends HttpServlet {
                 req.getRequestDispatcher("otp.jsp").forward(req, resp);         
             } catch (MessagingException e) {
                 throw new RuntimeException(e);
-            }
+            } 
         }
     }
 }
