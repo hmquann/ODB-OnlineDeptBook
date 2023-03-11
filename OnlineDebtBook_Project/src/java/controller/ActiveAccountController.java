@@ -25,12 +25,13 @@ public class ActiveAccountController extends HttpServlet {
         int otp = (int) session.getAttribute("otp1");
         String email = req.getParameter("email");
         UserDAO dao = new UserDAO();
-        User u = new User();
         if (value == otp) {
-            u.setIsActive(true); 
             dao.activeAccount(email);
             resp.sendRedirect("./Login");
         } else {
+            req.setAttribute("email", email);
+            String mess = "Try again!";
+            req.setAttribute("mess", mess);
             req.getRequestDispatcher("otp.jsp").forward(req, resp);
         }
     }
