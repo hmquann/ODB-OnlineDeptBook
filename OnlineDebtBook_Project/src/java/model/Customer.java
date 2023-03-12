@@ -9,6 +9,7 @@ package model;
  * @author trinh
  */
 public class Customer {
+
     private int customerID;
     private String customerName;
     private String customerAddress;
@@ -17,11 +18,12 @@ public class Customer {
     private String dateCustomerCreate;
     private String dateUpdateCustomer;
     private int accountID;
+    private float total;
 
     public Customer() {
     }
 
-    public Customer(int customerID, String customerName, String customerAddress, String customerPhone, String customerEmail, String dateCustomerCreate, String dateUpdateCustomer, int accountID) {
+    public Customer(int customerID, String customerName, String customerAddress, String customerPhone, String customerEmail, String dateCustomerCreate, String dateUpdateCustomer, int accountID, float total) {
         this.customerID = customerID;
         this.customerName = customerName;
         this.customerAddress = customerAddress;
@@ -30,6 +32,7 @@ public class Customer {
         this.dateCustomerCreate = dateCustomerCreate;
         this.dateUpdateCustomer = dateUpdateCustomer;
         this.accountID = accountID;
+        this.total = total;
     }
 
     public int getCustomerID() {
@@ -96,12 +99,17 @@ public class Customer {
         this.accountID = accountID;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" + "customerID=" + customerID + ", customerName=" + customerName + ", customerAddress=" + customerAddress + ", customerPhone=" + customerPhone + ", customerEmail=" + customerEmail + ", dateCustomerCreate=" + dateCustomerCreate + ", dateUpdateCustomer=" + dateUpdateCustomer + ", accountID=" + accountID + '}';
+    public float getTotal() {
+        return total;
     }
 
-   
+    public void setTotal(float total) {
+        this.total = total;
+    }
 
-    
+    @Override
+    public String toString() {
+        return "Customer{" + "customerID=" + customerID + ", customerName=" + customerName + ", customerAddress=" + customerAddress + ", customerPhone=" + customerPhone + ", customerEmail=" + customerEmail + ", dateCustomerCreate=" + dateCustomerCreate + ", dateUpdateCustomer=" + dateUpdateCustomer + ", accountID=" + accountID + ", total=" + total + '}';
+    }
+
 }
