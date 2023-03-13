@@ -1,6 +1,7 @@
 package controller;
 
 import dal.CustomerDAO;
+import dal.UserDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,8 +22,12 @@ public class DashboardController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         CustomerDAO dao = new CustomerDAO();
+        UserDAO dal = new UserDAO();
+        
+        List<User> listUserInfo = dal.getUserInformation();
+        
         String indexPage = req.getParameter("index");
-        if(indexPage == null){
+        if (indexPage == null) {
             indexPage = "1";
         }
         int index = Integer.parseInt(indexPage);
@@ -34,10 +39,11 @@ public class DashboardController extends HttpServlet {
             List<HistoryTransaction> listDetail = dao.getListDebtDetail(u.getAccountID());
             req.setAttribute("u", u);
             req.setAttribute("list1", listCustomer);
-            req.setAttribute("list2", listDetail);          
+            req.setAttribute("list2", listDetail);
+            req.setAttribute("listUserInfo", listUserInfo);
             int count = dao.getTotalCustomer(u.getAccountID());
-            int endPage = count/3;
-            if(count % 3 !=0){
+            int endPage = count / 3;
+            if (count % 3 != 0) {
                 endPage++;
             }
             req.setAttribute("endP", endPage);

@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div class="item_teacher">
-                        <img src="image/nguyennguyenkhoa.jpg" class="avatar">
+                        <img src="image/khoann.png" class="avatar">
                         <div class="content_teacher">
                             <table width="100%" cellspacing="0">
                                 <tr>
