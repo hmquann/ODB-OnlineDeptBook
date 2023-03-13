@@ -33,10 +33,8 @@ public class DashboardController extends HttpServlet {
         } else {
             User u = (User) session.getAttribute("user2");
             List<Customer> listCustomer = dao.pagingCustomer(index, u.getAccountID());
-            List<HistoryTransaction> listDetail = TDao.getListDebtDetail(u.getAccountID());
             req.setAttribute("u", u);
-            req.setAttribute("list1", listCustomer);
-            req.setAttribute("list2", listDetail);          
+            req.setAttribute("list1", listCustomer);      
             int count = dao.getTotalCustomer(u.getAccountID());
             int endPage = count/3;
             if(count % 3 !=0){

@@ -177,8 +177,8 @@ public class CustomerDAO extends DBContext {
 
     public void updateTotalCustomer(String money, boolean classify, String CustomerId) {
         try {
-            String sql = "UPDATE Customer"
-                    + "SET total = total" + (classify ? "+" : "-") + " ? "
+            String sql = "UPDATE Customer "
+                    + "SET total = total " + (classify ? " + " : " - ") + " ? "
                     + "WHERE customerID = ?";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, money);

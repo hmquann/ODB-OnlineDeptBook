@@ -53,8 +53,10 @@
                                             <h3 class="mb-0">Debtor Detail</h3>
                                         </div>
                                         <div class="float-right">
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new_debt" id="AddDebtDetailNote">
-                                                <i class="fa fa-plus"></i> Add Debt Note</button>
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new_debt" name="AddNewDebtPlus">
+                                                <i class="fa fa-plus"></i></button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#new_debt" name="AddNewDebtMinus">
+                                                <i class="fa fa-minus"></i></button>
                                         </div>
                                     </div>
                                     <div class="card-body" id="detail_debt" >
@@ -83,7 +85,7 @@
                                                             <td>
                                                                 <div style="margin: auto;text-align: center;">
                                                                     <button type="button" class="btn btn-primary"
-                                                                            data-toggle="modal" data-target="#debtSettlement" id="Details_Btn">Details
+                                                                            data-toggle="modal" data-target="#debtSettlement" name="Details_Btn">Details
                                                                     </button>
                                                                     <button type="button" title="plus"
                                                                             class="btn btn-success ${o.classify ? "disabled" : ""}" ${o.classify ? "disabled" : ""} data-toggle="modal" data-target="#debtSettlement" name="btn_detail"><em class="fa fa-plus"></em></button>
@@ -103,7 +105,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='http://localhost:9999/OnlineDebtBook_Project/Dashboard'" >Back</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.history.go(-1);" >Back</button>
                 </div>
             </div>
         </div>
@@ -140,7 +142,7 @@
                                                                 <b>Classify(*)</b>
                                                             </label>
                                                         </div>
-                                                        <div class="col-md-9" id="classifyMode">
+                                                        <div class="col-md-9" id="classifyModeDetail">
                                                         </div>
                                                     </div>
                                                     <div class="position-relative row form-group">
@@ -167,7 +169,7 @@
                                                         </div>
                                                     </div>
                                                     <div style="display: flex; justify-content: center; align-items: center;">
-                                                        <button type="submit" class="mr-1 btn btn-success" id="SettlementBtn">Settlement</button>
+                                                        <button type="submit" class="mr-1 btn btn-success" id="SettlementBtn" onclick="confirm('Are you sure to make a new debt note')">Settlement</button>
                                                     </div>
                                                 </div>
                                             </form>

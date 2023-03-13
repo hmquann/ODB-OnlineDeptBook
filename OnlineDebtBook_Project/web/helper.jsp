@@ -61,7 +61,7 @@
                                                 </div>
                                             </div>
                                             <div style="display: flex; justify-content: center; align-items: center;">
-                                                <button type="submit" class="mr-1 btn btn-success"><i class="fa fa-plus"></i>Add New Note</button>
+                                                <button type="submit" class="mr-1 btn btn-success" onclick="confirm('Are you sure to make a new debt note')"><i class="fa fa-plus"></i>Add New Note</button>
                                             </div>
                                         </div>
                                     </form>

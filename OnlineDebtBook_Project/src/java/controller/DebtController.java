@@ -83,9 +83,10 @@ public class DebtController extends HttpServlet {
         User user = (User) session.getAttribute("user2");
         TransactionDAO TDao = new TransactionDAO();
         CustomerDAO CDAO = new CustomerDAO();
-        boolean classify = TempClassify == "+" ? true : false;
-        TDao.insertNewDebt(note, amount, classify, startDate, customerId, user.getAccountID());
-        CDAO.updateTotalCustomer(amount, classify, String.valueOf(customerId));
+        boolean classify = "+".equals(TempClassify) ? true : false;
+        
+       TDao.insertNewDebt(note, Float.parseFloat(amount.replaceAll(",", "")), classify, startDate, customerId, user.getAccountID());
+       CDAO.updateTotalCustomer(amount.replaceAll(",", ""), classify, String.valueOf(customerId));
         
         String referrer = request.getHeader("referer");
         response.sendRedirect(referrer);

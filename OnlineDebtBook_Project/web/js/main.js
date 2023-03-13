@@ -3,8 +3,8 @@ const numberInput = document.getElementById("numberInput");
 const numberText = document.getElementById("numberText");
 var datetimepicker = document.getElementById("datetimepicker");
 var classifyMode = document.getElementById('classifyMode');
-var PlusBtn = document.getElementById('AddNewDebtPlus');
-var MinusBtn = document.getElementById('AddNewDebtMinus');
+var PlusBtn = document.getElementsByName('AddNewDebtPlus');
+var MinusBtn = document.getElementsByName('AddNewDebtMinus');
 const now = new Date();
 const formattedDate = now.getFullYear() + '-' + (now.getMonth() + 1).toString().padStart(2, '0') + '-' + now.getDate().toString().padStart(2, '0') + ' ' + now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
 var closeBtnAddNewDebt = document.getElementById('closeAddNewDebt');
@@ -93,29 +93,35 @@ document.querySelectorAll('button[data-target="#edit_debtor"]').forEach(button =
     });
 });
 
-PlusBtn.addEventListener('click', () => {
-    let addBtn = document.createElement("button"); // Tạo thẻ button mới
-    addBtn.className = "btn btn-success disabled";
-    addBtn.style.width = "100%";
-    addBtn.style.margin = "auto";
-    addBtn.innerHTML = "+";
-    addBtn.name = "classify";
-    addBtn.value = "+";
-    if (classifyMode.lastChild) {
-        classifyMode.removeChild(classifyMode.lastChild);
-    }
-    classifyMode.appendChild(addBtn);
+PlusBtn.forEach(button => {
+    button.addEventListener('click', () => {
+        let addBtn = document.createElement("input"); // Tạo thẻ button mới
+        addBtn.className = "btn btn-success disabled";
+        addBtn.style.width = "100%";
+        addBtn.style.margin = "auto";
+        addBtn.innerHTML = "+";
+        addBtn.name = "classify";
+        addBtn.value = "+";
+        console.log(classifyMode.lastChild);
+        if (classifyMode.lastChild) {
+            classifyMode.removeChild(classifyMode.lastChild);
+        }
+        classifyMode.appendChild(addBtn);
+    });
 });
-MinusBtn.addEventListener('click', () => {
-    let removeBtn = document.createElement("button"); // Tạo thẻ button mới
-    removeBtn.className = "btn btn-danger disabled";
-    removeBtn.style.width = "100%";
-    removeBtn.style.margin = "auto";
-    removeBtn.innerHTML = "-";
-    removeBtn.name = "classify";
-    removeBtn.value = "-";
-    if (classifyMode.lastChild) {
-        classifyMode.removeChild(classifyMode.lastChild);
-    }
-    classifyMode.appendChild(removeBtn);
+MinusBtn.forEach(button => {
+    button.addEventListener('click', () => {
+        let removeBtn = document.createElement("input"); // Tạo thẻ button mới
+        removeBtn.className = "btn btn-danger disabled";
+        removeBtn.style.width = "100%";
+        removeBtn.style.margin = "auto";
+        removeBtn.innerHTML = "-";
+        removeBtn.name = "classify";
+        removeBtn.value = "-";
+        console.log(classifyMode.lastChild);
+        if (classifyMode.lastChild) {
+            classifyMode.removeChild(classifyMode.lastChild);
+        }
+        classifyMode.appendChild(removeBtn);
+    });
 });

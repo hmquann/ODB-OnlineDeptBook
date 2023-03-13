@@ -35,6 +35,11 @@
         <!-- Import thư viện JSON -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"></script>
     </head>
+    <style>
+        .negativeTotal {
+            background-color: red;
+        }
+    </style>
     <title>Debtors List</title>
 </head>
 
@@ -195,7 +200,7 @@
                                                 <td>${o.customerAddress}</td>
                                                 <td>${o.customerPhone}</td>
                                                 <td>${o.customerEmail}</td>
-                                                <td>0</td>
+                                                <td>${o.total}</td>
                                                 <td>${o.dateCustomerCreate}</td>
                                                 <td>${o.dateUpdateCustomer}</td>
                                                 <td>
@@ -203,9 +208,9 @@
                                                         <a href="DetailDebt?Customerid=${o.customerID}" class="btn btn-primary">
                                                             Details
                                                         </a>
-                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new_debt" id="AddNewDebtPlus">
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new_debt" name="AddNewDebtPlus">
                                                             <i class="fa fa-plus"></i></button>
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#new_debt" id="AddNewDebtMinus">
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#new_debt" name="AddNewDebtMinus">
                                                             <i class="fa fa-minus"></i></button>
                                                         <button type="" data-toggle="modal" data-target="#edit_debtor" title="Edit"
                                                                 class="btn btn-warning"><i class="fa fa-pencil"></i>
@@ -218,17 +223,17 @@
                                     </tbody>
                                 </table>
                                 <hr style="width:max-content">
-                                <div class="pagination" style="display:flex;justify-content: space-between;align-items: stretch;" >
-                                    <button type="button" class="float-left btn-pgn-bottom">Previous</button>
-                                    <div class="center" id="center">
-                                        <span class="pageInfo" style="display: flex;align-items: center">Page
-                                            <div class="pageJump"><input type="number" value="1" id="pageNum" style="width: 57.2px;">
-                                            </div> /
-                                            <span class="totalPages" id="totalPages" style="padding-left:5%">3</span>
-                                        </span>
-                                    </div>
-                                    <button type="button" class="float-right btn-pgn-bottom">Next</button>
-                                </div>
+                                <!--                                <div class="pagination" style="display:flex;justify-content: space-between;align-items: stretch;" >
+                                                                    <button type="button" class="float-left btn-pgn-bottom">Previous</button>
+                                                                    <div class="center" id="center">
+                                                                        <span class="pageInfo" style="display: flex;align-items: center">Page
+                                                                            <div class="pageJump"><input type="number" value="1" id="pageNum" style="width: 57.2px;">
+                                                                            </div> /
+                                                                            <span class="totalPages" id="totalPages" style="padding-left:5%">3</span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <button type="button" class="float-right btn-pgn-bottom">Next</button>
+                                                                </div>-->
 
                                 <c:forEach begin="1" end="${endP}" var="i">
                                     <a href="Dashboard?index=${i}">${i}</a>
@@ -245,4 +250,16 @@
     <jsp:include page="helper.jsp"></jsp:include>
 </body>
 <script src="js/main.js"></script>
+<script>
+    const totalCell = document.querySelectorAll('tr td:nth-child(6)');
+// Kiểm tra giá trị total
+    totalCell.forEach(totalCell => {
+        if (parseFloat(totalCell.innerText) < 0) {
+            totalCell.parentNode.style.color = 'red';
+        } else {
+             totalCell.parentNode.style.color = 'green';
+        }
+    });
+
+</script>
 </html>
