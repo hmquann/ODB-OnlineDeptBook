@@ -23,140 +23,15 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script src="js/resizableColumns.min.js"></script>
         <!-- Bootstrap DateTimePicker -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="js/resizableColumns.min.js"></script>
-
-        <style>
-            .select,
-            #locale {
-                width: 100%;
-            }
-
-            .like {
-                margin-right: 10px;
-            }
-            body {
-                background-color: rgba(218, 211, 224, 0.673);
-            }
-
-            .container-fluid {
-                margin-top: 2%;
-
-            }
-
-            .card {
-
-                border: 2px solid rgba(115, 110, 110, 0.508);
-                border-radius: 25px !important;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            }
-
-            .card-header {
-                border-top-right-radius: 25px !important;
-                border-top-left-radius: 25px !important;
-                background-color: rgba(210, 210, 210, 0.567)
-            }
-
-            .modal-lg {
-                max-width: 80%;
-            }
-
-            /*            .pagination{
-                            z-index: 1;
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: stretch;
-                            flex-wrap: wrap;
-                            padding: 3px;
-                            border-top: 2px solid rgba(0, 0, 0, 0.1);
-                        }*/
-
-            .btn-pgn-bottom{
-                margin: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 115.2px;
-                height: 45.2px;
-                background-color: #2374e1;
-                color: white;
-                border: 2px solid rgba(115, 110, 110, 0.508);
-                border-radius: 25px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            }
-            .modal-content{
-                border: 2px solid rgba(115, 110, 110, 0.508);
-                border-radius: 25px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            }
-            .form-label-horizontal {
-                text-align: right;
-            }
-            table {
-                table-layout: fixed;
-            }
-
-            table td,
-            table th {
-                overflow: hidden;
-                white-space: nowrap;
-                -moz-text-overflow: ellipsis;
-                -ms-text-overflow: ellipsis;
-                -o-text-overflow: ellipsis;
-                text-overflow: ellipsis;
-            }
-            .searchbar{
-                margin-bottom: auto;
-                margin-top: auto;
-                height: 60px;
-                background-color: #353b48;
-                border-radius: 30px;
-                padding: 10px;
-            }
-
-            .search_input{
-                color: white;
-                border: 0;
-                outline: 0;
-                background: none;
-                width: 0;
-                caret-color:transparent;
-                line-height: 40px;
-                transition: width 0.4s linear;
-            }
-
-            .searchbar:hover > .search_input{
-                padding: 0 10px;
-                width: 300px;
-                caret-color:red;
-                transition: width 0.5s linear;
-            }
-
-            .searchbar:hover > .search_icon{
-                background: white;
-                color: #e74c3c;
-                text-decoration: none;
-            }
-
-            .search_icon{
-                height: 40px;
-                width: 40px;
-                float: right;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50%;
-                color:white;
-                text-decoration: none;
-            }
-
-        </style>
-
         <title>Debtors List</title>
+
     </head>
 
     <body>
@@ -188,247 +63,248 @@
                     <div class="main">
                         <div class="card">
                             <div class="card-header">
-                                <div class="float-left">
-                                    <h3 class="mb-0">Debtors list ${mess}</h3>
-                                    <p class="small text-muted m-0">Total: ${record} Record(s)</p>
-                                </div>
-                                <div class="float-right"><button type="button" data-toggle="modal" data-target="#add_debtor" title="Add new Debtor"
-                                                                 class="mr-1 btn btn-primary" style="border-radius: 20px;"><i class="fa fa-plus"></i>
-                                        Add new Debtors</button>
-                                </div>
-                            </div>
-                            <form action="Search" method="post">
-                                <div class="input-group">
-                                    <div class="form-outline">
-                                        <input type="search" name="customerName" value="${customerName}"  placeholder="Search" class="form-control" style="border-radius: 15px;margin-top: 10px;margin-left: 20px">
-
+                                <c:if test="${sessionScope.user2.isAdmin == false}">
+                                    <div class="float-left">
+                                        <h3 class="mb-0">Debtors list ${mess}</h3>
+                                        <p class="small text-muted m-0">Total: 0 Record(s)</p>
                                     </div>
-                                    <button type="submit" class="btn btn-secondary" style="border-radius: 15px;margin-top: 10px;margin-left:30px">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div> 
-                            </form>
+                                    <div class="float-right"><button type="button" data-toggle="modal" data-target="#add_debtor" title="Add new Debtor"
+                                                                     class="mr-1 btn btn-primary" style="border-radius: 20px;"><i class="fa fa-plus"></i>
+                                            Add new Debtors</button>
+                                    </div>
+                                </c:if>
+                                <c:if test="${sessionScope.user2.isAdmin == true}">
+                                    <div style="text-align:center">
+                                        <h2>Show User's Information</h2>
+                                    </div>
+
+                                </c:if>
+                            </div>
+
                             <div class="card-body">
-                                <div class="table" style="text-align: center;">
-                                    <table class="table table-bordered" data-resizable-columns-id="demo-table-v2">
-                                        <thead>
-                                            <tr style="background-color: white;color:black;">
-                                                <th data-resizable-column-id="id" style="position: relative; width: 64.4375px" >ID</th>
-                                                <th data-resizable-column-id="name">Name</th>
-                                                <th data-resizable-column-id="address">Address</th>
-                                                <th data-resizable-column-id="phone">Phone</th>
-                                                <th data-resizable-column-id="email">Email</th>
-                                                <th data-resizable-column-id="total">Total</th>
-                                                <th data-resizable-column-id="startDate">Start Date</th>
-                                                <th data-resizable-column-id="update">Update</th>
-                                                <th data-resizable-column-id="action" style="position: relative; width: 303.65px;">Action</th>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <input type="text" placeholder="From" class="form-control"
-                                                                       value="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <div>
-                                                                    <input type="text" placeholder="To" class="form-control"
-                                                                           value="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <form action="Search" method="post">
-                                                                    <input type="text" name="customerName" value="${customerName}" placeholder="" class="form-control"
-                                                                           value="">
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <form action="Search" method="post">
-                                                                    <input type="text" name="address" value="${address}" placeholder="" class="form-control"
-                                                                           value="">
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <input type="text" placeholder="" class="form-control"
-                                                                       value="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <input type="text" placeholder="" class="form-control"
-                                                                       value="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <input type="text" placeholder="" class="form-control"
-                                                                       value="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-
-                                                <td style="width: 200px;height: 20px;
-                                                    padding: 0;
-                                                    padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <input type="text" placeholder="From" class="form-control"
-                                                                       value="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <div>
-                                                                    <input type="text" placeholder="To" class="form-control"
-                                                                           value="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-
-                                                <td  style="width: 200px;height: 20px;
-                                                     padding: 0;
-                                                     padding-bottom: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <input type="text" id="datetimepicker1" class="form-control full-width" placeholder="From" value=""/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div>
-                                                                <div>
-                                                                    <input type="text" placeholder="To"
-                                                                           class="form-control full-width" value="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td style="border:0;padding: 0 0 0 0;"><button type="button"
-                                                                                               class="btn btn-danger btn-block">Clear
-                                                        filter</button>
-                                                    <button type="button" class="btn btn-primary btn-block">Hide
-                                                        &gt;&gt;</button>
-                                                </td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <c:forEach var="o" items="${list1}">
+                                <c:if test="${sessionScope.user2.isAdmin == false}">
+                                    <div class="table" style="text-align: center;">
+                                        <table class="table table-bordered" data-resizable-columns-id="demo-table-v2">
+                                            <thead>
+                                                <tr style="background-color: white;color:black;">
+                                                    <th class="setdarkmode" data-resizable-column-id="id" style="position: relative; width: 64.4375px" >ID</th>
+                                                    <th class="setdarkmode1" data-resizable-column-id="name">Name</th>
+                                                    <th class="setdarkmode2" data-resizable-column-id="address">Address</th>
+                                                    <th class="setdarkmode3" data-resizable-column-id="phone">Phone</th>
+                                                    <th class="setdarkmode4" data-resizable-column-id="email">Email</th>
+                                                    <th class="setdarkmode5" data-resizable-column-id="total">Total</th>
+                                                    <th class="setdarkmode6" data-resizable-column-id="startDate">Start Date</th>
+                                                    <th class="setdarkmode7" data-resizable-column-id="update">Update</th>
+                                                    <th class="setdarkmode8" data-resizable-column-id="action" style="position: relative; width: 303.65px;">Action</th>
+                                                </tr>
                                                 <tr>
-                                                    <td>${o.customerID}</td>
-                                                    <td>${o.customerName}</td>
-                                                    <td>${o.customerAddress}</td>
-                                                    <td>${o.customerPhone}</td>
-                                                    <td>${o.customerEmail}</td>
-                                                    <td>0</td>
-                                                    <td>${o.dateCustomerCreate}</td>
-                                                    <td>${o.dateUpdateCustomer}</td>
-                                                    <td>
-                                                        <div style="margin: auto; text-align:center">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail_debt">
-                                                                Details
-                                                            </button>
-                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new_debt"
-                                                                    <i class="fa fa-plus"></i> Add Debit Note</button>
-                                                            <button type="" data-toggle="modal" data-target="#add_debtor" title="Edit"
-                                                                    class="btn btn-warning"><i class="fa fa-pencil"></i>
-                                                                Edit
-                                                            </button>
+                                                    <td style="width: 200px;height: 20px;
+                                                        padding: 0;
+                                                        padding-bottom: 15px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12" style="margin-top: 40px">
+                                                                <div>
+                                                                    <input type="text" placeholder="From" class="form-control"
+                                                                           value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <div>
+                                                                        <input type="text" placeholder="To" class="form-control"
+                                                                               value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </td>
+                                                    <td style="width: 200px;height: 20px;
+                                                        padding: 0;
+                                                        padding-bottom: 15px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <form action="Search" method="post">
+                                                                        <input type="text" name="customerName" value="${customerName}" placeholder="" class="form-control"
+                                                                               value="">
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width: 200px;height: 20px;
+                                                        padding: 0;
+                                                        padding-bottom: 15px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <form action="Search" method="post">
+                                                                        <input type="text" name="address" value="${address}" placeholder="" class="form-control"
+                                                                               value="">
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width: 200px;height: 20px;
+                                                        padding: 0;
+                                                        padding-bottom: 15px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <input type="text" placeholder="" class="form-control"
+                                                                           value="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width: 200px;height: 20px;
+                                                        padding: 0;
+                                                        padding-bottom: 15px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <input type="text" placeholder="" class="form-control"
+                                                                           value="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width: 200px;height: 20px;
+                                                        padding: 0;
+                                                        padding-bottom: 15px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <input type="text" placeholder="" class="form-control"
+                                                                           value="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td style="width: 200px;height: 20px;
+                                                        padding: 0;
+                                                        padding-bottom: 15px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <input type="text" placeholder="From" class="form-control"
+                                                                           value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <div>
+                                                                        <input type="text" placeholder="To" class="form-control"
+                                                                               value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td  style="width: 200px;height: 20px;
+                                                         padding: 0;
+                                                         padding-bottom: 15px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <input type="text" id="datetimepicker1" class="form-control full-width" placeholder="From" value=""/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div>
+                                                                    <div>
+                                                                        <input type="text" placeholder="To"
+                                                                               class="form-control full-width" value="">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="border:0;padding: 0 0 0 0;"><button type="button"
+                                                                                                   class="btn btn-danger btn-block">Clear
+                                                            filter</button>
+                                                        <button type="button" class="btn btn-primary btn-block">Hide
+                                                            &gt;&gt;</button>
+                                                    </td>
                                                 </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
-                                    <hr style="width:max-content">
-<!--                                                                        <div class="pagination" style="display:flex;justify-content: space-between;align-items: stretch;" >
-                                                                            <button type="button" class="float-left btn-pgn-bottom">Previous</button>
-                                                                            <div class="center" style="flex: 0.5 0;
-                                                                                 text-align: center;
-                                                                                 margin-bottom: 0;
-                                                                                 display: -ms-flexbox;
-                                                                                 display: flex;
-                                                                                 -ms-flex-direction: row;
-                                                                                 flex-direction: row;
-                                                                                 -ms-flex-wrap: wrap;
-                                                                                 flex-wrap: wrap;
-                                                                                 -ms-flex-align: center;
-                                                                                 align-items: center;
-                                                                                 -ms-flex-pack: distribute;
-                                                                                 justify-content: space-around;">
-                                                                                <span class="pageInfo" style="display: flex;align-items: center">Page
-                                                                                    <div class="pageJump"><input type="number" value="1" id="pageNum" style="width: 57.2px;">
-                                                                                    </div> /
-                                                                                    <span class="totalPages" id="totalPages" style="padding-left:5%">3</span>
-                                                                                </span>
-                                                                            </div>
-                                                                            <button type="button" class="float-right btn-pgn-bottom">Next</button>
-                                                                        </div>-->
-                                    <div id="pagination">
-                                        <ul class="pagination justify-content-end" style="margin-left: 600px" >
-                                            <c:if test="${indexPage > 1 }">
-                                                <li class="page-item "><a class="page-link" href="Dashboard?index=${indexPage-1}">Previous</a></li>
-                                                </c:if>                                      
-                                                <c:forEach begin="1" end="${endP}" var="i">   
-                                                <li class="page-item ${indexPage == i?"active":"" }"><a class="page-link" href="Dashboard?index=${i}"">${i}</a></li>                                   
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="o" items="${list1}">
+                                                    <tr>
+                                                        <td>${o.customerID}</td>
+                                                        <td>${o.customerName}</td>
+                                                        <td>${o.customerAddress}</td>
+                                                        <td>${o.customerPhone}</td>
+                                                        <td>${o.customerEmail}</td>
+                                                        <td>0</td>
+                                                        <td>${o.dateCustomerCreate}</td>
+                                                        <td>${o.dateUpdateCustomer}</td>
+                                                        <td>
+                                                            <div style="margin: auto; text-align:center">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detail_debt">
+                                                                    Details
+                                                                </button>
+                                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#new_debt"
+                                                                        <i class="fa fa-plus"></i> Add Debit Note</button>
+                                                                <button type="" data-toggle="modal" data-target="#add_debtor" title="Edit"
+                                                                        class="btn btn-warning"><i class="fa fa-pencil"></i>
+                                                                    Edit
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 </c:forEach>
-                                                <c:if test="${indexPage < endP}">
-                                                <li class="page-item"><a class="page-link" href="Dashboard?index=${indexPage+1}">Next</a></li>
-                                                </c:if>
-                                        </ul>
+                                            </tbody>
+                                        </table>
+                                        <hr style="width:max-content">
+                                        <!--                                                                        <div class="pagination" style="display:flex;justify-content: space-between;align-items: stretch;" >
+                                                                                                                    <button type="button" class="float-left btn-pgn-bottom">Previous</button>
+                                                                                                                    <div class="center" style="flex: 0.5 0;
+                                                                                                                         text-align: center;
+                                                                                                                         margin-bottom: 0;
+                                                                                                                         display: -ms-flexbox;
+                                                                                                                         display: flex;
+                                                                                                                         -ms-flex-direction: row;
+                                                                                                                         flex-direction: row;
+                                                                                                                         -ms-flex-wrap: wrap;
+                                                                                                                         flex-wrap: wrap;
+                                                                                                                         -ms-flex-align: center;
+                                                                                                                         align-items: center;
+                                                                                                                         -ms-flex-pack: distribute;
+                                                                                                                         justify-content: space-around;">
+                                                                                                                        <span class="pageInfo" style="display: flex;align-items: center">Page
+                                                                                                                            <div class="pageJump"><input type="number" value="1" id="pageNum" style="width: 57.2px;">
+                                                                                                                            </div> /
+                                                                                                                            <span class="totalPages" id="totalPages" style="padding-left:5%">3</span>
+                                                                                                                        </span>
+                                                                                                                    </div>
+                                                                                                                    <button type="button" class="float-right btn-pgn-bottom">Next</button>
+                                                                                                                </div>-->
+                                        <div id="pagination">
+                                            <ul class="pagination justify-content-end" style="margin-left: 600px" >
+                                                <c:if test="${indexPage > 1 }">
+                                                    <li class="page-item "><a class="page-link" href="Dashboard?index=${indexPage-1}">Previous</a></li>
+                                                    </c:if>                                      
+                                                    <c:forEach begin="1" end="${endP}" var="i">   
+                                                    <li class="page-item ${indexPage == i?"active":"" }"><a class="page-link" href="Dashboard?index=${i}"">${i}</a></li>                                   
+                                                    </c:forEach>
+                                                    <c:if test="${indexPage < endP}">
+                                                    <li class="page-item"><a class="page-link" href="Dashboard?index=${indexPage+1}">Next</a></li>
+                                                    </c:if>
+                                            </ul>
+                                        </div>
                                     </div>
+                                </c:if>
+                                <jsp:include page="UserInformation.jsp"></jsp:include>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
         <jsp:include page="helper.jsp"></jsp:include>

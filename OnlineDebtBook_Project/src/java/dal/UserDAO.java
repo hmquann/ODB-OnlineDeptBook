@@ -193,7 +193,7 @@ public class UserDAO extends DBContext {
 
         }
     }
-    
+
     public boolean checkActive(String email) {
         try {
             String sql = "select * from Account where accountEmail = ? and isActive = 1 ";
@@ -207,6 +207,23 @@ public class UserDAO extends DBContext {
             System.out.println(e.getMessage());
         }
         return false;
+    }
+
+    public List<User> getUserInformation() {
+        List<User> t = new ArrayList<>();
+        try {
+            String sql = "SELECT * "
+                    + "  FROM [Account] WHERE isAdmin = 0";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                t.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getBoolean(7), rs.getBoolean(8)));
+            }
+        } catch (Exception e) {
+            System.out.println("getUserById error " + e.getMessage());
+        }
+        return t;
     }
 
 }
