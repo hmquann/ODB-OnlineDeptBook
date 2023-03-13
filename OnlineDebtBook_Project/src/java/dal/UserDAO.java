@@ -184,7 +184,7 @@ public class UserDAO extends DBContext {
 
     public void activeAccount(String email) {
         try {
-            String sql = "UPDATE Account SET isActive = 1 WHERE accountEmail = ? ";
+            String sql = "update Account set  isActive = 1 where accountEmail = ? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, email);
             stm.executeUpdate();
