@@ -13,6 +13,8 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/3098a9fa7b.js" crossorigin="anonymous"></script>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -32,33 +34,33 @@
                     </div>
                     <div class="col-md-9 personal-info">
                         <h3>Personal info</h3>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Name:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="${u.accountName}" name="accountname">
-                                </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" value="${u.accountName}" name="accountname">
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Email:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" readonly type="text" value="${u.email}" name="accountemail">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" readonly type="text" value="${u.email}" name="accountemail">
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Phone:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="${u.phone}" name="accountphone">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Phone:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" value="${u.phone}" name="accountphone">
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Address:</label>
-                                <div class="col-lg-8">
-                                    <input class="form-control" type="text" value="${u.address}" name="accountaddress">
-                                </div>
-                            </div>                       
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Address:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" value="${u.address}" name="accountaddress">
+                            </div>
+                        </div>                       
                     </div>
                 </div>        
-                                    <div style="color: red; margin-left: 300px">${mess}</div>
+                <div style="color: red; margin-left: 300px">${mess}</div>
                 <div class="form-group" style="text-align: center">
                     <input onclick="return showmess()" type="submit" value="Update" class="btn btn-success">
                 </div>

@@ -14,20 +14,22 @@
         <title>Enter OTP</title>
     </head>
     <body>
-        <div class="class2">
-            <div class="class1">
-                <div class="rsp">Enter OTP</div>
+        <div class="box1">
+            <div class="container1">
+                <div class="top1">
+                    <header> Enter OTP </header>
+                </div>
                 <form action="Activeaccount" method="post">
-                    <div class="edit">
-                        <input type="text" id="otp" name="otp" placeholder="Enter OTP" required="required">
+                    <div class="input-field1">
+                        <input type="text" id="otp" class="input1" name="otp" placeholder="Enter OTP" required="required">
                     </div> 
                     <div>
                         <div style="display: none">
                             <input style="display: none" name="email" value="${email} ">${email}           
                         </div>
                     </div>
-                    <div class="edit">
-                        <button type="submit" id="login-btn" class="sb2" value="Active Account"> Active Accounnt</button>
+                    <div class="input-field1">
+                        <button style="margin-top: 20px" type="submit" class="submit1" id="login-btn"  value="Active Account"> Active Accounnt</button>
                     </div>
                     <p style="color: red;" id="messforgotpassword" tilte="${mess}">${mess}</p>
                 </form>
