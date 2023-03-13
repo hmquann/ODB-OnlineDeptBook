@@ -21,17 +21,17 @@
                 <form method="post" action="Login">
 
                     <div class="input-field">
-                        <input type="email" class="input" placeholder="Email" id="" name="email" value="${email}">
+                        <input type="email" class="input" placeholder="Email" id="" name="email" value="${email}" required="">
                         <i class='bx bx-envelope'></i>
                     </div>
 
                     <div class="input-field">
-                        <input type="Password" class="input" placeholder="Password" id="" name="password" value="${pass}">
+                        <input type="Password" class="input" placeholder="Password" id="" name="password" value="${pass}" required="">
                         <i class='bx bx-lock-alt'></i>
                     </div>
 
                     <div class="input-field">
-                        <input type="text" class="inputt" placeholder="Enter Captcha" name="captcha">
+                        <input type="text" class="inputt" placeholder="Enter Captcha" name="captcha" required="">
                         <img src="Captcha" class="szcapt" alt="alt"/>
                         <i class='bx bx-user-check'></i>
                     </div>
