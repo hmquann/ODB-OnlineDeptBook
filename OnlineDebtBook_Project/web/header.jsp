@@ -13,7 +13,6 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/header.css">
-        <script src="js/darkmode.js" defer></script>
         <script src="js/resizableColumns.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
@@ -64,7 +63,6 @@
                                            </div>            -->
                         <a href="ViewProfile" class="btn btn-info btn-lg" style="border-radius: 15px;margin-top: 10px"><i class="fa-solid fa-lg fa-user"></i></a>                          
                         <a href="Logout" class="btn btn-warning btn-lg" style="border-radius: 15px; margin-left: 15px;margin-top: 10px"><i class="fa-solid fa-right-from-bracket"></i></a>
-                        <i class='bx bx-sun' id="Mode"></i>
                     </form>
                 </form>
             </div>

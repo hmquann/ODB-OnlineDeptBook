@@ -100,7 +100,7 @@
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>Ho?ng Minh Qu?n</td>
+                                    <td>Hoàng Minh Quân</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -122,7 +122,7 @@
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>Trinh Tien Dat</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
