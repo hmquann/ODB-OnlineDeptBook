@@ -29,7 +29,7 @@
                     <div class="edit">
                         <button type="submit" id="login-btn" class="sb2" value="Active Account"> Active Accounnt</button>
                     </div>
-                    <p style="color: red;" id="messforgotpassword" tilte="${mess}">${mess}</p>
+                    <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
                 </form>
             </div>
         </div>
