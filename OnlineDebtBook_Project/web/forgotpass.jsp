@@ -30,7 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <form action="ForgotPassword" method="post">
                     <div>
                         <div class="input-field1">
-                            <input type="email" class="input1" placeholder="Email" id="" name="email" required="">
+                            <input type="email" class="input1" placeholder="Email" id="" name="email">
                             <i class='bx bx-envelope'></i>
                         </div>
                         <div class="input-field1">
