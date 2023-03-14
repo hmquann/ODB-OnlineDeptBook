@@ -107,11 +107,8 @@ public class RegisterController extends HttpServlet {
                 message.setContent(htmlContent, "text/html");
                 Transport.send(message);
                 mySession.setAttribute("otp1", otp);
-                req.setAttribute("name", name);
-                req.setAttribute("pass", pass);
                 req.setAttribute("email", email);
-                req.setAttribute("address", address);
-                req.setAttribute("phone", phone);
+                dao.insertNewUser(name, pass, email, address, phone); 
                 req.getRequestDispatcher("otp.jsp").forward(req, resp);         
             } catch (MessagingException e) {
                 throw new RuntimeException(e);

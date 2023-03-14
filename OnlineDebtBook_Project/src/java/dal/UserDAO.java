@@ -24,7 +24,7 @@ public class UserDAO extends DBContext {
             String sql = "SELECT [accountEmail]\n"
                     + "      ,[password]\n"
                     + "  FROM [dbo].[Account]\n"
-                    + "  WHERE accountEmail= ? AND [password] = ?";
+                    + "  WHERE accountEmail= ? AND [password] = ? and isActive=1 ";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, email);
             stm.setString(2, md.getMd5(password));
@@ -74,7 +74,7 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
-    
+
     public String isActive(boolean isActive, String email) {
         try {
             MD5 md5 = new MD5();
@@ -162,7 +162,7 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
-    
+
     public User getUserById(String id) {
         try {
             String sql = "SELECT * "
@@ -181,4 +181,49 @@ public class UserDAO extends DBContext {
         }
         return null;
     }
+
+    public void activeAccount(String email) {
+        try {
+            String sql = "update Account set  isActive = 1 where accountEmail = ? ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, email);
+            stm.executeUpdate();
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    public boolean checkActive(String email) {
+        try {
+            String sql = "select * from Account where accountEmail = ? and isActive = 1 ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, email);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public List<User> getUserInformation() {
+        List<User> t = new ArrayList<>();
+        try {
+            String sql = "SELECT * "
+                    + "  FROM [Account] WHERE isAdmin = 0";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                t.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(6), rs.getBoolean(7), rs.getBoolean(8)));
+            }
+        } catch (Exception e) {
+            System.out.println("getUserById error " + e.getMessage());
+        }
+        return t;
+    }
+
 }

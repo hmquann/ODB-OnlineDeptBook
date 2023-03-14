@@ -29,21 +29,35 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+        String captcha = (String) req.getSession().getAttribute("captcha");
         String email = req.getParameter("email");
         String pass = req.getParameter("password");
+        String checkCaptcha = req.getParameter("captcha");
         UserDAO dao = new UserDAO();
-        String mess = "Wrong password or email ";
+        req.setAttribute("email", email);
+        req.setAttribute("pass", pass);
         User user = dao.getUser(email, pass);
         User user2 = dao.getInfo(email);
-        if (user != null && user2 != null) {
-            session.setAttribute("user", user);
-            session.setAttribute("user2", user2);
-            resp.sendRedirect("./Dashboard" );
+        boolean OK = dao.checkActive(email);
+        if (OK) {
+            if (captcha.equals(checkCaptcha)) {
+                if (user != null && user2 != null) {
+                    req.getSession().setAttribute("user", user);
+                    req.getSession().setAttribute("user2", user2);
+                    resp.sendRedirect("./Dashboard");
+                } else {
+                    req.setAttribute("mess", "Wrong email or password");
+                    req.getRequestDispatcher("login.jsp").forward(req, resp);
+                }
+            } else {
+                req.setAttribute("mess", "Invalid Captcha");
+                req.getRequestDispatcher("login.jsp").forward(req, resp);
+            }
         } else {
-            req.setAttribute("mess", mess);
+            req.setAttribute("mess", "Account is not active");
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
+
     }
 
 }

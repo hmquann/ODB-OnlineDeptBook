@@ -31,7 +31,7 @@
                         <i class='bx bx-envelope' ></i>
                     </div>
                     <div class="input-field2">
-                        <input type="password" class="input2" placeholder="Password" onkeyup="myFunction()" id="password"  name="pass" required value="${param.pass}">
+                        <input type="password" class="input2" placeholder="Password"  id="password"  name="pass" required value="${param.pass}">
                         <i class='bx bx-lock-alt'></i>
                     </div>
                     <div class="input-field2">

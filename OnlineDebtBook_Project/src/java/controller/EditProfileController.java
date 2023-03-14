@@ -36,7 +36,7 @@ public class EditProfileController extends HttpServlet {
                 req.setAttribute("u", u);
                 req.getRequestDispatcher("editprofile.jsp").forward(req, resp);
             } else {
-                if (dal.checkAccount(accountphone)) {
+                if(!u.getPhone().equals(accountphone) && dal.checkAccount(accountphone)) {
                     mess="Phone exist";
                     req.setAttribute("mess", mess);
                     req.setAttribute("u", u);

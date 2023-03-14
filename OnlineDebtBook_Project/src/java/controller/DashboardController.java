@@ -24,7 +24,7 @@ public class DashboardController extends HttpServlet {
         CustomerDAO dao = new CustomerDAO();
         TransactionDAO TDao = new TransactionDAO();
         String indexPage = req.getParameter("index");
-        if(indexPage == null){
+        if (indexPage == null) {
             indexPage = "1";
         }
         int index = Integer.parseInt(indexPage);
@@ -36,11 +36,13 @@ public class DashboardController extends HttpServlet {
             req.setAttribute("u", u);
             req.setAttribute("list1", listCustomer);      
             int count = dao.getTotalCustomer(u.getAccountID());
-            int endPage = count/3;
-            if(count % 3 !=0){
+            int endPage = count / 3;
+            if (count % 3 != 0) {
                 endPage++;
             }
             req.setAttribute("endP", endPage);
+            req.setAttribute("indexPage", index);
+            req.setAttribute("record", count);
             req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
         }
     }

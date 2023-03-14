@@ -100,7 +100,7 @@
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>Ho?ng Minh Qu?n</td>
+                                    <td>Hoàng Minh Quân</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -122,7 +122,7 @@
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>Trinh Tien Dat</td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                     <div class="item_teacher">
-                        <img src="image/nguyennguyenkhoa.jpg" class="avatar">
+                        <img src="image/khoann.png" class="avatar">
                         <div class="content_teacher">
                             <table width="100%" cellspacing="0">
                                 <tr>

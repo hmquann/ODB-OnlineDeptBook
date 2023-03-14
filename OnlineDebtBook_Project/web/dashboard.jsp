@@ -1,3 +1,4 @@
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"  %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "dal.*" %>
@@ -125,14 +126,16 @@
                                                                    value="">
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="thHead">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div>
-                                                            <input type="text" placeholder="" class="form-control"
-                                                                   value="">
+                                                </td>
+<td style="width: 200px;height: 20px;
+                                                    padding: 0;
+                                                    padding-bottom: 15px;">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div>
+                                                                <input type="text" placeholder="" class="form-control"
+                                                                       value="">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -159,9 +162,11 @@
                                                     <div class="col-md-12">
                                                         <div>
                                                             <div>
-                                                                <input type="text" placeholder="To" class="form-control"
-                                                                       value="">
-                                                            </div>
+                                                                <div>
+                                                                    <input type="text" placeholder="To" class="form-control"
+                                                                           value="">
+                                                                </div>
+</div>
                                                         </div>
                                                     </div>
                                                 </div>
