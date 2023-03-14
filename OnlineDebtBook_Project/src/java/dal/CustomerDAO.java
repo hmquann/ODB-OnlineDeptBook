@@ -7,9 +7,11 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import model.*;
 
@@ -18,6 +20,7 @@ import model.*;
  * @author trinh
  */
 public class CustomerDAO extends DBContext {
+
     public List<Customer> getListDebtor(int accountID) {
         List<Customer> t = new ArrayList<>();
         String sql = "SELECT * "
@@ -29,47 +32,7 @@ public class CustomerDAO extends DBContext {
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return (t);
-    }
-
-    public List<HistoryTransaction> getListDebtDetail(int accountID) {
-        List<HistoryTransaction> t = new ArrayList<>();
-
-        String sql = "SELECT ht.transactionID,ht.note,ht.moneyDebt,ht.classify,ht.dateCreate,ht.dateCreate,ht.customerID FROM historyTransaction ht\n"
-                + "LEFT JOIN Customer cus ON ht.customerID = cus.customerID \n"
-                + "WHERE cus.accountID = ?;";
-        try {
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, accountID);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                t.add(new HistoryTransaction(rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getBoolean(4),
-                        rs.getString(5), rs.getString(6), rs.getInt(7)));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return (t);
-    }
-
-    public List<HistoryTransaction> getListDebtCustomerID(int accountID, int customerID) {
-        List<HistoryTransaction> t = new ArrayList<>();
-        String sql = "SELECT ht.transactionID,ht.note,ht.moneyDebt,ht.classify,ht.dateCreate,ht.dateCreate,ht.customerID FROM historyTransaction ht\n"
-                + "LEFT JOIN Customer cus ON ht.customerID = cus.customerID \n"
-                + "WHERE cus.accountID = ? AND ht.customerID = ?";
-        try {
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, accountID);
-            stm.setInt(2, customerID);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                t.add(new HistoryTransaction(rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getBoolean(4),
-                        rs.getString(5), rs.getString(6), rs.getInt(7)));
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getFloat(9)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,16 +63,6 @@ public class CustomerDAO extends DBContext {
         return null;
     }
 
-    public static void main(String[] args) {
-        CustomerDAO dao = new CustomerDAO();
-
-//        List<Customer> list = dao.searchCustomer("h", 4);
-//        for (Customer customer : list) {
-//            System.out.println(customer);
-//        }
-
-    }
-
     public int getTotalCustomer(int accountID) {
         String sql = "select count(*) from Customer where accountID=? ";
         try {
@@ -136,43 +89,7 @@ public class CustomerDAO extends DBContext {
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return t;
-    }
-    public List<Customer> searchCustomerByName(String name, int accountID) {
-        List<Customer> t = new ArrayList<>();
-        String sql = "  select * from Customer\n"
-                + "  where customerName like ? AND accountID=?";
-        try {
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1,"%" + name + "%");
-            stm.setInt(2, accountID);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return t;
-    }
-    public List<Customer> searchCustomerByAddress(String address, int accountID) {
-        List<Customer> t = new ArrayList<>();
-        String sql = "  select * from Customer\n"
-                + "  where customerAddress like ? AND accountID=?";
-        try {
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1,"%" + address + "%");
-            stm.setInt(2, accountID);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getFloat(9)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -180,4 +97,100 @@ public class CustomerDAO extends DBContext {
         return t;
     }
 
+    public List<Customer> searchCustomerByName(String name, int accountID) {
+        List<Customer> t = new ArrayList<>();
+        String sql = "  select * from Customer\n"
+                + "  where customerName like ? AND accountID=?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, "%" + name + "%");
+            stm.setInt(2, accountID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getFloat(9)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return t;
+    }
+
+    public List<Customer> searchCustomerByAddress(String address, int accountID) {
+        List<Customer> t = new ArrayList<>();
+        String sql = "  select * from Customer\n"
+                + "  where customerAddress like ? AND accountID=?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, "%" + address + "%");
+            stm.setInt(2, accountID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getFloat(9)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return t;
+    }
+
+    public Customer getCustomerByCustomerId(String CustomerId) {
+        String sql = "select * from Customer\n"
+                + "where customerID = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, CustomerId);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getFloat(9));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void updateCustomer(String name, String address, String phone, String email, String CustomerId) {
+
+        try {
+            LocalDateTime currentTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+            Timestamp sqlDateTime = Timestamp.valueOf(currentTime.format(formatter));
+
+            String sql = "UPDATE Customer "
+                    + "SET customerName = ?,customerAddress = ?,customerPhone = ?,customerEmail = ?,dateUpdateCustomer = ?\n"
+                    + "WHERE customerID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, name);
+            stm.setString(2, address);
+            stm.setString(3, phone);
+            stm.setString(4, email);
+            stm.setTimestamp(5, sqlDateTime);
+            stm.setString(6, CustomerId);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateTotalCustomer(String money, boolean classify, String CustomerId) {
+        try {
+            String sql = "UPDATE Customer "
+                    + "SET total = total " + (classify ? " + " : " - ") + " ? "
+                    + "WHERE customerID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, money);
+            stm.setString(2, CustomerId);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        CustomerDAO dao = new CustomerDAO();
+        System.out.println(dao.getCustomerByCustomerId("2"));
+    }
 }

@@ -4,27 +4,25 @@
  */
 package controller;
 
-import dal.CustomerDAO;
-import dal.MD5;
-import dal.UserDAO;
+import dal.TransactionDAO;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
-
-import model.*;
+import model.HistoryTransaction;
 
 /**
  *
  * @author trinh
  */
-public class DebtorController extends HttpServlet {
+@WebServlet(name = "DetailDebtController", urlPatterns = {"/DetailDebt"})
+public class DetailDebtController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,15 +38,13 @@ public class DebtorController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DebtorController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DebtorController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            int CustomerId = Integer.parseInt(request.getParameter("Customerid"));
+            TransactionDAO dao = new TransactionDAO();
+            List<HistoryTransaction> listDebtByCustomerId = dao.getListDebtCustomerID(CustomerId);
+            request.setAttribute("listDetail", listDebtByCustomerId);
+            HttpSession session = request.getSession();
+            session.setAttribute("CustomerId", CustomerId);
+            request.getRequestDispatcher("detail.jsp").forward(request, response);
         }
     }
 
@@ -65,6 +61,7 @@ public class DebtorController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     /**
@@ -76,26 +73,9 @@ public class DebtorController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String name = req.getParameter("debtorName");
-        String address = req.getParameter("debtorAddress");
-        String phone = req.getParameter("debtorPhone");
-        String email = req.getParameter("debtorEmail");
-        User user = (User) session.getAttribute("user2");
-        String accountID = Integer.toString(user.getAccountID());
-        String mess = "Name is required";
-        CustomerDAO cusDAO = new CustomerDAO();
-
-        if (name.equals("")) {
-            req.setAttribute("mess", mess);
-            req.getRequestDispatcher("./Dashboard").forward(req, resp);
-        } else {
-            cusDAO.insertNewDebtor(name, address, phone, email, accountID);
-            String referrer = req.getHeader("referer");
-            resp.sendRedirect(referrer);
-        }
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

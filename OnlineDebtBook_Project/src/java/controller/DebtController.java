@@ -5,26 +5,23 @@
 package controller;
 
 import dal.CustomerDAO;
-import dal.MD5;
-import dal.UserDAO;
+import dal.TransactionDAO;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-
-import model.*;
+import model.User;
 
 /**
  *
  * @author trinh
  */
-public class DebtorController extends HttpServlet {
+@WebServlet(name = "DebtController", urlPatterns = {"/Debt"})
+public class DebtController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +40,10 @@ public class DebtorController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DebtorController</title>");
+            out.println("<title>Servlet DebtController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DebtorController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DebtController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,7 +61,6 @@ public class DebtorController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
@@ -76,26 +72,24 @@ public class DebtorController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String name = req.getParameter("debtorName");
-        String address = req.getParameter("debtorAddress");
-        String phone = req.getParameter("debtorPhone");
-        String email = req.getParameter("debtorEmail");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        int customerId = Integer.parseInt(request.getParameter("customerId"));
+        String note = request.getParameter("note");
+        String amount = request.getParameter("amount");
+        String startDate = request.getParameter("startDate");
+        String TempClassify =  request.getParameter("classify");
         User user = (User) session.getAttribute("user2");
-        String accountID = Integer.toString(user.getAccountID());
-        String mess = "Name is required";
-        CustomerDAO cusDAO = new CustomerDAO();
-
-        if (name.equals("")) {
-            req.setAttribute("mess", mess);
-            req.getRequestDispatcher("./Dashboard").forward(req, resp);
-        } else {
-            cusDAO.insertNewDebtor(name, address, phone, email, accountID);
-            String referrer = req.getHeader("referer");
-            resp.sendRedirect(referrer);
-        }
-
+        TransactionDAO TDao = new TransactionDAO();
+        CustomerDAO CDAO = new CustomerDAO();
+        boolean classify = "+".equals(TempClassify) ? true : false;
+        
+       TDao.insertNewDebt(note, Float.parseFloat(amount.replaceAll(",", "")), classify, startDate, customerId, user.getAccountID());
+       CDAO.updateTotalCustomer(amount.replaceAll(",", ""), classify, String.valueOf(customerId));
+        
+        String referrer = request.getHeader("referer");
+        response.sendRedirect(referrer);
     }
 
     /**

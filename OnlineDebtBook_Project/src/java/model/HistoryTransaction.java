@@ -16,11 +16,12 @@ public class HistoryTransaction {
     private String dateDebt;
     private String dateCreate;
     private int customerID;
-
+    private int CreateBy;
+    
     public HistoryTransaction() {
     }
 
-    public HistoryTransaction(int transactionID, String note, float moneyDebt, boolean classify, String dateDebt, String dateCreate, int customerID) {
+    public HistoryTransaction(int transactionID, String note, float moneyDebt, boolean classify, String dateDebt, String dateCreate, int customerID, int CreateBy) {
         this.transactionID = transactionID;
         this.note = note;
         this.moneyDebt = moneyDebt;
@@ -28,6 +29,7 @@ public class HistoryTransaction {
         this.dateDebt = dateDebt;
         this.dateCreate = dateCreate;
         this.customerID = customerID;
+        this.CreateBy = CreateBy;
     }
 
     public int getTransactionID() {
@@ -86,9 +88,19 @@ public class HistoryTransaction {
         this.customerID = customerID;
     }
 
+    public int getCreateBy() {
+        return CreateBy;
+    }
+
+    public void setCreateBy(int CreateBy) {
+        this.CreateBy = CreateBy;
+    }
+
     @Override
     public String toString() {
-        return "HistoryTransaction{" + "transactionID=" + transactionID + ", note=" + note + ", moneyDebt=" + moneyDebt + ", classify=" + classify + ", dateDebt=" + dateDebt + ", dateCreate=" + dateCreate + ", customerID=" + customerID + '}';
+        return "HistoryTransaction{" + "transactionID=" + transactionID + ", note=" + note + ", moneyDebt=" + moneyDebt + ", classify=" + classify + ", dateDebt=" + dateDebt + ", dateCreate=" + dateCreate + ", customerID=" + customerID + ", CreateBy=" + CreateBy + '}';
     }
+
+   
     
 }
