@@ -66,6 +66,7 @@ public class DebtorController extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+    CustomerDAO cusDAO = new CustomerDAO();
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -85,7 +86,6 @@ public class DebtorController extends HttpServlet {
         User user = (User) session.getAttribute("user2");
         String accountID = Integer.toString(user.getAccountID());
         String mess = "Name is required";
-        CustomerDAO cusDAO = new CustomerDAO();
 
         if (name.equals("")) {
             req.setAttribute("mess", mess);

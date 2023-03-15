@@ -55,7 +55,7 @@ public class TransactionDAO extends DBContext {
         return 0;
     }
 
-    public String insertNewDebt(String note, float money, boolean classify, String dateDebt, int customerID, int CreateBy) {
+    public boolean insertNewDebt(String note, float money, boolean classify, String dateDebt, int customerID, int CreateBy) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date now = new Date();
         String formattedDate = dateFormat.format(now);
@@ -71,10 +71,12 @@ public class TransactionDAO extends DBContext {
             stm.setInt(6, customerID);
             stm.setInt(7, CreateBy);
             stm.executeUpdate();
+            return  true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
+
     }
     public static void main(String[] args) {
         TransactionDAO dao = new TransactionDAO();

@@ -34,6 +34,8 @@ public class DetailDebtController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    TransactionDAO dao = new TransactionDAO();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -41,13 +43,13 @@ public class DetailDebtController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
             int CustomerId = Integer.parseInt(request.getParameter("Customerid"));
-            TransactionDAO dao = new TransactionDAO();
+
             String indexPage = request.getParameter("index");
 
             if (indexPage == null) {
                 indexPage = "1";
             }
-            
+
             if (session.getAttribute("user") == null) {
                 response.sendRedirect("Login");
             } else {

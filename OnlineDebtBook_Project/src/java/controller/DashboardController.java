@@ -19,10 +19,12 @@ import model.*;
  */
 public class DashboardController extends HttpServlet {
 
+    CustomerDAO dao = new CustomerDAO();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        CustomerDAO dao = new CustomerDAO();
+
         TransactionDAO TDao = new TransactionDAO();
         boolean pageDirect = true;
         String indexPage = req.getParameter("index");

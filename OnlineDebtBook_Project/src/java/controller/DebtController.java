@@ -71,6 +71,9 @@ public class DebtController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    TransactionDAO TDao = new TransactionDAO();
+    CustomerDAO CDAO = new CustomerDAO();
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -79,14 +82,13 @@ public class DebtController extends HttpServlet {
         String note = request.getParameter("note");
         String amount = request.getParameter("amount");
         String startDate = request.getParameter("startDate");
-        String TempClassify =  request.getParameter("classify");
+        String TempClassify = request.getParameter("classify");
         User user = (User) session.getAttribute("user2");
-        TransactionDAO TDao = new TransactionDAO();
-        CustomerDAO CDAO = new CustomerDAO();
+
         boolean classify = "+".equals(TempClassify) ? true : false;
-        
-       TDao.insertNewDebt(note, Float.parseFloat(amount.replaceAll(",", "")), classify, startDate, customerId, user.getAccountID());
-       CDAO.updateTotalCustomer(amount.replaceAll(",", ""), classify, String.valueOf(customerId));
+
+        TDao.insertNewDebt(note, Float.parseFloat(amount.replaceAll(",", "")), classify, startDate, customerId, user.getAccountID());
+        CDAO.updateTotalCustomer(amount.replaceAll(",", ""), classify, String.valueOf(customerId));
         CDAO.updateCustomerUpdateDateWhenAddNewDebt(customerId);
         String referrer = request.getHeader("referer");
         response.sendRedirect(referrer);
