@@ -39,6 +39,7 @@ public class LoginController extends HttpServlet {
         User user = dao.getUser(email, pass);
         User user2 = dao.getInfo(email);
         boolean OK = dao.checkActive(email);
+        boolean admin = dao.checkAdmin(email);
         if (OK) {
             if (captcha.equals(checkCaptcha)) {
                 if (user != null && user2 != null) {
