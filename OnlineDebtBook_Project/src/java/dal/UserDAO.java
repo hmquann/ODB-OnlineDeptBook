@@ -226,4 +226,31 @@ public class UserDAO extends DBContext {
         return t;
     }
 
+    public void changeActive(String uEmail, String status) {
+        try {
+            String sql = " update Account set [isActive] = ? where accountEmail =?";
+            PreparedStatement stm2 = connection.prepareStatement(sql);
+            stm2.setString(1, status);
+            stm2.setString(2, uEmail);
+            stm2.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public boolean checkAdmin(String email) {
+        try {
+            String sql = "select * from Account where accountEmail = ? and isAdmin = 1 ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, email);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
 }

@@ -13,12 +13,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <title>Forgotten Password</title>
         <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
         <%@page contentType="text/html" pageEncoding="UTF-8"%>
+        <script src="https://kit.fontawesome.com/3098a9fa7b.js" crossorigin="anonymous"></script>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="./css/forgotpass.css">
     </head>
     <body>
+  
+
         <div class="box1">
             <div class="container1">
 

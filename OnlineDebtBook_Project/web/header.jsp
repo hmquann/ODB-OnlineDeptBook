@@ -4,6 +4,7 @@
     Author     : asus
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,36 +20,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <title>JSP Page</title>
     </head>
+    
     <body>
-        <!--        <header class="p-3 bg-dark text-white">
-                    <div class="container">
-                        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" >
-                            <a href="Dashboard?accountID=${user2.accountID}" class="btn btn-warning" style="border-radius: 15px;">Home</a>
-                            <form class="col-lg-auto mb-3 mb-lg-0 me-lg-3" >
-                                <input type="search" class="form-control form-control-dark" placeholder="Search Debt" aria-label="Search" style="border-radius: 15px;">
-                            </form>                     
-                            <div class="text-end" style="padding-left: 65%;">
-                                <form action="Logout" method="get" class="form-inline">
-                                    <a href="ViewProfile" class="btn btn-warning" style="border-radius: 15px;"><i class="fa-solid fa-user"></i></a>                          
-                                    <a href="Logout" class="btn btn-warning" style="border-radius: 15px; margin-left: 15px"><i class="fa-solid fa-right-from-bracket"></i></a> 
-                                </form>
-                            </div>                      
-                        </div>
-                    </div>
-                </header>-->
         <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="padding-bottom: 20px;padding-top: 10px">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="#" style="color: white">OnlineDebtBook</a>
+                <a class="navbar-brand" href="Dashboard" style="color: white">OnlineDebtBook</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
+                    <c:if  test="${sessionScope.user2.isAdmin==false}">
                     <li class="nav-item active">
                         <a href="Dashboard" class="nav-link" style="color:white">Home</a>
                     </li>
-                    <!--                    <li class="nav-item">
-                                            <a class="nav-link" href="#" style="color: white">Profile</a>
-                                        </li>-->
+                    </c:if>
                 </ul>
                 <form class="form-inline"  >                   
                     <form action="Logout" method="get" class="form-inline">

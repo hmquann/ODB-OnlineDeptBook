@@ -11,34 +11,26 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 import model.User;
 
 /**
  *
- * @author ADMIN
+ * @author Nguyen Nguyen Khoa
  */
-public class ActiveAccountController extends HttpServlet {
+public class AdminController extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int value = Integer.parseInt(req.getParameter("otp"));
-        HttpSession session = req.getSession();
-        int otp = (int) session.getAttribute("otp1");
-        String email = req.getParameter("email");
-        UserDAO dao = new UserDAO();
-        if (value == otp) {
-            dao.activeAccount(email);
-            resp.sendRedirect("./Login");
-        } else {
-            req.setAttribute("email", email);
-            String mess = "Try again!";
-            req.setAttribute("mess", mess);
-            req.getRequestDispatcher("otp.jsp").forward(req, resp);
-        }
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("otp.jsp").forward(req, resp);
+        UserDAO dao = new UserDAO();
+        List<User> listUserInfo = dao.getUserInformation();
+        req.setAttribute("listUserInfo", listUserInfo);
+        req.getRequestDispatcher("admin.jsp").forward(req, resp);
     }
 
 }

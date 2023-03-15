@@ -81,11 +81,11 @@ public class CustomerDAO extends DBContext {
     public List<Customer> pagingCustomer(int index, int accountID) {
         List<Customer> t = new ArrayList<>();
         String sql = "  select * from Customer where accountID=? order by customerID \n"
-                + "  offset ? rows fetch next 3 rows only";
+                + "  offset ? rows fetch next 5 rows only";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, accountID);
-            stm.setInt(2, (index - 1) * 3);
+            stm.setInt(2, (index - 1) * 5);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
