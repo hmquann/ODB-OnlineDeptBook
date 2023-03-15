@@ -59,6 +59,14 @@
                                     <h3 class="mb-0">Debtors list ${mess}</h3>
                                     <p class="small text-muted m-0">Total: ${record} Record(s)</p>
                                 </div>
+                                 <div class="float-right">
+                                <a type="button" href="ListCustomer?operater=true" title="List Owner"
+                                   class="mr-1 btn btn-primary" style="border-radius: 20px;">List Owner</a>
+                            </div>
+                            <div class="float-right">
+                                <a type="button" href="ListCustomer?operater=false" title="List Owner"
+                                   class="mr-1 btn btn-primary" style="border-radius: 20px;">List Debtor</a>
+                            </div>
                                 <div class="float-right"><button type="button" data-toggle="modal" data-target="#add_debtor" title="Add new Debtor"
                                                                  class="mr-1 btn btn-primary" style="border-radius: 20px;"><i class="fa fa-plus"></i>
                                         Add new Debtors</button>
@@ -153,12 +161,12 @@
 </body>
 <script src="js/main.js"></script>
 <script>
-    const totalCell = document.querySelectorAll('tr td:nth-child(8)');
+    const totalCell = document.querySelectorAll('tr td:nth-child(6)');
 // Kiểm tra giá trị total
     totalCell.forEach(totalCell => { 
             if (parseFloat(totalCell.innerText) < 0) {
                 totalCell.parentNode.style.color = 'red';
-            } else if (parseFloat(totalCell.innerText) == 0) {
+            } else if (parseFloat(totalCell.innerText) == 0 || totalCell.innerText == 'Active' ||totalCell.innerText == 'De Active'  ) {
                 totalCell.parentNode.style.color = 'black';
             } else {
                 totalCell.parentNode.style.color = 'green';

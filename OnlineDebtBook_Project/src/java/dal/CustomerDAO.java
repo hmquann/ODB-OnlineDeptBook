@@ -188,7 +188,22 @@ public class CustomerDAO extends DBContext {
             e.printStackTrace();
         }
     }
-
+     public List<Customer> listCustomer(int accountID, boolean operator) {
+        List<Customer> t = new ArrayList<>();
+        String sql = "    select * from Customer where total " + (operator ? " > " : " < ") + " 0 and accountID = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, accountID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getFloat(9)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return t;
+    }
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO();
         System.out.println(dao.getCustomerByCustomerId("2"));
