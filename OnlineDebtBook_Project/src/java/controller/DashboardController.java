@@ -24,7 +24,9 @@ public class DashboardController extends HttpServlet {
         HttpSession session = req.getSession();
         CustomerDAO dao = new CustomerDAO();
         TransactionDAO TDao = new TransactionDAO();
+        boolean pageDirect = true;
         String indexPage = req.getParameter("index");
+
         if (indexPage == null) {
             indexPage = "1";
         }
@@ -44,6 +46,7 @@ public class DashboardController extends HttpServlet {
             if (count % 5 != 0) {
                 endPage++;
             }
+            req.setAttribute("pageDirect", pageDirect);
             req.setAttribute("endP", endPage);
             req.setAttribute("indexPage", index);
             req.setAttribute("record", count);

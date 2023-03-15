@@ -93,10 +93,12 @@ numberInput.addEventListener("input", (e) => {
 
     const inputValue = parseInt(value1);
     if (!isNaN(inputValue)) {
-        numberText.innerText = numToWords(inputValue);
-    } else {
-        numberText.innerText = "Nah";
-    }
+        if(inputValue != 0){
+             numberText.innerText = numToWords(inputValue);
+        } else {
+             numberText.innerText = "";
+        }
+    } 
 });
 numberInput1.addEventListener("input", (e) => {
     const value1 = e.target.value.replace(/,/g, ''); // Xóa các dấu ',' cũ
@@ -105,10 +107,12 @@ numberInput1.addEventListener("input", (e) => {
 
     const inputValue = parseInt(value1);
     if (!isNaN(inputValue)) {
-        numberText1.innerText = numToWords(inputValue);
-    } else {
-        numberText1.innerText = "Nah";
-    }
+        if(inputValue != 0){
+             numberText.innerText = numToWords(inputValue);
+        } else {
+             numberText.innerText = "";
+        }
+    } 
 });
 function validateNumberInput(event) {
     const keyCode = event.keyCode || event.which;

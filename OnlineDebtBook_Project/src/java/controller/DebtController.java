@@ -87,7 +87,7 @@ public class DebtController extends HttpServlet {
         
        TDao.insertNewDebt(note, Float.parseFloat(amount.replaceAll(",", "")), classify, startDate, customerId, user.getAccountID());
        CDAO.updateTotalCustomer(amount.replaceAll(",", ""), classify, String.valueOf(customerId));
-        
+        CDAO.updateCustomerUpdateDateWhenAddNewDebt(customerId);
         String referrer = request.getHeader("referer");
         response.sendRedirect(referrer);
     }

@@ -65,8 +65,8 @@ public class ListCustomerController extends HttpServlet {
             throws ServletException, IOException {
                 HttpSession session = req.getSession();
         CustomerDAO dao = new CustomerDAO();
-        TransactionDAO TDao = new TransactionDAO();
         String indexPage = req.getParameter("index");
+        boolean pageDirect = false;
         if (indexPage == null) {
             indexPage = "1";
         }
@@ -76,14 +76,15 @@ public class ListCustomerController extends HttpServlet {
         } else {
             User u = (User) session.getAttribute("user2");
             boolean operater = Boolean.parseBoolean(req.getParameter("operater"));
-            List<Customer> listCustomer = dao.listCustomer(u.getAccountID(), operater);
+            List<Customer> listCustomer = dao.listCustomer(index,u.getAccountID(), operater);
             req.setAttribute("u", u);
             req.setAttribute("list1", listCustomer);      
-            int count = dao.getTotalCustomer(u.getAccountID());
+            int count = dao.getTotalSortCustomer(u.getAccountID(),operater);
             int endPage = count / 5;
             if (count % 5 != 0) {
                 endPage++;
             }
+            req.setAttribute("pageDirect", pageDirect);
             req.setAttribute("endP", endPage);
             req.setAttribute("indexPage", index);
             req.setAttribute("record", count);
