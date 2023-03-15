@@ -59,6 +59,8 @@ public class SearchController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    CustomerDAO dao = new CustomerDAO();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -66,7 +68,7 @@ public class SearchController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String name = req.getParameter("customerName");
 //        String address = req.getParameter("address");
-        CustomerDAO dao = new CustomerDAO();
+
         HttpSession session = req.getSession();
         User u = (User) session.getAttribute("user2");
         List<Customer> list = dao.searchCustomerByName(name, u.getAccountID());

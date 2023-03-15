@@ -78,7 +78,7 @@
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>Mai Tr?n Huy</td>
+                                    <td>Mai Tran Huy</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -100,7 +100,7 @@
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>Hoàng Minh Quân</td>
+                                    <td>Hoang Minh Quan</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -117,12 +117,12 @@
                         </div>
                     </div>
                     <div class="item_teacher showtotop delay-04">
-                        <img src="image/phamchithanh.jpg" class="avatar">
+                        <img src="image/dattt.jpg" class="avatar">
                         <div class="content_teacher">
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td></td>
+                                    <td>Trinh Tien Dat</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -139,12 +139,12 @@
                         </div>
                     </div>
                     <div class="item_teacher showtotop delay-02">
-                        <img src="image/caovancong.jpg" class="avatar">
+                        <img src="image/dung.png" class="avatar">
                         <div class="content_teacher">
                             <table width="100%" cellspacing="0">
                                 <tr>
                                     <td>Name</td>
-                                    <td>L? Trung Dung</td>
+                                    <td>Le Trung Dung</td>
                                 </tr>
                                 <tr>
                                     <td>Position</td>
@@ -193,7 +193,7 @@
 
         <div class="footer">
             <p>Email : swpgroup3@fpt.edu.vn</p>
-            <p>Address: FPT University, H?a L?c, H? N?i</p>
+            <p>Address: FPT University, Hoa Lac, Ha Noi</p>
             <h5>&copy; Copyright 2023. SWP GROUP 3</h5>
         </div>
         <script src='js/homepage.js'></script>
