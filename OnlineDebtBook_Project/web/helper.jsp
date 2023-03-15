@@ -18,13 +18,13 @@
                                 </div>
                                 <div class="card-body">
                                     <form role="form" action="Debt" method="post" id="addNewDebtForm">
-                                        <input style="display:none" id="addNewDebtFormCustomerId" name="customerId"/>
+                                        <input style="display:none" id="addNewDebtFormCustomerId"  name="customerId"/>
                                         <div autocomplete="off">
                                             <div class="position-relative row form-group">
                                                 <div class="form-label-horizontal col-md-3"><label class=""><b>Note(*)
                                                         </b></label></div>
                                                 <div class="col-md-9"><textarea rows="8" placeholder="Note"
-                                                                                class="form-control" name="note"></textarea>
+                                                                                class="form-control" name="note" value=""></textarea>
                                                 </div>
                                             </div>
                                             <div class="position-relative row form-group">
@@ -43,8 +43,8 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input placeholder="Input number" type="text" class="form-control" name="amount" id="numberInput" value="0" onkeypress="return validateNumberInput(event)">
-                                                    <div id="numberText">Nah</div>
+                                                    <input placeholder="Input number" type="text" class="form-control" name="amount" id="numberInput" value="0" onkeypress="return validateNumberInput(event)" required>
+                                                    <div id="numberText">zero</div>
                                                 </div>
 
                                             </div>
@@ -100,7 +100,7 @@
                                             <div class="position-relative row form-group">
                                                 <div class="form-label-horizontal col-md-3"><label class=""><b>Name (*)</b></label></div>
                                                 <div class="col-md-9">
-                                                    <input placeholder="" type="text" class="form-control" value="" name="debtorName">
+                                                    <input placeholder="" type="text" class="form-control" value="" required name="debtorName">
                                                     <div></div>
                                                 </div>
                                             </div>
@@ -125,8 +125,8 @@
                                             <div class="position-relative row form-group">
                                                 <div class="form-label-horizontal col-md-3"><label class=""><b>Total debt </b></label></div>
                                                 <div class="col-md-9">
-                                                    <input disabled="" placeholder="Input number" type="text" class="form-control"value="0">
-                                                    <div class="">Nah</div>
+                                                    <input disabled="" placeholder="Input number" type="text" class="form-control" value="">
+                                                    <div class="">Zero</div> 
                                                 </div>
                                             </div>
                                             <div style="display: flex; justify-content: center; align-items: center;">
@@ -193,8 +193,8 @@
                                             <div class="position-relative row form-group">
                                                 <div class="form-label-horizontal col-md-3"><label class=""><b>Total debt </b></label></div>
                                                 <div class="col-md-9">
-                                                    <input disabled="" placeholder="Input number" type="text" class="form-control"value="0" id="editDebtorTotalDebt">
-                                                    <div class="">Nah</div>
+                                                    <input disabled="" placeholder="Input number" type="text" class="form-control" value="" id="editDebtorTotalDebt">
+                                                    <div class=""></div>
                                                 </div>
                                             </div>
                                             <div style="display: flex; justify-content: center; align-items: center;">

@@ -175,6 +175,25 @@ public class CustomerDAO extends DBContext {
         }
     }
 
+    public void updateCustomerUpdateDateWhenAddNewDebt(int CustomerId) {
+
+        try {
+            LocalDateTime currentTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+            Timestamp sqlDateTime = Timestamp.valueOf(currentTime.format(formatter));
+
+            String sql = "UPDATE Customer "
+                    + "SET dateUpdateCustomer = ?\n"
+                    + "WHERE customerID = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setTimestamp(1, sqlDateTime);
+            stm.setInt(2, CustomerId);
+            stm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void updateTotalCustomer(String money, boolean classify, String CustomerId) {
         try {
             String sql = "UPDATE Customer "
@@ -188,12 +207,15 @@ public class CustomerDAO extends DBContext {
             e.printStackTrace();
         }
     }
-     public List<Customer> listCustomer(int accountID, boolean operator) {
+
+    public List<Customer> listCustomer(int index, int accountID, boolean operator) {
         List<Customer> t = new ArrayList<>();
-        String sql = "    select * from Customer where total " + (operator ? " > " : " < ") + " 0 and accountID = ?";
+        String sql = "    select * from Customer where total " + (operator ? " > " : " < ") + " 0 and accountID = ? order by customerID "
+                + " offset ? rows fetch next 5 rows only";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, accountID);
+            stm.setInt(2, (index - 1) * 5);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
@@ -204,8 +226,27 @@ public class CustomerDAO extends DBContext {
         }
         return t;
     }
+
+    public int getTotalSortCustomer(int accountID, boolean operator) {
+        String sql = "select count(*) from Customer where accountID= ? AND total " + (operator ? " > " : " < ") + " 0";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, accountID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO();
-        System.out.println(dao.getCustomerByCustomerId("2"));
+        List<Customer> lst = dao.listCustomer(1, 4, true);
+        int i = dao.getTotalSortCustomer(4, true);
+        System.out.println(i);
+
     }
 }

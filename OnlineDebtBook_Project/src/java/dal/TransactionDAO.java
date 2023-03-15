@@ -18,14 +18,17 @@ import model.HistoryTransaction;
  */
 public class TransactionDAO extends DBContext {
 
-    public List<HistoryTransaction> getListDebtCustomerID(int customerID) {
+    public List<HistoryTransaction> getListDebtCustomerID(int index, int customerID) {
         List<HistoryTransaction> t = new ArrayList<>();
         String sql = "SELECT *"
                 + "  FROM [historyTransaction]"
-                + "  WHERE customerID = ?";
+                + "  WHERE customerID = ?"
+                + "  ORDER BY [transactionID]"
+                + "  offset ? rows fetch next 10 rows only";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, customerID);
+            stm.setInt(2, (index - 1) * 10);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 t.add(new HistoryTransaction(rs.getInt(1), rs.getString(2), rs.getFloat(3), rs.getBoolean(4),
@@ -35,6 +38,21 @@ public class TransactionDAO extends DBContext {
             e.printStackTrace();
         }
         return (t);
+    }
+
+    public int getTotalListDebt(int accountID) {
+        String sql = "select count(*) from historyTransaction where customerID=? ";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, accountID);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public String insertNewDebt(String note, float money, boolean classify, String dateDebt, int customerID, int CreateBy) {
@@ -58,5 +76,13 @@ public class TransactionDAO extends DBContext {
         }
         return null;
     }
-
+    public static void main(String[] args) {
+        TransactionDAO dao = new TransactionDAO();
+        List<HistoryTransaction> getListDebtCustomerID = dao.getListDebtCustomerID(2, 25);
+        int index = dao.getTotalListDebt(25);
+        for (HistoryTransaction historyTransaction : getListDebtCustomerID) {
+            System.out.println(historyTransaction);
+        }
+        System.out.println(index);
+    }
 }

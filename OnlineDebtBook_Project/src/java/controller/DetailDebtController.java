@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.HistoryTransaction;
+import model.User;
 
 /**
  *
@@ -38,13 +39,34 @@ public class DetailDebtController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
             int CustomerId = Integer.parseInt(request.getParameter("Customerid"));
             TransactionDAO dao = new TransactionDAO();
-            List<HistoryTransaction> listDebtByCustomerId = dao.getListDebtCustomerID(CustomerId);
-            request.setAttribute("listDetail", listDebtByCustomerId);
-            HttpSession session = request.getSession();
-            session.setAttribute("CustomerId", CustomerId);
-            request.getRequestDispatcher("detail.jsp").forward(request, response);
+            String indexPage = request.getParameter("index");
+
+            if (indexPage == null) {
+                indexPage = "1";
+            }
+            
+            if (session.getAttribute("user") == null) {
+                response.sendRedirect("Login");
+            } else {
+                int index = Integer.parseInt(indexPage);
+                int count = dao.getTotalListDebt(CustomerId);
+                int endPage = count / 10;
+                if (count % 10 != 0) {
+                    endPage++;
+                }
+
+                request.setAttribute("endP", endPage);
+                request.setAttribute("indexPage", index);
+                request.setAttribute("record", count);
+
+                List<HistoryTransaction> listDebtByCustomerId = dao.getListDebtCustomerID(index, CustomerId);
+                request.setAttribute("listDetail", listDebtByCustomerId);
+                session.setAttribute("CustomerId", CustomerId);
+                request.getRequestDispatcher("detail.jsp").forward(request, response);
+            }
         }
     }
 

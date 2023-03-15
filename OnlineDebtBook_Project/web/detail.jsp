@@ -105,7 +105,19 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.history.go(-1);" >Back</button>
+
+                    <ul class="pagination justify-content-end" style="margin-left: 600px" >
+                        <c:if test="${indexPage > 1 }">
+                            <li class="page-item "><a class="page-link" href="DetailDebt?Customerid=${CustomerId}&index=${indexPage-1}">Previous</a></li>
+                            </c:if>                                      
+                            <c:forEach begin="1" end="${endP}" var="i">   
+                            <li class="page-item ${indexPage == i?"active":"" }"><a class="page-link" href="DetailDebt?Customerid=${CustomerId}&index=${i}"">${i}</a></li>                                   
+                            </c:forEach>
+                            <c:if test="${indexPage < endP}">
+                            <li class="page-item"><a class="page-link" href="DetailDebt?Customerid=${CustomerId}&index=${indexPage+1}">Next</a></li>
+                            </c:if>
+                    </ul>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href = '../OnlineDebtBook_Project/Dashboard';" >Back</button>
                 </div>
             </div>
         </div>

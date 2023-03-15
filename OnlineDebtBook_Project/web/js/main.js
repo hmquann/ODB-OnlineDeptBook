@@ -50,10 +50,12 @@ numberInput.addEventListener("input", (e) => {
 
     const inputValue = parseInt(value1);
     if (!isNaN(inputValue)) {
-        numberText.innerText = numToWords(inputValue);
-    } else {
-        numberText.innerText = "Nah";
-    }
+        if(inputValue != 0){
+             numberText.innerText = numToWords(inputValue);
+        } else {
+             numberText.innerText = "";
+        }
+    } 
 });
 
 function validateNumberInput(event) {
