@@ -47,10 +47,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                 <div class="two-col1">
                     <div class="two1">
-                        <label><a href="http://localhost:9999/OnlineDebtBook_Project/Login">Login</a></label>
+                        <label><a href="./Login">Login</a></label>
                     </div>
                     <div class="two2">
-                        <label><a href="http://localhost:9999/OnlineDebtBook_Project/Register">Register</a></label>
+                        <label><a href="./register.jsp">Register</a></label>
                     </div>
                 </div>
             </div>

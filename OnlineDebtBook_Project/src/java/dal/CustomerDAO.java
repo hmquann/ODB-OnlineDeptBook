@@ -25,7 +25,7 @@ public class CustomerDAO extends DBContext {
         List<Customer> t = new ArrayList<>();
         String sql = "SELECT * "
                 + "FROM Customer "
-                + "WHERE accountID = ?";
+                + "WHERE accountID = ? ";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, accountID);
@@ -80,8 +80,9 @@ public class CustomerDAO extends DBContext {
 
     public List<Customer> pagingCustomer(int index, int accountID) {
         List<Customer> t = new ArrayList<>();
-        String sql = "  select * from Customer where accountID=? order by customerID \n"
-                + "  offset ? rows fetch next 5 rows only";
+        String sql = "  select * from Customer where accountID=? order by customerID DESC \n"
+                + "  offset ? rows fetch next 5 rows only ";
+        
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, accountID);
@@ -244,9 +245,11 @@ public class CustomerDAO extends DBContext {
 
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO();
-        List<Customer> lst = dao.listCustomer(1, 4, true);
+        List<Customer> lst = dao.pagingCustomer(2, 4);
         int i = dao.getTotalSortCustomer(4, true);
-        System.out.println(i);
+        for (Customer customer : lst) {
+            System.out.println(customer);
+        }
 
     }
 }

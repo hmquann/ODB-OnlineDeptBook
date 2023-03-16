@@ -20,7 +20,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <title>JSP Page</title>
     </head>
-    
+
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="padding-bottom: 20px;padding-top: 10px">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,9 @@
                 <a class="navbar-brand" href="Dashboard" style="color: white">OnlineDebtBook</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
                     <c:if  test="${sessionScope.user2.isAdmin==false}">
-                    <li class="nav-item active">
-                        <a href="Dashboard" class="nav-link" style="color:white">Home</a>
-                    </li>
+                        <li class="nav-item active">
+                            <a href="Dashboard" class="nav-link" style="color:white">Home</a>
+                        </li>
                     </c:if>
                 </ul>
                 <form class="form-inline"  >                   
@@ -47,7 +47,7 @@
                                                     </button>
                                            </div>            -->
                         <a href="ViewProfile" class="btn btn-info btn-lg" style="border-radius: 15px;margin-top: 10px"><i class="fa-solid fa-lg fa-user"></i></a>                          
-                        <a href="Logout" class="btn btn-warning btn-lg" style="border-radius: 15px; margin-left: 15px;margin-top: 10px"><i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a onclick="return confirm('Do you want to log out the Online Debt Book system');" href="Logout" class="btn btn-warning btn-lg" style="border-radius: 15px; margin-left: 15px;margin-top: 10px" ><i class="fa-solid fa-right-from-bracket"></i></a>
                     </form>
                 </form>
             </div>

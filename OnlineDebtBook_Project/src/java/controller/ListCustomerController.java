@@ -88,6 +88,7 @@ public class ListCustomerController extends HttpServlet {
             req.setAttribute("endP", endPage);
             req.setAttribute("indexPage", index);
             req.setAttribute("record", count);
+            req.setAttribute("operater", operater);
             req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
         }
     }

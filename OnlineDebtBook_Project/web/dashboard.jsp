@@ -135,13 +135,13 @@
                                     <div id="pagination">
                                         <ul class="pagination justify-content-end" style="margin-left: 600px" >
                                             <c:if test="${indexPage > 1 }">
-                                                <li class="page-item "><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage-1}">Previous</a></li>
+                                                <li class="page-item "><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage-1}&operater=${operater}">Previous</a></li>
                                                 </c:if>                                      
                                                 <c:forEach begin="1" end="${endP}" var="i">   
-                                                <li class="page-item ${indexPage == i?"active":"" }"><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${i}"">${i}</a></li>                                   
+                                                <li class="page-item ${indexPage == i?"active":"" }"><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${i}&operater=${operater}">${i}</a></li>                                   
                                                 </c:forEach>
                                                 <c:if test="${indexPage < endP}">
-                                                <li class="page-item"><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage+1}">Next</a></li>
+                                                <li class="page-item"><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage+1}&operater=${operater}">Next</a></li>
                                                 </c:if>
                                         </ul>
                                     </div>
@@ -172,9 +172,11 @@
         } else {
             totalCell.parentNode.style.color = 'green';
         }
-
-
     });
 
+function clickSubmitAddNewNote(e){
+    e.preventDefault();
+    confirm('lmaklmdsa');
+}
 </script>
 </html>

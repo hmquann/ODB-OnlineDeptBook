@@ -38,9 +38,9 @@
 
                     <p class="mess" style="color: red">${mess}</p>
 
-               
 
-                 
+
+
 
                     <div class="input-field">
                         <button type="submit" class="submit" value="Login" id="">Login</button>
@@ -49,6 +49,9 @@
                 </form>
 
                 <div class="two-col">
+                    <div class="one">
+                        <label><a href="homepage.jsp">Homepage</a></label>
+                    </div>
                     <div class="one">
                         <label><a href="register.jsp">Register</a></label>
                     </div>
