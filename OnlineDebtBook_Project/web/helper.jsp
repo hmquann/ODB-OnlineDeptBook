@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
 
 <div class="modal fade" id="new_debt" tabindex="-1" role="dialog" aria-labelledby="new_debt"
      aria-hidden="true" data-backdrop="static">

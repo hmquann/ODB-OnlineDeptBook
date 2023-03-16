@@ -19,6 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="./css/forgotpass.css">
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
     </head>
     <body>
   
@@ -38,7 +39,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <i class='bx bx-envelope'></i>
                         </div>
                         <div class="input-field1">
-                            <button type="submit" class="submit1" value="Find" id="">Find</button>
+                            <button type="submit" class="submit1" value="Find" id="" style="background: #02B875;">Find</button>
                         </div>
                         <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
                         <p style="color: red;">${mess2}</p>

@@ -36,6 +36,7 @@
         <!-- Import thư viện JSON -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"></script>
         <title>Debt Detail</title>
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
     </head>
 
 
@@ -60,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body" id="detail_debt" >
-                                        <div class="table">
+                                        <div class="table-responsive">
                                             <table class="table table-bordered table-sm" data-resizable-columns-id="demo-table-v2">
                                                 <thead>
                                                     <tr>

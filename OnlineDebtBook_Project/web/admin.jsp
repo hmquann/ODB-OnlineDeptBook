@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="js/resizableColumns.min.js"></script>
         <link rel="stylesheet" href="css/admin.css"/>
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
 
 
     </head>

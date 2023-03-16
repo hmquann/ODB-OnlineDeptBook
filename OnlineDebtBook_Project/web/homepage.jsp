@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
 <!DOCTYPE html>
 <html>
     <head>

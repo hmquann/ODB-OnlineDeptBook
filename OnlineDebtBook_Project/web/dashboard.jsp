@@ -38,6 +38,7 @@
         <!-- Import thư viện JSON -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"></script>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
     </head>
     <style>
         .negativeTotal {
@@ -85,7 +86,7 @@
                                 </div> 
                             </form>
                             <div class="card-body">
-                                <div class="table" style="text-align: center;">
+                                <div class="table-responsive" style="text-align: center;">
                                     <table class="table table-bordered table-sm" data-resizable-columns-id="demo-table-v2">
                                         <thead>
                                             <tr id="ta"  style="background-color: white;color:black;">
@@ -130,10 +131,9 @@
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
-                                    </table>
-                                    <hr style="width:max-content">                                   
-                                    <div id="pagination">
-                                        <ul class="pagination justify-content-end" style="margin-left: 600px" >
+                                    </table>                                  
+                                    <div id="pagination" class="pagination-responsive d-flex justify-content-center" style="justify-content: center">
+                                        <ul class="pagination justify-content-end" style="justify-items:  center" >
                                             <c:if test="${indexPage > 1 }">
                                                 <li class="page-item "><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage-1}&operater=${operater}">Previous</a></li>
                                                 </c:if>                                      

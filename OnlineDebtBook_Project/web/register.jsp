@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/register.css"/>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="shortcut icon" href="./img/ODB_ Online_Debt_Book.png" type="image/x-icon">
     </head>
     <body>
 
@@ -52,7 +53,7 @@
                     <p style="color: red; padding-left: 90px">${mess}</p>
                     <p style="color: red;padding-left: 90px">${mess1}</p>
                     <div class="input-field2">
-                        <input type="submit" class="submit2" value="Sign Up" id="">
+                        <input type="submit" class="submit2" value="Sign Up" id="" style="background: #02B875;">
                     </div>
                 </form>
                 <div class="two-col2">
