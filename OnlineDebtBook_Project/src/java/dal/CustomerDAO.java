@@ -7,11 +7,9 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import model.*;
 
@@ -63,8 +61,8 @@ public class CustomerDAO extends DBContext {
         return null;
     }
 
-    public int getTotalCustomer(int accountID) {
-        String sql = "select count(*) from Customer where accountID=? ";
+    public int getTotalCustomer(int accountID,String alterSQL) {
+        String sql = "select count(*) from Customer where " + alterSQL + " accountID= ?";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, accountID);
@@ -78,15 +76,14 @@ public class CustomerDAO extends DBContext {
         return 0;
     }
 
-    public List<Customer> pagingCustomer(int index, int accountID) {
+    public List<Customer> pagingCustomer(int index, int accountID, int numberPagingCustomer, String alterSQL) {
         List<Customer> t = new ArrayList<>();
-        String sql = "  select * from Customer where accountID=? order by customerID DESC \n"
-                + "  offset ? rows fetch next 5 rows only ";
-        
+        String sql = "  select * from Customer where " + alterSQL + " accountID= ? order by customerID DESC \n"
+                + "  offset ? rows fetch next " + numberPagingCustomer + " rows only ";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, accountID);
-            stm.setInt(2, (index - 1) * 5);
+            stm.setInt(2, (index - 1) * numberPagingCustomer);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
@@ -105,25 +102,6 @@ public class CustomerDAO extends DBContext {
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, "%" + name + "%");
-            stm.setInt(2, accountID);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getFloat(9)));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return t;
-    }
-
-    public List<Customer> searchCustomerByAddress(String address, int accountID) {
-        List<Customer> t = new ArrayList<>();
-        String sql = "  select * from Customer\n"
-                + "  where customerAddress like ? AND accountID=?";
-        try {
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, "%" + address + "%");
             stm.setInt(2, accountID);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
@@ -209,25 +187,6 @@ public class CustomerDAO extends DBContext {
         }
     }
 
-    public List<Customer> listCustomer(int index, int accountID, boolean operator) {
-        List<Customer> t = new ArrayList<>();
-        String sql = "    select * from Customer where total " + (operator ? " > " : " < ") + " 0 and accountID = ? order by customerID "
-                + " offset ? rows fetch next 5 rows only";
-        try {
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1, accountID);
-            stm.setInt(2, (index - 1) * 5);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                t.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getFloat(9)));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return t;
-    }
-
     public int getTotalSortCustomer(int accountID, boolean operator) {
         String sql = "select count(*) from Customer where accountID= ? AND total " + (operator ? " > " : " < ") + " 0";
         try {
@@ -245,11 +204,9 @@ public class CustomerDAO extends DBContext {
 
     public static void main(String[] args) {
         CustomerDAO dao = new CustomerDAO();
-        List<Customer> lst = dao.pagingCustomer(2, 4);
-        int i = dao.getTotalSortCustomer(4, true);
-        for (Customer customer : lst) {
+        List<Customer> listCustomer = dao.pagingCustomer(2, 4, 5, "");
+        for (Customer customer : listCustomer) {
             System.out.println(customer);
         }
-
     }
 }

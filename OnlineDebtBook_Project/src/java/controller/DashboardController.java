@@ -24,15 +24,18 @@ public class DashboardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-
-        TransactionDAO TDao = new TransactionDAO();
         boolean pageDirect = true;
         String indexPage = req.getParameter("index");
-
+        String numberPagingTemp = req.getParameter("numberPagingCustomer");
         if (indexPage == null) {
             indexPage = "1";
         }
+        if (numberPagingTemp == ""  || numberPagingTemp == null) {
+            numberPagingTemp = "5";
+        }
+
         int index = Integer.parseInt(indexPage);
+        int numberPagingCustomer = Integer.parseInt(numberPagingTemp);
         if (session.getAttribute("user") == null) {
             resp.sendRedirect("Login");
         } else {
@@ -40,14 +43,15 @@ public class DashboardController extends HttpServlet {
             List<User> listUserInfo = dal.getUserInformation();
             req.setAttribute("listUserInfo", listUserInfo);
             User u = (User) session.getAttribute("user2");
-            List<Customer> listCustomer = dao.pagingCustomer(index, u.getAccountID());
+            List<Customer> listCustomer = dao.pagingCustomer(index, u.getAccountID(), numberPagingCustomer, "");
             req.setAttribute("u", u);
             req.setAttribute("list1", listCustomer);
-            int count = dao.getTotalCustomer(u.getAccountID());
-            int endPage = count / 5;
-            if (count % 5 != 0) {
+            int count = dao.getTotalCustomer(u.getAccountID(),"");
+            int endPage = count / numberPagingCustomer;
+            if (count % numberPagingCustomer != 0) {
                 endPage++;
             }
+            req.setAttribute("numberPagingCustomer", numberPagingCustomer);
             req.setAttribute("pageDirect", pageDirect);
             req.setAttribute("endP", endPage);
             req.setAttribute("indexPage", index);

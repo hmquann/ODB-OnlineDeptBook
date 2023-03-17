@@ -42,7 +42,7 @@ public class ListCustomerController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListCustomerController</title>");            
+            out.println("<title>Servlet ListCustomerController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListCustomerController at " + request.getContextPath() + "</h1>");
@@ -63,27 +63,35 @@ public class ListCustomerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-                HttpSession session = req.getSession();
+        HttpSession session = req.getSession();
         CustomerDAO dao = new CustomerDAO();
         String indexPage = req.getParameter("index");
         boolean pageDirect = false;
+        String numberPagingTemp = req.getParameter("numberPagingCustomer");
         if (indexPage == null) {
             indexPage = "1";
         }
+        if (numberPagingTemp == "" || numberPagingTemp == null) {
+            numberPagingTemp = "5";
+        }
+        int numberPagingCustomer = Integer.parseInt(numberPagingTemp);
         int index = Integer.parseInt(indexPage);
         if (session.getAttribute("user") == null) {
             resp.sendRedirect("Login");
         } else {
             User u = (User) session.getAttribute("user2");
             boolean operater = Boolean.parseBoolean(req.getParameter("operater"));
-            List<Customer> listCustomer = dao.listCustomer(index,u.getAccountID(), operater);
+            String alterSQL = " total " + (operater ? " > " : " < ") + " 0 AND";
+            List<Customer> listCustomer = dao.pagingCustomer(index, u.getAccountID(), numberPagingCustomer, alterSQL);
             req.setAttribute("u", u);
-            req.setAttribute("list1", listCustomer);      
-            int count = dao.getTotalSortCustomer(u.getAccountID(),operater);
-            int endPage = count / 5;
-            if (count % 5 != 0) {
+            req.setAttribute("list1", listCustomer);
+
+            int count = dao.getTotalCustomer(u.getAccountID(), alterSQL);
+            int endPage = count / numberPagingCustomer;
+            if (count % numberPagingCustomer != 0) {
                 endPage++;
             }
+            req.setAttribute("numberPagingCustomer", numberPagingCustomer);
             req.setAttribute("pageDirect", pageDirect);
             req.setAttribute("endP", endPage);
             req.setAttribute("indexPage", index);

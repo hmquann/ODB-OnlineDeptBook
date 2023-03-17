@@ -105,9 +105,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="justify-content: space-between !important">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="returnToDashboard();" >Back</button>
 
-                    <ul class="pagination justify-content-end" style="margin-left: 600px" >
+                    <ul class="pagination justify-content-end">
                         <c:if test="${indexPage > 1 }">
                             <li class="page-item "><a class="page-link" href="DetailDebt?Customerid=${CustomerId}&index=${indexPage-1}">Previous</a></li>
                             </c:if>                                      
@@ -118,7 +119,6 @@
                             <li class="page-item"><a class="page-link" href="DetailDebt?Customerid=${CustomerId}&index=${indexPage+1}">Next</a></li>
                             </c:if>
                     </ul>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href = '../OnlineDebtBook_Project/Dashboard';" >Back</button>
                 </div>
             </div>
         </div>
@@ -202,4 +202,12 @@
         <jsp:include page="helper.jsp"></jsp:include>
     </body>
     <script src="js/detail.js"></script>
+    <script>
+    const linkDashboard = localStorage.getItem('linkDashboard');
+    function returnToDashboard(){
+        localStorage.clear();
+   return window.location.href = linkDashboard;
+   
+}
+    </script>
 </html>

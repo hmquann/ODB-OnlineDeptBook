@@ -62,11 +62,11 @@
                                     <p class="small text-muted m-0">Total: ${record} Record(s)</p>
                                 </div>
                                 <div class="float-right">
-                                    <a type="button" href="ListCustomer?operater=true" title="List Owner"
+                                    <a type="button" href="ListCustomer?operater=true&numberPagingCustomer=${numberPagingCustomer}" title="List Owner"
                                        class="mr-1 btn btn-primary" style="border-radius: 20px;">List Owner</a>
                                 </div>
                                 <div class="float-right">
-                                    <a type="button" href="ListCustomer?operater=false" title="List Owner"
+                                    <a type="button" href="ListCustomer?operater=false&numberPagingCustomer=${numberPagingCustomer}" title="List Owner"
                                        class="mr-1 btn btn-primary" style="border-radius: 20px;">List Debtor</a>
                                 </div>
                                 <div class="float-right"><button type="button" data-toggle="modal" data-target="#add_debtor" title="Add new Debtor"
@@ -86,7 +86,7 @@
                                 </div> 
                             </form>
                             <div class="card-body">
-                                <div class="table-responsive" style="text-align: center;">
+                                <div class="table-responsive" style="max-height: 425px; overflow-y: auto;text-align: center;">
                                     <table class="table table-bordered table-sm" data-resizable-columns-id="demo-table-v2">
                                         <thead>
                                             <tr id="ta"  style="background-color: white;color:black;">
@@ -132,20 +132,29 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>                                  
-                                    <div id="pagination" class="pagination-responsive d-flex justify-content-center" style="justify-content: center">
-                                        <ul class="pagination justify-content-end" style="justify-items:  center" >
-                                            <c:if test="${indexPage > 1 }">
-                                                <li class="page-item "><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage-1}&operater=${operater}">Previous</a></li>
-                                                </c:if>                                      
-                                                <c:forEach begin="1" end="${endP}" var="i">   
-                                                <li class="page-item ${indexPage == i?"active":"" }"><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${i}&operater=${operater}">${i}</a></li>                                   
-                                                </c:forEach>
-                                                <c:if test="${indexPage < endP}">
-                                                <li class="page-item"><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage+1}&operater=${operater}">Next</a></li>
-                                                </c:if>
-                                        </ul>
-                                    </div>
 
+
+                                </div>
+                                <div id="pagination" class="pagination-responsive d-flex justify-content-center" style="justify-content: center;justify-content: space-around !important">
+                                    <ul class="pagination justify-content-end" style="justify-items:  center" >
+                                        <c:if test="${indexPage > 1 }">
+                                            <li class="page-item "><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage-1}&operater=${operater}&numberPagingCustomer=${numberPagingCustomer}">Previous</a></li>
+                                            </c:if>                                      
+                                            <c:forEach begin="1" end="${endP}" var="i">   
+                                            <li class="page-item ${indexPage == i?"active":"" }"><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${i}&operater=${operater}&numberPagingCustomer=${numberPagingCustomer}">${i}</a></li>                                   
+                                            </c:forEach>
+                                            <c:if test="${indexPage < endP}">
+                                            <li class="page-item"><a class="page-link" href="${pageDirect ? "Dashboard" : "ListCustomer"}?index=${indexPage+1}&operater=${operater}&numberPagingCustomer=${numberPagingCustomer}">Next</a></li>
+                                            </c:if>
+                                    </ul>
+                                    <div class="pagination form-group">
+                                        <select class="form-control" id="numberPagingCustomer" name="numberPagingCustomer" onchange="changeNumberPagingCustomer()">
+                                            <option value="5" data-link="${pageDirect ? "Dashboard" : "ListCustomer"}?numberPagingCustomer=5" ${numberPagingCustomer == 5 ? "selected" : ""}>5 Records</option>
+                                            <option value="10" data-link="${pageDirect ? "Dashboard" : "ListCustomer"}?numberPagingCustomer=10" ${numberPagingCustomer == 10 ? "selected" : ""}>10 Records</option>
+                                            <option value="20" data-link="${pageDirect ? "Dashboard" : "ListCustomer"}?numberPagingCustomer=20" ${numberPagingCustomer == 20 ? "selected" : ""}>20 Records</option>
+                                            <option value="50" data-link="${pageDirect ? "Dashboard" : "ListCustomer"}?numberPagingCustomer=50" ${numberPagingCustomer == 50 ? "selected" : ""}>50 Records</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -162,21 +171,23 @@
 </body>
 <script src="js/main.js"></script>
 <script>
-    const totalCell = document.querySelectorAll('tr td:nth-child(6)');
-// Kiểm tra giá trị total
-    totalCell.forEach(totalCell => {
-        if (parseFloat(totalCell.innerText) < 0) {
-            totalCell.parentNode.style.color = 'red';
-        } else if (parseFloat(totalCell.innerText) == 0 || totalCell.innerText == 'Active' || totalCell.innerText == 'De Active') {
-            totalCell.parentNode.style.color = 'black';
-        } else {
-            totalCell.parentNode.style.color = 'green';
-        }
-    });
+                                            const totalCell = document.querySelectorAll('tr td:nth-child(6)');
+                                            totalCell.forEach(totalCell => {
+                                                if (parseFloat(totalCell.innerText) < 0) {
+                                                    totalCell.parentNode.style.color = 'red';
+                                                } else if (parseFloat(totalCell.innerText) == 0 || totalCell.innerText == 'Active' || totalCell.innerText == 'De Active') {
+                                                    totalCell.parentNode.style.color = 'black';
+                                                } else {
+                                                    totalCell.parentNode.style.color = 'green';
+                                                }
+                                            });
+                                            const currentUrl = window.location.href;
+                                            localStorage.setItem('linkDashboard', currentUrl);
 
-function clickSubmitAddNewNote(e){
-    e.preventDefault();
-    confirm('lmaklmdsa');
-}
+                                            function changeNumberPagingCustomer() {
+                                                var select = document.getElementById("numberPagingCustomer");
+                                                var link = select.options[select.selectedIndex].getAttribute("data-link");
+                                                window.location.href = link;
+                                            }
 </script>
 </html>

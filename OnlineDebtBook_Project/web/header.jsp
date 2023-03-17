@@ -15,7 +15,7 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
                     <c:if  test="${sessionScope.user2.isAdmin==false}">
                         <li class="nav-item active">
-                            <a href="Dashboard" class="nav-link" style="color:white">Home</a>
+                            <a href="Dashboard?numberPagingCustomer=${numberPagingCustomer}" class="nav-link" style="color:white">Home</a>
                         </li>
                     </c:if>
                 </ul>
