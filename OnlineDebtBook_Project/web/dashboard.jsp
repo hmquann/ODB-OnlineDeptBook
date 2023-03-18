@@ -63,11 +63,11 @@
                                 </div>
                                 <div class="float-right">
                                     <a type="button" href="ListCustomer?operater=true&numberPagingCustomer=${numberPagingCustomer}" title="List Owner"
-                                       class="mr-1 btn btn-primary" style="border-radius: 20px;">List Owner</a>
+                                       class="mr-1 btn btn-danger" style="border-radius: 20px;">List Owner</a>
                                 </div>
                                 <div class="float-right">
                                     <a type="button" href="ListCustomer?operater=false&numberPagingCustomer=${numberPagingCustomer}" title="List Owner"
-                                       class="mr-1 btn btn-primary" style="border-radius: 20px;">List Debtor</a>
+                                       class="mr-1 btn btn-success" style="border-radius: 20px;">List Debtor</a>
                                 </div>
                                 <div class="float-right"><button type="button" data-toggle="modal" data-target="#add_debtor" title="Add new Debtor"
                                                                  class="mr-1 btn btn-primary" style="border-radius: 20px;"><i class="fa fa-plus"></i>

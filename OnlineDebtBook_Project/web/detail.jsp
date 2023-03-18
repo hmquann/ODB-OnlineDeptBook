@@ -61,7 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body" id="detail_debt" >
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" style="max-height: 425px; overflow-y: auto;text-align: center;">
                                             <table class="table table-bordered table-sm" data-resizable-columns-id="demo-table-v2">
                                                 <thead>
                                                     <tr>
@@ -108,7 +108,7 @@
                 <div class="modal-footer" style="justify-content: space-between !important">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="returnToDashboard();" >Back</button>
 
-                    <ul class="pagination justify-content-end">
+                    <ul class="pagination">
                         <c:if test="${indexPage > 1 }">
                             <li class="page-item "><a class="page-link" href="DetailDebt?Customerid=${CustomerId}&index=${indexPage-1}">Previous</a></li>
                             </c:if>                                      
