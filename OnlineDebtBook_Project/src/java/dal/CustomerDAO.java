@@ -78,7 +78,7 @@ public class CustomerDAO extends DBContext {
 
     public List<Customer> pagingCustomer(int index, int accountID, int numberPagingCustomer, String alterSQL) {
         List<Customer> t = new ArrayList<>();
-        String sql = "  select * from Customer where " + alterSQL + " accountID= ? order by customerID DESC \n"
+        String sql = "  select * from Customer where " + alterSQL + " accountID= ? order by customerID ASC \n"
                 + "  offset ? rows fetch next " + numberPagingCustomer + " rows only ";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);

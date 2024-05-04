@@ -22,11 +22,11 @@
                 <form action="ChangePassword" method="post">
                     <div>
                         <div class="input-field1">
-                            <input type="text" class="input1" placeholder="Enter New Password(*)" id="" name="pass">
+                            <input type="text" class="input1" required="" placeholder="Enter New Password(*)" id="" name="pass">
                             <i class='bx bx-envelope'></i>
                         </div>
                         <div class="input-field1">
-                            <input type="password" class="input1" placeholder="Confirm New Password(*)" id="" name="pass2">
+                            <input type="password" class="input1" required="" placeholder="Confirm New Password(*)" id="" name="pass2">
                             <i class='bx bx-envelope'></i>
                         </div>
                         <div>
@@ -37,20 +37,11 @@
                         <div class="input-field1">
                             <button type="submit" class="submit1" value="Reset" id="">Reset</button>
                         </div>
-                        <p style="color: red; display: none;" id="messforgotpassword" tilte="${mess}">${mess}</p>
+                        <p style="color: red" id="messforgotpassword" tilte="${mess}">${mess}</p>
                     </div>
                 </form>
             </div>
         </div>
-        <script>
-            var mess = document.getElementById('messforgotpassword');
-            console.log(mess.innerText === '');
-
-            if (mess.innerText !== '') {
-                alert('Mật khẩu chứa ít nhất 8 chứ kí tự (yêu cầu bắt buộc phải có 1 kí tự in hoa và 1 số)');
-            }
-
-        </script>
     </body>
 </html>
 
